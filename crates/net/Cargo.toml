@@ -1,0 +1,14 @@
+[package]
+name = "net"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+sonic-defai-defi.workspace = true
+sonic-defai-ai.workspace = true
+regex = "1.11.1"
+axum.workspace = true
+tokio.workspace = true
+tower-http.workspace = true
+serde_json.workspace = true
+dotenv.workspace = true

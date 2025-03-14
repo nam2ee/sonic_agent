@@ -1,0 +1,10 @@
+[package]
+name = "sonic-defai-ai"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+anthropic.workspace = true
+deepseek_rs.workspace = true
+async-trait.workspace = true
+sonic-defai-defi.workspace = true
