@@ -1,5 +1,5 @@
 [package]
-name = "net"
+name = "sonic-defai-net"
 version = "0.1.0"
 edition = "2024"
 
@@ -12,3 +12,4 @@ tokio.workspace = true
 tower-http.workspace = true
 serde_json.workspace = true
 dotenv.workspace = true
+futures.workspace = true

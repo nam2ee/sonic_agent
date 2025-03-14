@@ -3,11 +3,12 @@ resolver = "2"
 members = ["bin/sonic", "crates/ai", "crates/defi", "crates/net"]
 
 [workspace.dependencies]
+sonic-defai-defi = {path = "crates/defi"}
+sonic-defai-ai = {path = "crates/ai"}
+sonic-defai-net = {path = "crates/net"}
 axum = "0.8.1"
 tokio = { version = "1.35.1", features = ["full"] }
 serde = { version = "1.0.196", features = ["derive"] }
-sonic-defai-defi = {path = "crates/defi"}
-sonic-defai-ai = {path = "crates/ai"}
 serde_json = "1.0.113"
 anthropic = "0.0.8"
 regex = "1.10.3"
@@ -16,3 +17,4 @@ async-trait= "0.1.87"
 tower = {version = "0.5.2"}
 tower-http = { version = "0.5.2", features = ["cors"] }
 dotenv = {version = "0.15.0"}
+futures = "0.3.31"

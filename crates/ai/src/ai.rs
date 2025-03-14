@@ -8,9 +8,9 @@ pub struct AIError{
 
 #[async_trait]
 pub trait AI {
-    fn new(model_name: String, api_key: String) -> Result<Self, dyn Error>;
+    fn new(model_name: String, api_key: String) -> Self;
 
-    async fn query<T>(&self, system: &str, input: &str) -> Result<String, AIError> ;
+    async fn query(&self, system: &str, input: &str) -> Result<String, AIError> ;
 
 }
 
@@ -18,7 +18,7 @@ pub trait AI {
 
 pub fn prompt_gen(risk_level: Risk, user_asset: Asset, filtered_stratigies: Vec<Strategy>) -> String{
     let risk: String = risk_level.into();
-    let stratigies_description: Vec<String> = filtered_stratigies.iter().map(|s| s.into()).collect();
+    let stratigies_description: Vec<String> = filtered_stratigies.into_iter().map(|s| s.into()).collect();
     let asset: String = user_asset.into();
     format!(
         "As a DeFi strategy advisor, provide a well-structured analysis with clear paragraphs \
