@@ -1,4 +1,3 @@
-use std::error::Error;
 use anthropic::client::Client;
 use anthropic::client::ClientBuilder;
 use anthropic::types::{ContentBlock, MessagesRequestBuilder};
@@ -11,7 +10,7 @@ pub struct Claude{
 
 #[async_trait]
 impl AI for Claude{
-    fn new(model_name: String, api_key: String) ->  Self {
+    fn new(_model_name: String, api_key: String) ->  Self {
         let client = ClientBuilder::default()
             .api_key(api_key)
             .build().unwrap();
@@ -21,7 +20,7 @@ impl AI for Claude{
 
     }
 
-    async fn query(&self, system: &str, input: &str) -> Result<String, AIError> {
+    async fn query(&self, _system: &str, input: &str) -> Result<String, AIError> {
         let message_request = MessagesRequestBuilder::default()
             .model("claude-3-7-sonnet-20250219".to_string())
             .temperature(0)

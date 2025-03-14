@@ -1,16 +1,12 @@
-use std::result;
 use std::sync::Arc;
 use axum::{
     extract::State,
-    http::StatusCode,
     response::{IntoResponse, Json},
-    routing::{get, post},
-    Router,
 };
 use futures::future::join_all;
 use sonic_defai_ai::ai::{prompt_gen, AI};
 use sonic_defai_ai::types::{ SYSTEM};
-use sonic_defai_defi::types::{Risk, UserInfo};
+use sonic_defai_defi::types::{ UserInfo};
 use sonic_defai_defi::parser::strategy_filter;
 use crate::types::{AppState};
 

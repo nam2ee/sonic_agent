@@ -179,30 +179,22 @@ impl From<Strategy> for String{
         let risk: String = strategy.risk_level.into();
         let yield_rates: String = strategy.yield_rates.into();
 
-        let mut il = "".to_string();
-        let mut ild = "".to_string();
-        let mut idx= 0;
+        let il = if let Some(x) = strategy.impermanent_loss {
+             x
+        }
+        else{ "N/A".to_string()};
 
+        let ild = if let Some(y) = strategy.impermanent_loss_description {
+            y
+        }
+        else{ "N/A".to_string()};
 
-        if let Some(x) = strategy.impermanent_loss {
-             il = x;
+        let idx = if let Some(z) = strategy.original_index {
+            z
         }
         else{
-            let il = "N/A";
-        }
-        if let Some(y) = strategy.impermanent_loss_description {
-            ild = y;
-        }
-        else{
-            ild = "N/A".to_string();
-        }
-
-        if let Some(z) = strategy.original_index {
-            idx = z;
-        }
-        else{
-            idx = 0;
-        }
+            0
+        };
         format!(
             "Strategy #{}:\nName: {} Description: {}\n Risk Level: {} Reason for risk level: {}\n Impermanent loss: {} impermanent_loss_description: {} \n YieldRates: {} ",
             idx,

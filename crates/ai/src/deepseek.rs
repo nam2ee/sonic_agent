@@ -1,6 +1,3 @@
-use std::error::Error;
-use anthropic::client;
-use anthropic::types::{ContentBlock, MessagesRequestBuilder};
 use async_trait::async_trait;
 use deepseek_rs::DeepSeekClient;
 use deepseek_rs::request::{MaxTokens, Message, Model, RequestBody, Temperature};
@@ -12,7 +9,7 @@ pub struct DeepSeek{
 
 #[async_trait]
 impl AI for DeepSeek {
-    fn new(model_name: String, api_key: String) -> Self {
+    fn new(_model_name: String, api_key: String) -> Self {
         let client = DeepSeekClient::new_with_api_key(api_key);
         DeepSeek{
             client

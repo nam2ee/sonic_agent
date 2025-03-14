@@ -1,14 +1,14 @@
-use std::error::Error;
 use async_trait::async_trait;
 use sonic_defai_defi::types::{Asset, Risk, Strategy};
 
 pub struct AIError{
+    #[allow(dead_code)]
     pub(crate) msg: String
 }
 
 #[async_trait]
 pub trait AI {
-    fn new(model_name: String, api_key: String) -> Self;
+    fn new(_model_name: String, api_key: String) -> Self;
 
     async fn query(&self, system: &str, input: &str) -> Result<String, AIError> ;
 

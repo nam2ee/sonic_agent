@@ -1,5 +1,4 @@
 use std::env;
-use std::error::Error;
 use sonic_defai_defi::types::Strategy;
 use sonic_defai_ai::ai::AI;
 use sonic_defai_ai::claude::Claude;
@@ -12,6 +11,7 @@ pub struct AppState<AI_: AI> {
 }
 
 impl AppState<Claude>{
+    #[allow(dead_code)]
     pub async fn new() -> AppState<Claude>{
         let file_content = tokio::fs::read_to_string("analyzed_vaults.json").await.unwrap();
         let v: Vec<Strategy> = serde_json::from_str(&file_content).unwrap();
