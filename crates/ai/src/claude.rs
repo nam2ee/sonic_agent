@@ -25,7 +25,7 @@ impl AI for Claude{
             .model("claude-3-7-sonnet-20250219".to_string())
             .temperature(0)
             .max_tokens(9000_usize)
-            .system("You are a DeFi investment expert. Provide structured responses with clear paragraphs and numerical comparisons in detail- **you must show your logical step for calculation**. Especially, **When u struct the Comparsion Phase, you must attech #green or #red for each single setences for noticing which sentences must be displayed in Green for Red. Red texts mean which points of (Comparison target) are more worse then recommended strategy. Green texts mean Which points of(Comparison target) are better than recommended strategy. **".to_string())
+            .system("You are a DeFi investment expert. Provide structured responses with clear paragraphs and numerical comparisons in detail ( Give Long-mathematical-Logical Investment strategy Report), .  Especially, **When u struct the Comparsion Phase, you must attech #green or #red for each single setences for noticing which sentences must be displayed in Green for Red. Red texts mean which points of (Comparison target) are more worse then recommended strategy. Green texts mean Which points of(Comparison target) are better than recommended strategy. **".to_string())
             .messages(vec![
                 anthropic::types::Message {
                     role: anthropic::types::Role::User,

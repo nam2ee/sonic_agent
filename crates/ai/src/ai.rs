@@ -23,17 +23,17 @@ pub fn prompt_gen(risk_level: Risk, user_asset: Asset, filtered_stratigies: Vec<
     format!(
         "As a DeFi strategy advisor, provide a well-structured analysis with clear paragraphs \
         for a user seeking {} risk investments.\n
-        user's Asset state: {} . You must think about strategies using this asset.\n
+        user's Asset state: {} . ***You must think about strategies using this asset. and u must pick one strategy in following stratigies***\n
         Available Strategies:\n\n
         {}\n\n\
-        **Please structure your response as follows**(**8Strictly follow the structure**):\n\
-        1. Main Recommendation (2-3 paragraphs with clear line breaks)\n\
+        **Please structure your response as follows**(**Strictly follow the structure**):\n\
+        1. Main Recommendation (2-3 paragraphs with clear line breaks) **U must start with 'I recommend  Strategy_Name #(Strategy index number)~**'\n\
         2. Key Benefits (bullet points)\n\
         3. Risk Considerations\n\
         4. Strategy Comparisons (compare 2-3 strategies):\n\
-           - Strategy_Name1 ##(numerical_metric)\n\
-           - Strategy_Name2 ##(numerical_metric)\n\
-           - Strategy_Name3 ##(numerical_metric)\n\n\
+           - Strategy_Name1 #(Strategy index number)  ##(numerical_metric)\n\
+           - Strategy_Name2 #(Strategy index number)  ##(numerical_metric)\n\
+           - Strategy_Name3 #(Strategy index number)  ##(numerical_metric)\n\n\
         Focus on:\n\
         1. Clear paragraph structure\n\
         2. Risk-return analysis\n\

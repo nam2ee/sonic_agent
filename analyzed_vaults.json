@@ -2,7 +2,7 @@
   {
     "address": "0x7947483609077d503b48647617403537b85a3087",
     "name": "latest",
-    "risk_level": "High",
+    "risk_level": "high",
     "risk_reason": "REASONING: - **APY/APR Metrics:** The latest Total APY of 943.48% is extremely high and potentially unsustainable, especially since it's not backed by a similarly high Farm APR (235.27%). The absence of 24h and weekly APY/APR data makes it difficult to assess volatility, but the high APY alone raises concerns about its sustainability. - **VS HODL Performance:** The vault's performance against holding is highly volatile. The 24h performance shows significant gains (+87.26%), but the weekly and 57-day performances indicate substantial losses (-345.23% and -23.18% respectively). This volatility is further highlighted by extreme swings in performance against wS and SACRA, with SACRA showing a dramatic 57-day loss of -193.92%. - **Price Stability:** The vault's price has depreciated significantly over 57 days (-45.28%), which is well beyond the threshold for high risk. While wS shows a moderate depreciation (-29.59%), SACRA's price increase (+148.64%) does not mitigate the vault's own price risk. The price movements suggest high exposure to market volatility and potential for impermanent loss. - **Overall Volatility and Potential Losses:** The combination of high APY, extreme volatility in VS HODL performance, and significant price depreciation over 57 days indicates a high level of risk. The vault's strategy appears to be highly leveraged or speculative, leading to substantial potential losses. Key risks: Unsustainable APY, extreme volatility in performance metrics, significant price depreciation, and high potential for losses.",
     "analyzed_at": "2025-03-11 01:15:37",
     "description": "Earn SWPx and fees on SwapX pool wS-SACRA by Ichi IV-SWAPX-13-wS-SACRA",
@@ -75,12 +75,13 @@
           "change_57_days": "+148.64%"
         }
       ]
-    }
+    },
+    "original_index": 0
   },
   {
     "address": "0x6e91fe4d1c90970b76a4038ff12713ce8a4a5f6a",
     "name": "latest",
-    "risk_level": "Medium",
+    "risk_level": "medium",
     "risk_reason": "REASONING: - **APY/APR Metrics**: The latest Total APY of 11.28% and Total APR of 10.69% are reasonable and within sustainable ranges. The Farm APR matches the Total APR, suggesting a straightforward yield mechanism without excessive leverage or complex derivatives. There is no data provided on historical volatility of these rates, but the current figures do not indicate unsustainable yields. - **VS HODL Performance**: The vault shows positive returns compared to holding the underlying assets over different time frames. The 24-hour performance ranges from +5.55% to +7.23%, the weekly performance from +24.38% to +26.19%, and the 57-day performance from +4.09% to +4.2%. This indicates consistent outperformance across short and long terms, though the 57-day performance is relatively low. - **Price Stability**: Over the 57-day period, the vault's price has depreciated by -27.99%, which is within the medium risk range (-30% to +30%). The underlying assets, atETH and scETH, have experienced slightly higher depreciation at -32.19% and -32.08% respectively. This suggests moderate price stability and a potential for impermanent loss, but the vault's depreciation is less severe than the underlying assets. - **Overall Volatility and Potential for Losses**: The vault's performance metrics show moderate volatility in returns and price changes. The vault's price depreciation is significant but not extreme, and the consistent outperformance against holding the underlying assets suggests a degree of stability in generating returns. Key risks: - Moderate price depreciation over 57 days indicates potential for losses. - The vault's returns, while positive, show variability over different time frames, suggesting some level of performance risk. - The sustainability of the current APY/APR levels cannot be fully assessed without historical data, posing a risk if these rates were to decline.",
     "analyzed_at": "2025-03-11 01:12:19",
     "description": "Earn SWPx and fees on SwapX pool atETH-scETH by Ichi IV-SWAPX-16-atETH-scETH",
@@ -153,12 +154,13 @@
           "change_57_days": "-32.08%"
         }
       ]
-    }
+    },
+    "original_index": 1
   },
   {
     "address": "0xcbad00512d799e2ff1ed2b60cb700951e30a2314",
     "name": "latest",
-    "risk_level": "Medium",
+    "risk_level": "medium",
     "risk_reason": "REASONING: - **APY/APR Metrics**: The latest Total APY of 13.7% and Total APR of 12.84% are within a reasonable range and suggest a sustainable yield. The Farm APR matches the Total APR, indicating that the yield is derived primarily from farming activities without additional boosts or leverage. There is no data provided on 24h or weekly rates, so we cannot assess volatility in these metrics, but the current rates do not suggest unsustainable yields. - **VS HOLD Performance**: The vault's performance compared to holding the underlying assets shows significant short-term volatility, with a 24-hour drop of -50.98% against HODL, -126.19% against wS HODL, and -6.56% against OS HODL. However, over a longer period (57 days), the vault slightly outperforms holding, with gains of +2.06%, +1.81%, and +2.2% respectively. This indicates that while the vault may experience high short-term volatility, it can still provide positive returns over a longer timeframe. - **Price Stability**: Over the 57-day period, the vault's price has decreased by -13.35%, which is within a reasonable range of price stability. The prices of wS and OS have also decreased by -15.19% and -15.57% respectively, suggesting a moderate level of price correlation between the tokens. The vault's performance is slightly better than the underlying assets, indicating some resilience against price depreciation. - **Overall Volatility and Potential for Losses**: The vault shows significant short-term volatility, particularly in the 24-hour performance metrics. However, it manages to provide positive returns over a longer period, which mitigates some of the risk. The price changes over 57 days are moderate, suggesting a medium level of exposure to market movements. Key risks: High short-term volatility in VS HOLD performance, potential for significant short-term losses, and moderate exposure to price depreciation of underlying assets.",
     "analyzed_at": "2025-03-11 01:11:54",
     "description": "Earn SWPx and fees on SwapX pool wS-OS by Ichi IV-SWAPX-26-wS-OS",
@@ -231,13 +233,14 @@
           "change_57_days": "-15.57%"
         }
       ]
-    }
+    },
+    "original_index": 2
   },
   {
     "address": "0x6ea600c8c570bebd0ce95d8abfc362a0653d26df",
     "name": "latest",
-    "risk_level": "Medium",
-    "risk_reason": "REASONING: • APY/APR metrics are all at 0%, indicating no yield or return from the vault, which suggests extremely stable but non-existent returns. • VS HODL performance data is missing for all time frames (24h, Week, 57d), which limits the ability to assess the vault's performance relative to holding the underlying assets. • Price changes over 57 days show high stability with the vault price at 0.00%, USDC at +0.01%, and scUSD at -0.01%, indicating minimal price volatility. • Overall, the vault exhibits low volatility and no potential for losses due to the absence of any yield or price movement. Key risks: Lack of any yield or return, which may not meet investor expectations for growth or income. The absence of VS HODL performance data makes it difficult to fully evaluate the vault's effectiveness compared to holding the underlying assets directly.",
+    "risk_level": "medium",
+    "risk_reason": "REASONING: \u2022 APY/APR metrics are all at 0%, indicating no yield or return from the vault, which suggests extremely stable but non-existent returns. \u2022 VS HODL performance data is missing for all time frames (24h, Week, 57d), which limits the ability to assess the vault's performance relative to holding the underlying assets. \u2022 Price changes over 57 days show high stability with the vault price at 0.00%, USDC at +0.01%, and scUSD at -0.01%, indicating minimal price volatility. \u2022 Overall, the vault exhibits low volatility and no potential for losses due to the absence of any yield or price movement. Key risks: Lack of any yield or return, which may not meet investor expectations for growth or income. The absence of VS HODL performance data makes it difficult to fully evaluate the vault's effectiveness compared to holding the underlying assets directly.",
     "analyzed_at": "2025-03-11 01:13:32",
     "description": "Earn EQUAL by USDC.e-scUSD sLP",
     "impermanent_loss": "Zero exp",
@@ -309,12 +312,13 @@
           "change_57_days": "-0.01%"
         }
       ]
-    }
+    },
+    "original_index": 3
   },
   {
     "address": "0xf960624c704a111647ed17b064f313d13d28eadf",
     "name": "latest",
-    "risk_level": "Medium",
+    "risk_level": "medium",
     "risk_reason": "REASONING: - **APY/APR Metrics**: The latest Total APY of 13.1% and Total APR of 12.31% indicate a moderate yield. The Farm APR matches the Total APR, suggesting that the yield is primarily derived from farming activities. There is no extreme volatility in APY/APR as the rates are consistent and below the 1000% threshold that would flag as unsustainable. - **VS HODL Performance**: The vault shows significant short-term volatility with a 24-hour performance of -17.76% to -18.29% across different HODL metrics, but a substantial weekly increase of around +627%. Over the longer term (57 days), the performance stabilizes at around +2.48% to +2.5%, indicating a return to near baseline after significant fluctuations. This suggests a high degree of short-term volatility but a more stable long-term performance. - **Price Stability**: Over 57 days, the vault's price has decreased by -8.52%, which is within the acceptable range of -10% to +10% for low risk. The tokens wS and OS have experienced slightly higher depreciation at -10.99% and -11.04% respectively, but all are still within a moderate range. The price changes do not suggest extreme volatility or significant risk of impermanent loss. - **Overall Volatility and Potential for Losses**: The vault demonstrates moderate volatility, particularly in the short term, as evidenced by the significant swings in 24-hour and weekly VS HODL performance. However, the longer-term performance and price stability suggest a more controlled risk environment. Key risks: The vault is subject to high short-term volatility, as indicated by the 24-hour and weekly VS HODL performance, which could lead to significant short-term losses. However, the longer-term stability and moderate price changes suggest a medium risk profile overall.",
     "analyzed_at": "2025-03-11 01:11:46",
     "description": "Earn SWPx and fees on SwapX pool wS-OS by Ichi IV-SWAPX-27-OS-wS",
@@ -387,12 +391,13 @@
           "change_57_days": "-11.04%"
         }
       ]
-    }
+    },
+    "original_index": 4
   },
   {
     "address": "0xad7043d79916289766e3a489e7a102eb4397f1a3",
     "name": "latest",
-    "risk_level": "High",
+    "risk_level": "high",
     "risk_reason": "REASONING: - **APY/APR Metrics:** The latest total APY of 390.88% and APR of 159.45% are extremely high, indicating potential unsustainability. The farm APR matches the total APR, suggesting that the yield is primarily driven by farming activities. Such high yields without clear backing are flagged as unsustainable. - **VS HODL Performance:** The vault's performance against holding different assets shows extreme volatility. The 24-hour performance ranges from -175.42% to +685.91%, and the weekly performance shows even more significant swings, from -1007.25% to +383.33%. Over 57 days, the performance is positive but varies widely from +12.91% to +26.24%. This indicates high inconsistency and risk. - **Price Stability:** The vault's price has only depreciated by -2.84% over 57 days, which is relatively stable. However, the assets wS and SWPx have seen significant depreciation of -29.08% and -15.75% respectively, indicating potential for impermanent loss if these assets are part of the vault's strategy. - **Overall Volatility and Potential for Losses:** The vault exhibits extreme volatility in its performance metrics, with significant swings in both short-term and long-term performance against holding. The high APY/APR suggests potential for high returns but also high risk of loss due to the unsustainability of such yields. Key risks: High volatility in returns, potential for significant losses due to unsustainable yield rates, and exposure to assets with notable price depreciation.",
     "analyzed_at": "2025-03-11 01:14:56",
     "description": "Earn SWPx and fees on SwapX pool wS-SWPx by Ichi IV-SWAPX-19-wS-SWPx",
@@ -465,12 +470,13 @@
           "change_57_days": "-15.75%"
         }
       ]
-    }
+    },
+    "original_index": 5
   },
   {
     "address": "0x8c64d2a1960c7b4b22dbb367d2d212a21e75b942",
     "name": "latest",
-    "risk_level": "Low",
+    "risk_level": "low",
     "risk_reason": "REASONING: - **APY/APR Metrics**: The latest Total APY of 9.72% and Total APR of 9.28% are reasonable and sustainable. There is no volatility data provided, but the figures are within a normal range and not flagged as unsustainable (>1000%). The farm APR matches the total APR, indicating a straightforward yield source without additional complexities. - **VS HODL Performance**: The vault consistently outperforms holding the underlying assets over various time frames. The 24h performance shows a +3.63% increase compared to HODL, while the 57-day performance is at +3.69%. This indicates stability and reliability in outperforming direct holding, both in the short and long term. - **Price Stability**: Over 57 days, the vault's price increased by +3.69%, which is stable and positive. USDC and scUSD have minimal price changes, suggesting low volatility in the underlying assets. The vault's performance aligns closely with the price stability of these assets, indicating low risk of impermanent loss or significant price depreciation. - **Overall Volatility and Potential for Losses**: The vault shows low volatility across all metrics, with consistent performance and minimal risk of significant losses. The price movement patterns are stable, and the vault's returns are reliable over different time frames. Key risks: The primary risk appears to be minimal, given the stable APY, consistent outperformance against holding, and low price volatility. However, any unexpected changes in the underlying yield mechanisms could impact future performance.",
     "analyzed_at": "2025-03-11 01:14:22",
     "description": "Earn SWPx and fees on SwapX pool USDC.e-scUSD by Ichi IV-SWAPX-3-scUSD-USDC.e",
@@ -543,12 +549,13 @@
           "change_57_days": "-0.00%"
         }
       ]
-    }
+    },
+    "original_index": 6
   },
   {
     "address": "0x4e20cc3f551a2953ee49998ac64fc73d8ea6fd4f",
     "name": "latest",
-    "risk_level": "High",
+    "risk_level": "high",
     "risk_reason": "REASONING: - **APY/APR Metrics**: The latest Total APY of 3,364.41% is extremely high and unsustainable, suggesting potential risks in yield generation. The Farm APR and Total APR are identical at 356.24%, indicating that all yield is derived from farming activities without additional sources of income. This high yield volatility raises concerns about the sustainability of the strategy. - **Price Stability**: Over the last 57 days, the vault experienced a significant price depreciation of -36.07%, which falls into the high-risk category. The tokens wS and TAILS also saw substantial declines of -35.04% and -53.80% respectively, indicating a high risk of impermanent loss and overall price instability. - **VS HOLD Performance**: The vault's performance against holding varies widely across different time frames. It shows a strong short-term performance (24h +210.1% vs HODL) but a much weaker long-term performance (57d +6.72% vs HODL). The performance against wS and TAILS also fluctuates dramatically, with wS showing a significant negative return over the week (-423.3%). This inconsistency and volatility in performance against holding suggest high risk. - **Overall Volatility and Potential for Losses**: The combination of extreme APY/APR volatility, significant price depreciation, and inconsistent VS HOLD performance points to a highly volatile and risky strategy. The potential for losses is high, given the unsustainable yields and substantial price drops. Key risks: Unsustainable yield rates, significant price depreciation, and highly inconsistent performance against holding.",
     "analyzed_at": "2025-03-11 01:12:10",
     "description": "Earn EQUAL by wS-TAILS vLP",
@@ -621,12 +628,13 @@
           "change_57_days": "-53.80%"
         }
       ]
-    }
+    },
+    "original_index": 7
   },
   {
     "address": "0x5b159c6cb15ffa38ef7a66625de152821624637d",
     "name": "latest",
-    "risk_level": "High",
+    "risk_level": "high",
     "risk_reason": "REASONING: - **APY/APR Metrics**: The latest total APY of 13.74% and APR of 12.88% are within a reasonable range, suggesting moderate yield sustainability. However, there is no data on historical APY/APR rates to assess volatility, which defaults to a neutral stance on this metric alone. - **VS HODL Performance**: The vault's performance against different tokens shows significant variability. Against HODL, the vault shows positive returns over all periods, but with a decline from +9.16% in 24h to +1.19% over 57 days, indicating a downward trend. Against wS, the performance swings from -15.58% in 24h to +33% over a week, and +2.88% over 57 days, showing high volatility. Against BRUSH, the performance is highly inconsistent, ranging from +32.55% in 24h to -17.94% over a week and -0.43% over 57 days. This indicates a lack of consistency and high volatility in VS HODL performance. - **Price Stability**: Over the 57-day period, the vault's price has decreased by -32.02%, wS by -34.90%, and BRUSH by -31.60%. These significant price drops indicate high risk and potential for losses, as all assets have depreciated considerably. - **Overall Volatility and Potential for Losses**: The combination of high price depreciation, significant volatility in VS HODL performance, and the lack of historical APY/APR data to assess yield sustainability contribute to an overall high risk profile. The vault's price has fallen more than 30% in 57 days, which is a strong indicator of potential for losses. Key risks: High price depreciation, significant volatility in VS HODL performance, and potential for unsustainable yields due to lack of historical APY/APR data.",
     "analyzed_at": "2025-03-11 01:12:42",
     "description": "Earn EQUAL by wS-BRUSH vLP",
@@ -699,13 +707,14 @@
           "change_57_days": "-31.60%"
         }
       ]
-    }
+    },
+    "original_index": 8
   },
   {
     "address": "0xb286436815062133def6190b3725970c0079b348",
     "name": "latest",
-    "risk_level": "High",
-    "risk_reason": "REASONING: • APY/APR shows no volatility as the latest Total APY and APR are consistent at 28.85% and 25.36% respectively. However, the high APY raises concerns about sustainability as it is above typical market rates without additional context to justify it. • VS HODL performance exhibits extreme volatility across different time frames and assets. The 24-hour performance ranges from +78.95% to -66.46%, and the weekly performance swings from -458.81% to +462.89%. Over 57 days, the performance varies significantly between -6.7% and +7.03%. This indicates high risk and inconsistent performance against holding individual assets. • Price stability is poor with significant depreciation across all assets over 57 days: Vault (-46.83%), wS (-40.13%), and fSONIC (-53.86%). This level of price decline suggests high risk of capital loss. • The overall volatility and potential for losses are high, as evidenced by the extreme swings in VS HODL performance and significant price depreciation over 57 days. Key risks: High APY sustainability concerns, extreme volatility in VS HODL performance, and significant price depreciation indicating potential for substantial capital losses.",
+    "risk_level": "high",
+    "risk_reason": "REASONING: \u2022 APY/APR shows no volatility as the latest Total APY and APR are consistent at 28.85% and 25.36% respectively. However, the high APY raises concerns about sustainability as it is above typical market rates without additional context to justify it. \u2022 VS HODL performance exhibits extreme volatility across different time frames and assets. The 24-hour performance ranges from +78.95% to -66.46%, and the weekly performance swings from -458.81% to +462.89%. Over 57 days, the performance varies significantly between -6.7% and +7.03%. This indicates high risk and inconsistent performance against holding individual assets. \u2022 Price stability is poor with significant depreciation across all assets over 57 days: Vault (-46.83%), wS (-40.13%), and fSONIC (-53.86%). This level of price decline suggests high risk of capital loss. \u2022 The overall volatility and potential for losses are high, as evidenced by the extreme swings in VS HODL performance and significant price depreciation over 57 days. Key risks: High APY sustainability concerns, extreme volatility in VS HODL performance, and significant price depreciation indicating potential for substantial capital losses.",
     "analyzed_at": "2025-03-11 01:12:28",
     "description": "Earn EQUAL by wS-fSONIC vLP",
     "impermanent_loss": "Low",
@@ -777,13 +786,14 @@
           "change_57_days": "-53.86%"
         }
       ]
-    }
+    },
+    "original_index": 9
   },
   {
     "address": "0xb773b791f3badb3b28bc7a2da18e2a012b9116c2",
     "name": "latest",
-    "risk_level": "Low",
-    "risk_reason": "REASONING: • APY/APR shows low volatility with the latest Total APY at 8.88% and Total APR at 8.51%, both of which are sustainable and closely aligned with the Farm APR of 8.51%. • VS HOLD performance is stable with positive returns across all time frames: 24h +5.62%, Week +0.77%, 57d +4.02%. The vault consistently outperforms holding USDC and scUSD, indicating reliable performance. • Price stability is strong with the vault showing a +4.02% increase over 57 days, while USDC and scUSD remain nearly unchanged (+0.01% and -0.00% respectively), suggesting minimal risk of impermanent loss. • Overall, the vault exhibits low volatility and consistent performance, with minimal potential for losses based on the provided data. Key risks: The strategy appears to be low risk, but any sudden changes in the underlying APY or market conditions could affect future performance.",
+    "risk_level": "low",
+    "risk_reason": "REASONING: \u2022 APY/APR shows low volatility with the latest Total APY at 8.88% and Total APR at 8.51%, both of which are sustainable and closely aligned with the Farm APR of 8.51%. \u2022 VS HOLD performance is stable with positive returns across all time frames: 24h +5.62%, Week +0.77%, 57d +4.02%. The vault consistently outperforms holding USDC and scUSD, indicating reliable performance. \u2022 Price stability is strong with the vault showing a +4.02% increase over 57 days, while USDC and scUSD remain nearly unchanged (+0.01% and -0.00% respectively), suggesting minimal risk of impermanent loss. \u2022 Overall, the vault exhibits low volatility and consistent performance, with minimal potential for losses based on the provided data. Key risks: The strategy appears to be low risk, but any sudden changes in the underlying APY or market conditions could affect future performance.",
     "analyzed_at": "2025-03-11 01:15:24",
     "description": "Earn SWPx and fees on SwapX pool USDC.e-scUSD by Ichi IV-SWAPX-2-USDC.e-scUSD",
     "impermanent_loss": "Medium",
@@ -855,12 +865,13 @@
           "change_57_days": "-0.00%"
         }
       ]
-    }
+    },
+    "original_index": 10
   },
   {
     "address": "0x264cf64367b5ebcca90ce807ddaa3996cce474f8",
     "name": "latest",
-    "risk_level": "Medium",
+    "risk_level": "medium",
     "risk_reason": "REASONING: - **APY/APR Metrics:** - The latest Total APY of 25.29% and APR of 22.55% are within a reasonable range and do not suggest unsustainable yields. The Farm APR matches the Total APR, indicating that the yield is primarily from farming activities. - There is no data provided on historical APY/APR rates to assess volatility, so we cannot determine if there have been significant fluctuations. - **Price Stability:** - The vault's price has depreciated by -12.42% over 57 days, which is within the medium risk range (-30% to +30%). - The tokens wS and sDOG have experienced significant depreciation (-34.38% and -33.22% respectively), indicating higher volatility in the underlying assets. - No data on price correlation between tokens is provided, so we cannot evaluate this aspect. - **VS HOLD Performance:** - The vault has shown positive returns compared to holding the underlying assets over different time frames (24h, Week, 57d). - There is significant variability in the short-term performance, with a large negative return (-229.74%) against wS HODL over 24 hours, suggesting high volatility. - Over the longer term (57 days), the vault shows consistent outperformance against all HODL metrics, with returns ranging from +20.8% to +21.96%. - The large swings in short-term performance suggest higher risk, but the consistent long-term outperformance indicates a potential for stable returns over time. - **Overall Volatility and Potential for Losses:** - The vault's price stability and the consistent long-term outperformance against HODL metrics suggest a medium level of risk. - The significant short-term volatility, especially against wS HODL, indicates potential for losses in the short term. Key risks: - Short-term volatility in VS HOLD performance could lead to significant losses. - The underlying assets (wS and sDOG) have experienced significant depreciation, which could impact the vault's stability if the trend continues. - The lack of historical APY/APR data makes it difficult to fully assess the sustainability and volatility of yields.",
     "analyzed_at": "2025-03-11 01:13:28",
     "description": "Earn SWPx by SwapX classic wS-sDOG vLP",
@@ -933,13 +944,14 @@
           "change_57_days": "-33.22%"
         }
       ]
-    }
+    },
+    "original_index": 11
   },
   {
     "address": "0xf8ba3bddb5a18977da6300f029ff2cbdf57f40ac",
     "name": "latest",
-    "risk_level": "High",
-    "risk_reason": "REASONING: • APY/APR Metrics: The latest Total APY of 95.13% and Total APR of 66.91% are high but not unsustainable. However, the absence of historical data to compare with the latest figures makes it difficult to assess volatility and sustainability accurately. The Farm APR matches the Total APR, indicating that the yield is solely from farming activities without additional pool fees, which adds to the risk if the farm's performance is volatile. • VS HODL Performance: The vault shows extreme volatility in performance against different HODL benchmarks. The 24h and weekly returns show significant swings (e.g., +47.39% to +58.48% in 24h and week for VAULT VS HODL, and -299.88% in a week for VAULT VS wS HODL), indicating high risk. The 57-day performance is positive but low compared to short-term volatility, suggesting inconsistent long-term outperformance. • Price Stability: Over the 57-day period, the vault and associated tokens (wS and MOON) have experienced significant price depreciation (-39.05%, -42.83%, and -48.27% respectively). This level of price drop indicates high risk due to potential impermanent loss and overall market downturn. • Overall Volatility and Potential for Losses: The combination of high APY/APR, extreme short-term volatility in VS HODL performance, and significant price depreciation over 57 days points to a high risk of losses. The vault's performance suggests it is highly sensitive to market movements and may not provide stable returns over time. Key risks: High volatility in short-term performance, significant price depreciation, potential for impermanent loss, and reliance on farming yields without diversification.",
+    "risk_level": "high",
+    "risk_reason": "REASONING: \u2022 APY/APR Metrics: The latest Total APY of 95.13% and Total APR of 66.91% are high but not unsustainable. However, the absence of historical data to compare with the latest figures makes it difficult to assess volatility and sustainability accurately. The Farm APR matches the Total APR, indicating that the yield is solely from farming activities without additional pool fees, which adds to the risk if the farm's performance is volatile. \u2022 VS HODL Performance: The vault shows extreme volatility in performance against different HODL benchmarks. The 24h and weekly returns show significant swings (e.g., +47.39% to +58.48% in 24h and week for VAULT VS HODL, and -299.88% in a week for VAULT VS wS HODL), indicating high risk. The 57-day performance is positive but low compared to short-term volatility, suggesting inconsistent long-term outperformance. \u2022 Price Stability: Over the 57-day period, the vault and associated tokens (wS and MOON) have experienced significant price depreciation (-39.05%, -42.83%, and -48.27% respectively). This level of price drop indicates high risk due to potential impermanent loss and overall market downturn. \u2022 Overall Volatility and Potential for Losses: The combination of high APY/APR, extreme short-term volatility in VS HODL performance, and significant price depreciation over 57 days points to a high risk of losses. The vault's performance suggests it is highly sensitive to market movements and may not provide stable returns over time. Key risks: High volatility in short-term performance, significant price depreciation, potential for impermanent loss, and reliance on farming yields without diversification.",
     "analyzed_at": "2025-03-11 01:13:45",
     "description": "Earn SWPx by SwapX classic wS-MOON vLP",
     "impermanent_loss": "Low",
@@ -1011,12 +1023,13 @@
           "change_57_days": "-48.27%"
         }
       ]
-    }
+    },
+    "original_index": 12
   },
   {
     "address": "0xbf0c96b1f9bc681d4ac502ecd7e7641bb06e3db1",
     "name": "latest",
-    "risk_level": "Medium",
+    "risk_level": "medium",
     "risk_reason": "REASONING: - **APY/APR Metrics**: The latest Total APY and APR are both at 0%, as is the Farm APR. This indicates no current yield generation, which could suggest a dormant or inactive strategy. The sustainability of yield rates is not applicable due to the absence of yield. - **VS HODL Performance**: The vault's performance against holding different assets shows significant volatility. Against HODL, the vault shows a 24h gain of +0.15%, a weekly gain of +15.14%, and a 57-day gain of +0.29%, indicating inconsistent performance over different time frames. Against wS, the vault shows a drastic 24h loss of -41%, a significant weekly gain of +133.67%, and a slight 57-day loss of -1.16%, highlighting extreme short-term volatility. Against DONKS, the vault shows a 24h gain of +40.7%, a large weekly loss of -125.8%, and a 57-day gain of +1.82%, further demonstrating high volatility and inconsistent performance. - **Price Stability**: Over 57 days, the vault's price has depreciated by -24.45%, which is significant but within a moderate range. The prices of wS and DONKS have also depreciated by -23.29% and -26.27% respectively, showing a degree of correlation in price movement among the assets. - **Overall Volatility and Potential for Losses**: The vault exhibits high volatility in its performance against holding different assets, particularly in the short term. The price depreciation over 57 days is notable but not extreme. The absence of yield adds to the uncertainty about the strategy's effectiveness. Key risks: The strategy shows no current yield, significant short-term volatility in performance against holding different assets, and moderate price depreciation over 57 days. This suggests a medium risk level due to the lack of yield and the inconsistent performance across different time frames.",
     "analyzed_at": "2025-03-11 01:13:19",
     "description": "Earn EQUAL by wS-DONKS vLP",
@@ -1089,13 +1102,14 @@
           "change_57_days": "-26.27%"
         }
       ]
-    }
+    },
+    "original_index": 13
   },
   {
     "address": "0x29d26e261344ded7b9f6bd820c6ec44cd17ac889",
     "name": "latest",
-    "risk_level": "Medium",
-    "risk_reason": "REASONING: • APY/APR Metrics: The latest Total APY of 72.36% and APR of 54.48% are within a reasonable range, suggesting moderate yield sustainability. The farm APR matches the total APR, indicating no additional yield from other sources. There is no data to assess volatility over time, but the current figures do not suggest extreme unsustainability. • VS HODL Performance: The vault shows significant short-term outperformance against holding (24h +35.83%, Week +35.3%) but a more modest long-term gain (57d +3.64%). This indicates variability in performance, with strong short-term gains but less consistent long-term results. The performance against wS and ECO shows mixed results, with ECO showing the highest short-term gains but similar long-term gains to wS. • Price Stability: Over the last 57 days, the vault's price has decreased by -30.65%, which is at the threshold of significant depreciation. The tokens wS and ECO have experienced even greater depreciation (-33.66% and -34.94% respectively), suggesting a general market downturn rather than vault-specific issues. This level of price movement indicates moderate risk. • Overall Volatility and Potential for Losses: The vault's performance shows variability, particularly in short-term gains, but the long-term performance is more subdued. The price depreciation is notable but not extreme, and the APY/APR figures suggest a moderate yield potential without extreme volatility. Key risks: Moderate price depreciation over 57 days, variable short-term vs long-term performance, and potential for market-dependent yields.",
+    "risk_level": "medium",
+    "risk_reason": "REASONING: \u2022 APY/APR Metrics: The latest Total APY of 72.36% and APR of 54.48% are within a reasonable range, suggesting moderate yield sustainability. The farm APR matches the total APR, indicating no additional yield from other sources. There is no data to assess volatility over time, but the current figures do not suggest extreme unsustainability. \u2022 VS HODL Performance: The vault shows significant short-term outperformance against holding (24h +35.83%, Week +35.3%) but a more modest long-term gain (57d +3.64%). This indicates variability in performance, with strong short-term gains but less consistent long-term results. The performance against wS and ECO shows mixed results, with ECO showing the highest short-term gains but similar long-term gains to wS. \u2022 Price Stability: Over the last 57 days, the vault's price has decreased by -30.65%, which is at the threshold of significant depreciation. The tokens wS and ECO have experienced even greater depreciation (-33.66% and -34.94% respectively), suggesting a general market downturn rather than vault-specific issues. This level of price movement indicates moderate risk. \u2022 Overall Volatility and Potential for Losses: The vault's performance shows variability, particularly in short-term gains, but the long-term performance is more subdued. The price depreciation is notable but not extreme, and the APY/APR figures suggest a moderate yield potential without extreme volatility. Key risks: Moderate price depreciation over 57 days, variable short-term vs long-term performance, and potential for market-dependent yields.",
     "analyzed_at": "2025-03-11 01:14:43",
     "description": "Earn EQUAL by wS-ECO vLP",
     "impermanent_loss": "Low",
@@ -1167,12 +1181,13 @@
           "change_57_days": "-34.94%"
         }
       ]
-    }
+    },
+    "original_index": 14
   },
   {
     "address": "0x211cdf359deb0037521ee2deedd0961ba2c10384",
     "name": "latest",
-    "risk_level": "High",
+    "risk_level": "high",
     "risk_reason": "REASONING: - **APY/APR Metrics**: The latest Total APY of 232.12% and APR of 120.23% suggest very high yield rates. Without data on 24h and weekly rates, it's impossible to assess volatility directly, but the high APY/APR itself raises concerns about sustainability. The Farm APR matches the Total APR, indicating that the high yield is solely from farming, which may not be sustainable long-term. - **VS HODL Performance**: The vault underperforms significantly compared to holding the underlying assets. Over 24 hours, the vault is down 18.07% against holding, and over 57 days, it's down 4.62%. Against USDC, the performance is drastically worse, with a 57-day loss of 43.8%. Even against stS, the long-term performance is nearly flat at -0.31%. This indicates high volatility and inconsistent performance. - **Price Stability**: Over 57 days, the vault's price has dropped by 43.79%, which is a significant depreciation. The stS token has a similar depreciation of 43.48%, suggesting a high correlation and potential for impermanent loss if involved in liquidity pools. USDC remains stable, highlighting the vault's underperformance. - **Overall Volatility and Loss Potential**: The combination of high APY/APR, significant underperformance against holding, and substantial price depreciation over 57 days indicates high volatility and a high potential for losses. Key risks: High yield sustainability concerns, significant underperformance against holding, and substantial price depreciation over time.",
     "analyzed_at": "2025-03-11 01:12:04",
     "description": "Earn SWPx and fees on SwapX pool USDC.e-stS by Ichi IV-SWAPX-10-stS-USDC.e",
@@ -1245,12 +1260,13 @@
           "change_57_days": "-43.48%"
         }
       ]
-    }
+    },
+    "original_index": 15
   },
   {
     "address": "0x9408d495ae526c614f95fac443635bccfd0b52fa",
     "name": "latest",
-    "risk_level": "High",
+    "risk_level": "high",
     "risk_reason": "REASONING: - **APY/APR Metrics:** The latest Total APY of 46.32% and APR of 38.08% are relatively high but within a reasonable range. However, without historical data to assess volatility, we cannot confirm sustainability. The Farm APR matching the Total APR suggests no additional yield from other sources, which may indicate a singular income stream, potentially increasing risk if that stream falters. - **VS HODL Performance:** The vault shows significant volatility in performance against different assets. It outperforms HODL by +10.84% in 24 hours but underperforms drastically against wS (-201.57% in 24 hours). The long-term performance (57 days) shows modest gains against HODL (+2.12%) and MOON (+6.14%) but a slight loss against wS (-1.37%). This indicates inconsistent performance and high volatility. - **Price Stability:** Over 57 days, the vault's price has depreciated significantly by -40.07%, which is higher than the recommended threshold for high risk (>30%). The tokens wS and MOON have also experienced substantial depreciation (-38.70% and -46.20% respectively), suggesting a correlated decline in value which increases the risk of impermanent loss. - **Overall Volatility and Potential Losses:** The combination of high APY/APR, significant price depreciation, and extreme volatility in VS HODL performance against different assets points to a high-risk strategy. The potential for substantial losses, as evidenced by the price drops and inconsistent performance, underscores the risk level. Key risks: Significant price depreciation, high volatility in performance against HODL, potential for impermanent loss due to correlated price drops among assets.",
     "analyzed_at": "2025-03-11 01:12:50",
     "description": "Earn EQUAL by wS-MOON vLP",
@@ -1323,12 +1339,13 @@
           "change_57_days": "-46.20%"
         }
       ]
-    }
+    },
+    "original_index": 16
   },
   {
     "address": "0x15db2b6b60e4618372ede51d9fcf74c58556b04c",
     "name": "latest",
-    "risk_level": "High",
+    "risk_level": "high",
     "risk_reason": "REASONING: - The Latest Total APY of 147.31% and Total APR of 90.66% indicate high yield rates. The farm APR matches the total APR, suggesting that the high yield is solely from farming activities, which raises concerns about the sustainability of such high returns without additional backing. - The APY/APR metrics do not provide historical data to compare latest vs. 24h vs. weekly rates, but the high yield itself flags potential unsustainability. - The VS HODL performance shows extreme volatility: - 24h: -302.52% vs wS and -1892.63% vs USDC - Week: +323.01% vs wS and -1358.45% vs USDC - 57d: -8.45% vs wS and -34.27% vs USDC This indicates a lack of consistency and high risk of significant losses over short periods. - The 57-day price changes show significant depreciation: - Vault: -34.26% - wS: -34.51% - USDC: +0.01% The high correlation in price depreciation between the Vault and wS suggests systemic risk within the assets. - The vault's performance compared to holding wS over 57 days (+0.25%) and USDC (-34.27%) indicates poor long-term performance and high risk of losses. Key risks: High APY/APR volatility and potential unsustainability, extreme short-term volatility in VS HODL performance, significant price depreciation, and high risk of losses over various time frames.",
     "analyzed_at": "2025-03-11 01:13:24",
     "description": "Earn SWPx and fees on SwapX pool wS-USDC.e by Ichi IV-SWAPX-1-wS-USDC.e",
@@ -1401,12 +1418,13 @@
           "change_57_days": "+0.01%"
         }
       ]
-    }
+    },
+    "original_index": 17
   },
   {
     "address": "0xd7587a88d9728fd6ce0519759ae616dce2456dc3",
     "name": "latest",
-    "risk_level": "High",
+    "risk_level": "high",
     "risk_reason": "REASONING: - APY/APR Metrics: - Latest Total APY and APR are both 0%, indicating no current yield. This suggests either a halt in strategy or an issue with the vault's performance. - Farm APR is also 0%, showing no income from farming activities. - The absence of any yield raises concerns about the sustainability and operational status of the vault. - VS HODL Performance: - The vault shows extreme volatility in performance against different assets over various time frames. - Against HODL, the vault has a 24-hour gain of +915.23%, a weekly gain of +822.95%, but a 57-day loss of -83.06%. This indicates significant short-term gains but substantial long-term losses. - Against SACRA HODL, the vault's performance is even more volatile, with a 24-hour gain of +1624.18% and a 57-day loss of -135.38%. - Against scUSD HODL, the vault shows a 24-hour loss of -1593.1% and a 57-day gain of +88.72%. This suggests high sensitivity to the underlying assets. - The extreme swings in performance across different time frames and assets indicate a high level of risk and unpredictability. - Price Stability: - The vault's price has increased by +88.70% over 57 days, which is significant but less than the increase in SACRA (+224.08%). - scUSD has remained stable with a minimal change of -0.01%. - The vault's price movement is substantial but does not align with the performance against HODL, indicating potential discrepancies or underlying issues in the vault's strategy. - Overall Volatility and Potential for Losses: - The vault exhibits extreme volatility in performance, with significant short-term gains but substantial long-term losses. - The lack of current yield (0% APY/APR) combined with high volatility in VS HODL performance suggests a high risk of losses and operational instability. Key risks: - No current yield, indicating potential operational issues or strategy halt. - Extreme volatility in performance against different assets, suggesting high risk and unpredictability. - Significant long-term losses despite short-term gains, indicating potential for substantial capital depreciation.",
     "analyzed_at": "2025-03-11 01:14:18",
     "description": "Earn xSHADOW in Shadow SACRA-scUSD pool by Stability ALM with Fill-Up algo and Stretched preset (range: 120000 ticks, re-balance trigger: 40000 ticks)",
@@ -1479,13 +1497,14 @@
           "change_57_days": "-0.01%"
         }
       ]
-    }
+    },
+    "original_index": 18
   },
   {
     "address": "0xa00a22b6f971bed26eb06b2839a741cfd9ea5d4e",
     "name": "latest",
-    "risk_level": "High",
-    "risk_reason": "REASONING: • APY/APR shows low volatility (6.01% APY, 5.84% APR), suggesting a stable yield, but the farm APR being equal to the total APR indicates all yield comes from farming, which might not be sustainable long-term. • VS HODL performance shows extreme volatility, with 24h and weekly returns swinging dramatically (-170.74% to +1339.69% in 24h, -40.33% to +579.05% in a week), indicating high risk and inconsistency in short-term performance. The 57d performance is more stable but still shows a slight underperformance against INDI HODL (+8.34%) and significant underperformance against wS HODL (-7.97%). • Price movement over 57 days shows significant depreciation across all assets, with the vault experiencing -42.61%, wS at -34.63%, and INDI at -50.94%, indicating high risk of value loss. • Overall, the vault exhibits high volatility and potential for significant losses due to the extreme swings in VS HODL performance and substantial price depreciation over 57 days. Key risks: High volatility in short-term performance, significant price depreciation, potential unsustainability of farming-based yields.",
+    "risk_level": "high",
+    "risk_reason": "REASONING: \u2022 APY/APR shows low volatility (6.01% APY, 5.84% APR), suggesting a stable yield, but the farm APR being equal to the total APR indicates all yield comes from farming, which might not be sustainable long-term. \u2022 VS HODL performance shows extreme volatility, with 24h and weekly returns swinging dramatically (-170.74% to +1339.69% in 24h, -40.33% to +579.05% in a week), indicating high risk and inconsistency in short-term performance. The 57d performance is more stable but still shows a slight underperformance against INDI HODL (+8.34%) and significant underperformance against wS HODL (-7.97%). \u2022 Price movement over 57 days shows significant depreciation across all assets, with the vault experiencing -42.61%, wS at -34.63%, and INDI at -50.94%, indicating high risk of value loss. \u2022 Overall, the vault exhibits high volatility and potential for significant losses due to the extreme swings in VS HODL performance and substantial price depreciation over 57 days. Key risks: High volatility in short-term performance, significant price depreciation, potential unsustainability of farming-based yields.",
     "analyzed_at": "2025-03-11 01:15:15",
     "description": "Earn EQUAL by wS-INDI vLP",
     "impermanent_loss": "Low",
@@ -1557,13 +1576,14 @@
           "change_57_days": "-50.94%"
         }
       ]
-    }
+    },
+    "original_index": 19
   },
   {
     "address": "0x770510f42f9438860d3f27e1f63088506573b503",
     "name": "latest",
-    "risk_level": "High",
-    "risk_reason": "REASONING: • **APY/APR Metrics:** The Latest Total APY of 227% and Latest Total APR of 118.67% are high, suggesting potential unsustainability. The Farm APR matches the Total APR, indicating all yield is from farming activities without additional sources. This high yield rate could be unsustainable and warrants caution. • **Price Stability:** Over 57 days, the Vault's price increased by 1726.28%, which is extremely volatile. USDC remained stable at +0.01%, while stS depreciated by -43.90%. The significant price movement in the Vault compared to stablecoins and other assets indicates high volatility and potential for rapid price changes. • **VS HOLD Performance:** The Vault's performance against HODL shows extreme variability. Against HODL, it ranges from +106.7% in 24h to -35.43% over a week, and a staggering +1732.56% over 57 days. Against USDC HODL, it shows a significant loss in the short term (-279.6% in 24h, -461.77% in a week) but a large gain over 57 days (+1726.05%). Against stS HODL, it shows extremely high returns across all periods. This indicates inconsistent and highly volatile performance. • **Overall Volatility and Potential for Losses:** The data points to extreme volatility across all metrics, with significant potential for both gains and losses. The high APY/APR, extreme price changes, and highly variable VS HOLD performance suggest a high risk of rapid value fluctuations and potential losses. Key risks: High volatility in yields and prices, potential unsustainability of high APY, and inconsistent VS HOLD performance leading to significant short-term losses.",
+    "risk_level": "high",
+    "risk_reason": "REASONING: \u2022 **APY/APR Metrics:** The Latest Total APY of 227% and Latest Total APR of 118.67% are high, suggesting potential unsustainability. The Farm APR matches the Total APR, indicating all yield is from farming activities without additional sources. This high yield rate could be unsustainable and warrants caution. \u2022 **Price Stability:** Over 57 days, the Vault's price increased by 1726.28%, which is extremely volatile. USDC remained stable at +0.01%, while stS depreciated by -43.90%. The significant price movement in the Vault compared to stablecoins and other assets indicates high volatility and potential for rapid price changes. \u2022 **VS HOLD Performance:** The Vault's performance against HODL shows extreme variability. Against HODL, it ranges from +106.7% in 24h to -35.43% over a week, and a staggering +1732.56% over 57 days. Against USDC HODL, it shows a significant loss in the short term (-279.6% in 24h, -461.77% in a week) but a large gain over 57 days (+1726.05%). Against stS HODL, it shows extremely high returns across all periods. This indicates inconsistent and highly volatile performance. \u2022 **Overall Volatility and Potential for Losses:** The data points to extreme volatility across all metrics, with significant potential for both gains and losses. The high APY/APR, extreme price changes, and highly variable VS HOLD performance suggest a high risk of rapid value fluctuations and potential losses. Key risks: High volatility in yields and prices, potential unsustainability of high APY, and inconsistent VS HOLD performance leading to significant short-term losses.",
     "analyzed_at": "2025-03-11 01:16:15",
     "description": "Earn SWPx and fees on SwapX pool USDC.e-stS by Ichi IV-SWAPX-11-USDC.e-stS",
     "impermanent_loss": "Medium",
@@ -1635,13 +1655,14 @@
           "change_57_days": "-43.90%"
         }
       ]
-    }
+    },
+    "original_index": 20
   },
   {
     "address": "0x934f2fdf43287ab0e03f83d2a54b8df9a578de9c",
     "name": "latest",
-    "risk_level": "High",
-    "risk_reason": "REASONING: • The Latest Total APY of 494.67% is extremely high and suggests unsustainable yield rates. The Latest Total APR of 178.72% aligns with the Farm APR, indicating that the yield is entirely dependent on farming activities, which may not be sustainable long-term. • The APY/APR metrics show significant volatility when considering the high yield rates, which could indicate risky strategies or potential manipulation. • The VS HODL performance shows extreme volatility across different time frames and assets. For example, the 24h performance ranges from +191.17% to -179.73%, and the weekly performance ranges from -545.83% to +1045.98%. This indicates a lack of stability and reliability in the vault's performance relative to holding the underlying assets. • Over 57 days, the vault's performance vs holding FS shows a positive return of +20.01%, but this is coupled with significant price depreciation across all assets. The vault itself has depreciated by -48.44%, wS by -43.10%, and FS by -68.45%, indicating significant price instability and potential for losses. • The price movements over 57 days show a significant depreciation in all assets, particularly FS at -68.45%, which suggests a high risk of impermanent loss and overall market downturn affecting the vault's value. Key risks: Extremely high and potentially unsustainable APY/APR, extreme volatility in VS HODL performance, significant price depreciation across all assets, and high risk of impermanent loss and market-driven losses.",
+    "risk_level": "high",
+    "risk_reason": "REASONING: \u2022 The Latest Total APY of 494.67% is extremely high and suggests unsustainable yield rates. The Latest Total APR of 178.72% aligns with the Farm APR, indicating that the yield is entirely dependent on farming activities, which may not be sustainable long-term. \u2022 The APY/APR metrics show significant volatility when considering the high yield rates, which could indicate risky strategies or potential manipulation. \u2022 The VS HODL performance shows extreme volatility across different time frames and assets. For example, the 24h performance ranges from +191.17% to -179.73%, and the weekly performance ranges from -545.83% to +1045.98%. This indicates a lack of stability and reliability in the vault's performance relative to holding the underlying assets. \u2022 Over 57 days, the vault's performance vs holding FS shows a positive return of +20.01%, but this is coupled with significant price depreciation across all assets. The vault itself has depreciated by -48.44%, wS by -43.10%, and FS by -68.45%, indicating significant price instability and potential for losses. \u2022 The price movements over 57 days show a significant depreciation in all assets, particularly FS at -68.45%, which suggests a high risk of impermanent loss and overall market downturn affecting the vault's value. Key risks: Extremely high and potentially unsustainable APY/APR, extreme volatility in VS HODL performance, significant price depreciation across all assets, and high risk of impermanent loss and market-driven losses.",
     "analyzed_at": "2025-03-11 01:15:28",
     "description": "Earn SWPx by SwapX classic wS-FS vLP",
     "impermanent_loss": "Low",
@@ -1713,13 +1734,14 @@
           "change_57_days": "-68.45%"
         }
       ]
-    }
+    },
+    "original_index": 21
   },
   {
     "address": "0x361948d94ac55611422570977b936e2f1fe9638b",
     "name": "latest",
-    "risk_level": "High",
-    "risk_reason": "REASONING: • APY/APR shows low volatility with Latest Total APY at 9.98% and Latest Total APR at 9.51%, both indicating stable yield rates. However, the Farm APR matching the Total APR suggests that the yield is solely from farming, which may not be sustainable if farming conditions change. • VS HODL performance exhibits extreme volatility. The 24-hour performance ranges from -19.08% to +30.13%, while weekly performance swings drastically from -473.03% to +485.19%. Even over 57 days, the performance varies from +13.29% to +16.49%, indicating inconsistent and highly variable returns compared to holding the underlying assets. • Price changes over 57 days show significant depreciation across all assets: Vault -19.85%, scETH -36.34%, and WETH -33.14%. This indicates a high risk of impermanent loss and potential for further depreciation. • Overall, the vault's performance is highly volatile, with significant swings in short-term and long-term returns against holding the underlying assets. The price depreciation adds to the risk of potential losses. Key risks: High volatility in VS HODL performance, significant price depreciation, and potential for unsustainable yields due to reliance on farming APR.",
+    "risk_level": "high",
+    "risk_reason": "REASONING: \u2022 APY/APR shows low volatility with Latest Total APY at 9.98% and Latest Total APR at 9.51%, both indicating stable yield rates. However, the Farm APR matching the Total APR suggests that the yield is solely from farming, which may not be sustainable if farming conditions change. \u2022 VS HODL performance exhibits extreme volatility. The 24-hour performance ranges from -19.08% to +30.13%, while weekly performance swings drastically from -473.03% to +485.19%. Even over 57 days, the performance varies from +13.29% to +16.49%, indicating inconsistent and highly variable returns compared to holding the underlying assets. \u2022 Price changes over 57 days show significant depreciation across all assets: Vault -19.85%, scETH -36.34%, and WETH -33.14%. This indicates a high risk of impermanent loss and potential for further depreciation. \u2022 Overall, the vault's performance is highly volatile, with significant swings in short-term and long-term returns against holding the underlying assets. The price depreciation adds to the risk of potential losses. Key risks: High volatility in VS HODL performance, significant price depreciation, and potential for unsustainable yields due to reliance on farming APR.",
     "analyzed_at": "2025-03-11 01:11:50",
     "description": "Earn SWPx and fees on SwapX pool scETH-WETH by Ichi IV-SWAPX-35-WETH-scETH",
     "impermanent_loss": "Medium",
@@ -1791,13 +1813,14 @@
           "change_57_days": "-33.14%"
         }
       ]
-    }
+    },
+    "original_index": 22
   },
   {
     "address": "0x2fbeba931563feaab73e8c66d7499c49c8ada224",
     "name": "latest",
-    "risk_level": "High",
-    "risk_reason": "REASONING: • APY/APR Metrics: The latest Total APY and APR are both at 0%, which is highly unusual and indicates potential issues with the strategy's current yield generation. The Farm APR is also 0%, suggesting no active farming or yield generation at the moment. This extreme drop from potentially high yields to 0% raises significant concerns about the sustainability and reliability of the strategy. • VS HOLD Performance: The vault shows extremely high short-term gains (24h +1760.91%, Week +2042.75%) but a significant long-term loss (57d -8.77%). This indicates extreme volatility and inconsistency in performance, which is a high-risk factor. The drastic swings between short-term and long-term performance suggest a lack of stability and predictability in returns. • Price Stability: The vault's price has depreciated by -22.24% over 57 days, which is significant and indicates a high risk of loss. The wS token has also depreciated by -13.48%, though less severely. The difference in depreciation rates (-22.24% vs -13.48%) suggests a potential for increased impermanent loss or other adverse price movements affecting the vault. • Overall Volatility and Potential for Losses: The combination of zero current yield, extreme short-term gains followed by long-term losses, and significant price depreciation points to a highly volatile and risky strategy. The potential for losses is high, especially given the current lack of yield generation. Key risks: Extreme volatility in short-term vs long-term performance, significant price depreciation, and current lack of yield generation indicate a high risk of loss and instability in the strategy.",
+    "risk_level": "high",
+    "risk_reason": "REASONING: \u2022 APY/APR Metrics: The latest Total APY and APR are both at 0%, which is highly unusual and indicates potential issues with the strategy's current yield generation. The Farm APR is also 0%, suggesting no active farming or yield generation at the moment. This extreme drop from potentially high yields to 0% raises significant concerns about the sustainability and reliability of the strategy. \u2022 VS HOLD Performance: The vault shows extremely high short-term gains (24h +1760.91%, Week +2042.75%) but a significant long-term loss (57d -8.77%). This indicates extreme volatility and inconsistency in performance, which is a high-risk factor. The drastic swings between short-term and long-term performance suggest a lack of stability and predictability in returns. \u2022 Price Stability: The vault's price has depreciated by -22.24% over 57 days, which is significant and indicates a high risk of loss. The wS token has also depreciated by -13.48%, though less severely. The difference in depreciation rates (-22.24% vs -13.48%) suggests a potential for increased impermanent loss or other adverse price movements affecting the vault. \u2022 Overall Volatility and Potential for Losses: The combination of zero current yield, extreme short-term gains followed by long-term losses, and significant price depreciation points to a highly volatile and risky strategy. The potential for losses is high, especially given the current lack of yield generation. Key risks: Extreme volatility in short-term vs long-term performance, significant price depreciation, and current lack of yield generation indicate a high risk of loss and instability in the strategy.",
     "analyzed_at": "2025-03-11 01:13:41",
     "description": "Supply wS and borrow stS on Silo V2 market 3 with leverage looping",
     "impermanent_loss": "None",
@@ -1851,12 +1874,13 @@
           "change_57_days": "-13.48%"
         }
       ]
-    }
+    },
+    "original_index": 23
   },
   {
     "address": "0xd13369f16e11ae3881f22c1dd37957c241bd0662",
     "name": "latest",
-    "risk_level": "Medium",
+    "risk_level": "medium",
     "risk_reason": "REASONING: - APY/APR metrics show no volatility or yield, with all rates at 0%. This indicates a lack of income generation, which could be concerning for sustainability but also eliminates the risk of unsustainable high yields. - VS HODL performance data is missing for all time frames, making it impossible to evaluate the vault's performance relative to holding the underlying assets. This lack of data increases uncertainty but does not inherently indicate high risk. - Price changes over 57 days show a depreciation of -21.43% for the vault and -18.52% for wOS, which is within the moderate risk range (-30% to +30%). The vault's price depreciation is slightly higher than wOS, suggesting a potential for slightly higher losses. - Overall, the vault exhibits moderate price volatility without any income generation, which places it in the medium risk category due to the lack of positive yield and the moderate price depreciation. Key risks: Lack of income generation, moderate price depreciation, and uncertainty due to missing VS HODL performance data.",
     "analyzed_at": "2025-03-11 01:11:42",
     "description": "Supply wOS and borrow wS on Silo V2 market 22 with leverage looping",
@@ -1911,12 +1935,13 @@
           "change_57_days": "-18.52%"
         }
       ]
-    }
+    },
+    "original_index": 24
   },
   {
     "address": "0xc558a24c7e438cd2c148d304c2610b66ddba4713",
     "name": "latest",
-    "risk_level": "High",
+    "risk_level": "high",
     "risk_reason": "REASONING: - **APY/APR Metrics**: The latest Total APY of 18.74% and Total APR of 17.18% are within a reasonable range and indicate a stable yield. However, the Farm APR being equal to the Total APR suggests that the entire yield is coming from farming, which might be less sustainable if farming conditions change. - **VS HODL Performance**: The vault shows extreme volatility in short-term performance with a 24-hour gain of +55.46% and a weekly gain of +73.44%, but a 57-day loss of -1.04%. The comparison against wS HODL and EQUAL HODL further shows high variability, with significant swings from +194.39% to -9.97% over different periods. This indicates a lack of consistency and high risk. - **Price Stability**: Over 57 days, the vault experienced a significant price depreciation of -47.10%, which is well beyond the acceptable range for low or medium risk. The associated tokens, wS and EQUAL, also saw substantial declines of -37.14% and -60.44% respectively, indicating a high risk of impermanent loss and overall price instability. - **Overall Volatility and Potential for Losses**: The vault's performance shows high volatility, with large swings in both short-term gains and long-term losses. The significant price depreciation over 57 days further increases the risk profile. Key risks: High volatility in short-term performance, significant price depreciation over 57 days, and potential for impermanent loss due to correlated price movements of associated tokens.",
     "analyzed_at": "2025-03-11 01:15:58",
     "description": "Earn EQUAL by wS-EQUAL vLP",
@@ -1989,13 +2014,14 @@
           "change_57_days": "-60.44%"
         }
       ]
-    }
+    },
+    "original_index": 25
   },
   {
     "address": "0x128a5f4d7ed2921e4e09a1dd84dad86bc04dd332",
     "name": "latest",
-    "risk_level": "Medium",
-    "risk_reason": "REASONING: • **APY/APR Metrics:** The latest Total APY and APR are both at 0%, as well as the Farm APR. This indicates no yield from the vault, suggesting either a new vault or one that has ceased operations. The absence of yield makes it impossible to assess sustainability or volatility based on these metrics alone. • **VS HODL Performance:** The vault shows significant variability in performance against different HODL benchmarks. Against HODL, it has positive returns over all periods, with 24h at +32.34%, Week at +24.14%, and 57d at +12.61%, indicating short-term outperformance but declining over time. Against wS HODL, there's a mix of negative short-term (-9.03%) and extreme positive long-term performance (+571.52% over a week, +18.55% over 57 days). Against sDOG HODL, there's high short-term gain (+27.32%) but a significant loss over the week (-632.85%) and moderate gain over 57 days (+7.38%). This indicates inconsistent performance and high volatility. • **Price Stability:** Over 57 days, the vault's price has decreased by -6.90%, which is within a moderate range. However, the tokens wS and sDOG have seen larger decreases (-25.45% and -14.28% respectively), indicating higher volatility in the underlying assets. • **Overall Volatility and Potential for Losses:** The vault shows moderate price stability but high variability in VS HODL performance. The lack of yield from APY/APR suggests no income generation, which could be a concern if the vault relies on such income for stability or returns. Key risks: - Lack of yield generation from APY/APR, which could affect long-term sustainability. - High variability in VS HODL performance against different benchmarks, indicating potential for significant short-term gains but also losses. - Moderate price depreciation in the vault, with higher volatility in underlying assets.",
+    "risk_level": "medium",
+    "risk_reason": "REASONING: \u2022 **APY/APR Metrics:** The latest Total APY and APR are both at 0%, as well as the Farm APR. This indicates no yield from the vault, suggesting either a new vault or one that has ceased operations. The absence of yield makes it impossible to assess sustainability or volatility based on these metrics alone. \u2022 **VS HODL Performance:** The vault shows significant variability in performance against different HODL benchmarks. Against HODL, it has positive returns over all periods, with 24h at +32.34%, Week at +24.14%, and 57d at +12.61%, indicating short-term outperformance but declining over time. Against wS HODL, there's a mix of negative short-term (-9.03%) and extreme positive long-term performance (+571.52% over a week, +18.55% over 57 days). Against sDOG HODL, there's high short-term gain (+27.32%) but a significant loss over the week (-632.85%) and moderate gain over 57 days (+7.38%). This indicates inconsistent performance and high volatility. \u2022 **Price Stability:** Over 57 days, the vault's price has decreased by -6.90%, which is within a moderate range. However, the tokens wS and sDOG have seen larger decreases (-25.45% and -14.28% respectively), indicating higher volatility in the underlying assets. \u2022 **Overall Volatility and Potential for Losses:** The vault shows moderate price stability but high variability in VS HODL performance. The lack of yield from APY/APR suggests no income generation, which could be a concern if the vault relies on such income for stability or returns. Key risks: - Lack of yield generation from APY/APR, which could affect long-term sustainability. - High variability in VS HODL performance against different benchmarks, indicating potential for significant short-term gains but also losses. - Moderate price depreciation in the vault, with higher volatility in underlying assets.",
     "analyzed_at": "2025-03-11 01:12:32",
     "description": "Earn EQUAL by wS-sDOG vLP",
     "impermanent_loss": "Low",
@@ -2067,13 +2093,14 @@
           "change_57_days": "-14.28%"
         }
       ]
-    }
+    },
+    "original_index": 26
   },
   {
     "address": "0x2623fa9fdc6799f884ad019f674ae9654ed86c49",
     "name": "latest",
-    "risk_level": "Medium",
-    "risk_reason": "REASONING: • APY/APR shows zero volatility with both Latest Total APY and APR at 0%, indicating no income generation from the vault. This is sustainable but also indicates no yield, which could be concerning for investors seeking returns. • Farm APR is also at 0%, suggesting no additional income from farming activities. • VS HODL performance shows slight variability but remains within a narrow range over different time frames. The 24h performance ranges from -0.09% to +0.24%, the weekly performance from -0.56% to +0.32%, and the 57d performance from +0.54% to +0.63%. This indicates a relatively stable performance compared to holding the underlying assets directly. • Price changes over 57 days show a moderate depreciation for all assets involved, with the vault at -20.01%, atETH at -20.64%, and scETH at -20.54%. This indicates a degree of price stability among the assets, but also a significant depreciation. • The overall volatility is moderate, with consistent performance across different time frames and assets, but the lack of yield and moderate price depreciation suggest a medium level of risk. Key risks: Lack of yield generation, moderate price depreciation across assets, and potential for losses due to zero APY/APR.",
+    "risk_level": "medium",
+    "risk_reason": "REASONING: \u2022 APY/APR shows zero volatility with both Latest Total APY and APR at 0%, indicating no income generation from the vault. This is sustainable but also indicates no yield, which could be concerning for investors seeking returns. \u2022 Farm APR is also at 0%, suggesting no additional income from farming activities. \u2022 VS HODL performance shows slight variability but remains within a narrow range over different time frames. The 24h performance ranges from -0.09% to +0.24%, the weekly performance from -0.56% to +0.32%, and the 57d performance from +0.54% to +0.63%. This indicates a relatively stable performance compared to holding the underlying assets directly. \u2022 Price changes over 57 days show a moderate depreciation for all assets involved, with the vault at -20.01%, atETH at -20.64%, and scETH at -20.54%. This indicates a degree of price stability among the assets, but also a significant depreciation. \u2022 The overall volatility is moderate, with consistent performance across different time frames and assets, but the lack of yield and moderate price depreciation suggest a medium level of risk. Key risks: Lack of yield generation, moderate price depreciation across assets, and potential for losses due to zero APY/APR.",
     "analyzed_at": "2025-03-11 01:16:04",
     "description": "Earn SWPx and fees on SwapX pool atETH-scETH by Ichi IV-SWAPX-17-scETH-atETH",
     "impermanent_loss": "Medium",
@@ -2145,13 +2172,14 @@
           "change_57_days": "-20.54%"
         }
       ]
-    }
+    },
+    "original_index": 27
   },
   {
     "address": "0xfe6d1a6d544424b59bb4bdedda0e3d9b7b8ec300",
     "name": "latest",
-    "risk_level": "High",
-    "risk_reason": "REASONING: • The Latest Total APY of 243.4% and Total APR of 123.58% indicate extremely high yield rates, which may not be sustainable long-term. The lack of historical APY/APR data prevents a comparison, but these figures are concerningly high. • The Farm APR matches the Total APR at 123.58%, suggesting that the entire yield is coming from farming activities, which could be risky if dependent on volatile or unsustainable sources. • The vault's price has depreciated significantly by -37.85% over 57 days, indicating high volatility and potential for losses. This is particularly concerning when compared to the stability of USDC (+0.01%) and the severe depreciation of STBL (-61.74%). • The VS HODL performance data is missing for all time frames (24h, Week, 57d), which prevents a direct comparison of the vault's performance against holding the underlying assets. This lack of data increases uncertainty and risk. • The vault's price movement shows a significant decline, suggesting high volatility and risk of impermanent loss, especially when compared to the stable USDC and even more volatile STBL. Key risks: Unsustainable high yield rates, significant price depreciation, lack of VS HODL performance data, and high volatility leading to potential losses.",
+    "risk_level": "high",
+    "risk_reason": "REASONING: \u2022 The Latest Total APY of 243.4% and Total APR of 123.58% indicate extremely high yield rates, which may not be sustainable long-term. The lack of historical APY/APR data prevents a comparison, but these figures are concerningly high. \u2022 The Farm APR matches the Total APR at 123.58%, suggesting that the entire yield is coming from farming activities, which could be risky if dependent on volatile or unsustainable sources. \u2022 The vault's price has depreciated significantly by -37.85% over 57 days, indicating high volatility and potential for losses. This is particularly concerning when compared to the stability of USDC (+0.01%) and the severe depreciation of STBL (-61.74%). \u2022 The VS HODL performance data is missing for all time frames (24h, Week, 57d), which prevents a direct comparison of the vault's performance against holding the underlying assets. This lack of data increases uncertainty and risk. \u2022 The vault's price movement shows a significant decline, suggesting high volatility and risk of impermanent loss, especially when compared to the stable USDC and even more volatile STBL. Key risks: Unsustainable high yield rates, significant price depreciation, lack of VS HODL performance data, and high volatility leading to potential losses.",
     "analyzed_at": "2025-03-11 01:15:41",
     "description": "Earn SWPx by SwapX classic USDC.e-STBL vLP",
     "impermanent_loss": "Low",
@@ -2223,12 +2251,13 @@
           "change_57_days": "-61.74%"
         }
       ]
-    }
+    },
+    "original_index": 28
   },
   {
     "address": "0xc5329fd18663fded6d341baee208e1172ec8fd16",
     "name": "latest",
-    "risk_level": "High",
+    "risk_level": "high",
     "risk_reason": "REASONING: - **APY/APR Metrics**: The latest Total APY and APR are both at 0%, as is the Farm APR. This indicates no current yield, which could be a sign of a paused or non-functional vault. The lack of yield raises concerns about the sustainability and viability of the strategy. - **VS HODL Performance**: The vault's performance against holding various assets shows extreme volatility. The 24-hour performance is drastically negative across all metrics (ranging from -355.08% to -431.74%), and the weekly performance is even more severe (-1276.91% to -1925.19%). Even over the longer term (57 days), the performance remains significantly negative (-44.18% to -57.4%). This indicates high risk and instability compared to holding the underlying assets. - **Price Stability**: Over the 57-day period, the vault's price has decreased by -9.97%, which is within a reasonable range. However, the wS token has seen a significant increase of +47.44%, indicating a high degree of price divergence. This suggests potential impermanent loss risk, particularly in relation to wS. - **Overall Volatility and Potential for Losses**: The vault exhibits extreme volatility in its performance metrics, with significant negative returns across different time frames. The lack of any APY/APR further exacerbates the risk profile, as there is no yield to offset potential losses. Key risks: Extreme volatility in VS HODL performance, no current yield, potential impermanent loss due to significant price divergence between vault and wS token.",
     "analyzed_at": "2025-03-11 01:16:10",
     "description": "Earn wS on UniswapV3 by wS-USDC.e Gamma Narrow LP",
@@ -2301,13 +2330,14 @@
           "change_57_days": "-0.00%"
         }
       ]
-    }
+    },
+    "original_index": 29
   },
   {
     "address": "0x13eff69d67cabfbd11cbabe8eee30e7cf8e0b5af",
     "name": "latest",
-    "risk_level": "High",
-    "risk_reason": "REASONING: • APY/APR shows extreme volatility with a latest Total APY of 239.55% and a Total APR of 122.45%, indicating potentially unsustainable yields. • The Farm APR matches the Total APR at 122.45%, suggesting all yield comes from farming without additional pool fees, which might not be sustainable long-term. • VS HODL performance is highly volatile, showing extreme swings from -130.01% to +1262.27% over 24 hours, and -60.43% to +1544.76% over a week. Even over 57 days, the performance ranges from -12.02% to +23.51%, indicating inconsistent and high-risk returns. • Price stability is compromised with the vault experiencing a -12.02% depreciation over 57 days, while wS shows a significant -35.53% drop, suggesting potential impermanent loss risk. • The vault's price movement closely mirrors its VS USDC HODL performance over 57 days (-12.02%), indicating direct exposure to underlying asset volatility. Key risks: Extreme APY/APR volatility, unsustainable yield sources, highly inconsistent VS HODL performance, and significant price depreciation over time.",
+    "risk_level": "high",
+    "risk_reason": "REASONING: \u2022 APY/APR shows extreme volatility with a latest Total APY of 239.55% and a Total APR of 122.45%, indicating potentially unsustainable yields. \u2022 The Farm APR matches the Total APR at 122.45%, suggesting all yield comes from farming without additional pool fees, which might not be sustainable long-term. \u2022 VS HODL performance is highly volatile, showing extreme swings from -130.01% to +1262.27% over 24 hours, and -60.43% to +1544.76% over a week. Even over 57 days, the performance ranges from -12.02% to +23.51%, indicating inconsistent and high-risk returns. \u2022 Price stability is compromised with the vault experiencing a -12.02% depreciation over 57 days, while wS shows a significant -35.53% drop, suggesting potential impermanent loss risk. \u2022 The vault's price movement closely mirrors its VS USDC HODL performance over 57 days (-12.02%), indicating direct exposure to underlying asset volatility. Key risks: Extreme APY/APR volatility, unsustainable yield sources, highly inconsistent VS HODL performance, and significant price depreciation over time.",
     "analyzed_at": "2025-03-11 01:15:54",
     "description": "Earn SWPx and fees on SwapX pool wS-USDC.e by Ichi IV-SWAPX-0-USDC.e-wS",
     "impermanent_loss": "Medium",
@@ -2379,12 +2409,13 @@
           "change_57_days": "0.00%"
         }
       ]
-    }
+    },
+    "original_index": 30
   },
   {
     "address": "0xb7efc4c6f2203ee156e74565f394dcb229fe3ba4",
     "name": "latest",
-    "risk_level": "High",
+    "risk_level": "high",
     "risk_reason": "REASONING: - **APY/APR Metrics:** The latest Total APY and APR are both at 0%, as is the Farm APR. This indicates a complete lack of yield, which is unsustainable and raises concerns about the viability of the strategy. The absence of any yield is highly unusual and suggests potential issues with the vault's operations or underlying assets. - **VS HODL Performance:** The vault's performance relative to holding the underlying assets shows extreme volatility. Over 24 hours, the vault underperformed HODL by -62.67%, and against USDC, it was a staggering -1022.68%. Even over 57 days, the performance against USDC was -5.7%, indicating significant underperformance. The vault's performance against WETH shows the opposite extreme, with a 24-hour outperformance of +1005.49%, suggesting highly volatile and unpredictable returns. - **Price Stability:** Over 57 days, the vault's price decreased by -5.78%, which, while not extreme, is still a notable depreciation. The price of USDC remained stable at -0.08%, while WETH depreciated by -13.51%. The vault's price movement is within a reasonable range compared to WETH but indicates a loss in value. - **Overall Volatility and Potential for Losses:** The vault exhibits extreme volatility in its performance metrics, with significant swings in short-term (24h) and long-term (57d) returns. The absence of any yield further exacerbates the risk, as there is no compensatory return for the volatility and potential losses. Key risks: - Lack of yield, indicating potential operational or asset-related issues. - Extreme volatility in performance metrics, suggesting high risk of significant losses. - Inconsistent and unpredictable returns relative to holding underlying assets.",
     "analyzed_at": "2025-03-11 01:13:53",
     "description": "Earn EQUAL by USDC.e-WETH vLP",
@@ -2457,12 +2488,13 @@
           "change_57_days": "-13.51%"
         }
       ]
-    }
+    },
+    "original_index": 31
   },
   {
     "address": "0xd40f92286cb58dae0fbe2138cf8b803cbd67b0ad",
     "name": "latest",
-    "risk_level": "High",
+    "risk_level": "high",
     "risk_reason": "REASONING: - **APY/APR Metrics:** The latest Total APY of 192.83% and Total APR of 107.6% indicate high yield rates. The absence of data on 24h and weekly rates prevents a full assessment of volatility, but the high APR suggests potential unsustainability without further backing. The Farm APR matches the Total APR, indicating all yield comes from farming, which could be risky if dependent on volatile incentives. - **Price Stability:** Over 57 days, the vault experienced a significant price depreciation of -44.51%. This is coupled with similar depreciations in related tokens wS (-39.75%) and TYSG (-71.76%), indicating a high risk of impermanent loss and general market downturn affecting the vault's value. - **VS HODL Performance:** The vault shows extreme short-term outperformance against HODL with 24h gains of +96.06% and weekly gains of +865.39%, but a modest long-term performance of +5.38% over 57 days. This indicates high volatility and potential for significant fluctuations. The performance against wS and TYSG also shows similar patterns of high short-term gains but negative or lower long-term returns, highlighting inconsistent outperformance. - **Overall Volatility and Loss Potential:** The combination of high APY/APR, significant price depreciation, and extreme short-term VS HODL performance with poor long-term results suggests high risk. The vault's value has dropped considerably, and the high yields may not compensate for the potential losses. Key risks: High yield volatility, significant price depreciation, inconsistent long-term VS HODL performance, and potential for substantial losses.",
     "analyzed_at": "2025-03-11 01:12:37",
     "description": "Earn SWPx by SwapX classic wS-TYSG vLP",
@@ -2535,12 +2567,13 @@
           "change_57_days": "-71.76%"
         }
       ]
-    }
+    },
+    "original_index": 32
   },
   {
     "address": "0x2252d1adf0f23134241c7a45324a843764f6bb06",
     "name": "latest",
-    "risk_level": "High",
+    "risk_level": "high",
     "risk_reason": "REASONING: - **APY/APR Metrics**: The latest Total APY of 141.85% and APR of 88.42% suggest a high yield, which could be unsustainable without additional context. The Farm APR matches the Total APR, indicating all yield comes from farming, which can be volatile. The high APY suggests potential for significant fluctuations and possible unsustainability. - **VS HODL Performance**: The vault shows extreme short-term performance with 24h gains of +485.52% and weekly gains of +731.18%, but a much lower 57-day performance of +9.33%. This indicates high volatility and inconsistency in outperforming holding, with significant short-term gains that do not translate into long-term stability. - **Price Stability**: The vault's price has depreciated by -24.91% over 57 days, which is significant and indicates potential for losses. The associated tokens wS and ECO have depreciated even more at -33.94% and -34.55% respectively, suggesting a high correlation and increased risk of impermanent loss. - **Overall Volatility and Potential for Losses**: The extreme short-term gains contrasted with the significant price depreciation over 57 days point to high volatility and potential for substantial losses. The vault's performance against holding is highly variable, suggesting it might not reliably outperform holding over time. Key risks: High APY volatility, potential for unsustainable yields, significant price depreciation, and extreme short-term performance variability.",
     "analyzed_at": "2025-03-11 01:14:35",
     "description": "Earn SWPx by SwapX classic wS-ECO vLP",
@@ -2613,12 +2646,13 @@
           "change_57_days": "-34.55%"
         }
       ]
-    }
+    },
+    "original_index": 33
   },
   {
     "address": "0x6e367caa1dd75f17276765e803e9bf2dd14a7601",
     "name": "latest",
-    "risk_level": "High",
+    "risk_level": "high",
     "risk_reason": "REASONING: - **APY/APR Metrics**: The latest Total APY of 8.01% and Total APR of 7.71% are relatively stable, with no significant volatility or extreme values. The Farm APR matches the Total APR, suggesting a straightforward yield mechanism. However, the sustainability of these rates cannot be fully assessed without historical data, but they appear reasonable and not flagged for unsustainability. - **VS HOLD Performance**: The vault's performance compared to holding the underlying assets shows extreme volatility. Over 24 hours, the vault underperformed by -40.52% against HODL, and over a week, it was -59.25%. Even over 57 days, the performance was marginally negative at -1.67%. The comparison to USDC HODL shows even more drastic underperformance (-526.02% over 24h, -1192.65% over a week, -22.13% over 57 days), indicating significant risk. Conversely, against stS HODL, the vault shows positive but highly volatile performance (+243.16% over 24h, +512.87% over a week, +11.52% over 57 days). This extreme variability in performance suggests high risk and inconsistency. - **Price Stability**: Over 57 days, the vault's price decreased by -22.13%, indicating significant depreciation. USDC remained stable with a +0.01% change, while stS depreciated by -33.64%. The vault's price movement is within a high-risk range (>20% depreciation), suggesting potential for significant losses. - **Overall Volatility and Potential for Losses**: The combination of high volatility in VS HOLD performance and significant price depreciation over 57 days points to a high level of risk. The vault's performance is inconsistent and shows potential for substantial losses, especially in short-term periods. Key risks: High volatility in VS HOLD performance, significant price depreciation over 57 days, and potential for substantial losses in short-term periods.",
     "analyzed_at": "2025-03-11 01:14:52",
     "description": "Earn BEETS and fees on Beets weighted pool by USDC.e-stS LP",
@@ -2691,13 +2725,14 @@
           "change_57_days": "-33.64%"
         }
       ]
-    }
+    },
+    "original_index": 34
   },
   {
     "address": "0xde708055728f53d557608b13691daee5a921b5af",
     "name": "latest",
-    "risk_level": "Medium",
-    "risk_reason": "REASONING: • APY/APR shows low volatility with Latest Total APY at 11.19% and Latest Total APR at 10.61%, both closely aligned with Farm APR at 10.61%. This suggests sustainable yield rates. • VS HODL performance is consistent with positive returns across all time frames (24h, Week, 57d), ranging from +2.43% to +5.6%. The vault consistently outperforms holding USDC and scUSD, indicating a stable and reliable performance. • Price stability over 57 days is strong, with the vault increasing by +5.60%, while USDC and scUSD remain stable at +0.01% and 0.00% respectively. This indicates minimal risk of price depreciation. • Overall, the strategy shows low volatility and minimal potential for losses, with consistent outperformance against holding stablecoins. Key risks: While the strategy appears stable, any changes in the underlying farm APR could impact the overall APY, and there remains a risk of market shifts affecting the vault's performance.",
+    "risk_level": "medium",
+    "risk_reason": "REASONING: \u2022 APY/APR shows low volatility with Latest Total APY at 11.19% and Latest Total APR at 10.61%, both closely aligned with Farm APR at 10.61%. This suggests sustainable yield rates. \u2022 VS HODL performance is consistent with positive returns across all time frames (24h, Week, 57d), ranging from +2.43% to +5.6%. The vault consistently outperforms holding USDC and scUSD, indicating a stable and reliable performance. \u2022 Price stability over 57 days is strong, with the vault increasing by +5.60%, while USDC and scUSD remain stable at +0.01% and 0.00% respectively. This indicates minimal risk of price depreciation. \u2022 Overall, the strategy shows low volatility and minimal potential for losses, with consistent outperformance against holding stablecoins. Key risks: While the strategy appears stable, any changes in the underlying farm APR could impact the overall APY, and there remains a risk of market shifts affecting the vault's performance.",
     "analyzed_at": "2025-03-11 01:14:48",
     "description": "Earn SWPx by SwapX classic USDC.e-scUSD sLP",
     "impermanent_loss": "Zero exp",
@@ -2769,12 +2804,13 @@
           "change_57_days": "0.00%"
         }
       ]
-    }
+    },
+    "original_index": 35
   },
   {
     "address": "0xd32ceadea1f78854038cf14696bbc9e5ba83fbc5",
     "name": "latest",
-    "risk_level": "High",
+    "risk_level": "high",
     "risk_reason": "REASONING: - **APY/APR Metrics**: The latest Total APY of 91.2% and Total APR of 64.87% indicate a high yield, which may suggest volatility and potential unsustainability. The farm APR matches the total APR, indicating that the yield is primarily derived from farming activities. The high APY/APR suggests potential for significant fluctuations, as it exceeds typical sustainable rates. - **VS HODL Performance**: The vault's performance against different holdings shows extreme variability. Against wS HODL, the vault underperforms drastically over short periods (24h -434.75%, Week -1462.88%) but shows a positive return over 57 days (+14.35%). Conversely, against GOGLZ HODL, the vault outperforms significantly in the short term (24h +468.24%, Week +1377.55%) but with a lower long-term return (+24.32%). This indicates high volatility and inconsistent outperformance. - **Price Stability**: Over the last 57 days, the vault has depreciated by -29.67%, which is significant but less severe compared to wS (-44.03%) and GOGLZ (-53.99%). However, this still represents a notable price drop, suggesting potential for further depreciation and increased risk of impermanent loss. - **Overall Volatility and Potential for Losses**: The combination of high APY/APR, extreme short-term volatility in VS HODL performance, and significant price depreciation over 57 days points to a high level of risk. The vault's performance shows potential for both high gains and high losses, with a lack of stability in returns. Key risks: High yield volatility, significant potential for losses due to price depreciation, and inconsistent VS HODL performance across different time frames.",
     "analyzed_at": "2025-03-11 01:12:24",
     "description": "Earn EQUAL by wS-GOGLZ vLP",
@@ -2847,13 +2883,14 @@
           "change_57_days": "-53.99%"
         }
       ]
-    }
+    },
+    "original_index": 36
   },
   {
     "address": "0x6aec97a832a8361f188ccbb377e8e11970d76b90",
     "name": "latest",
-    "risk_level": "High",
-    "risk_reason": "REASONING: • The Latest Total APY of 3,228.86% is extremely high and unsustainable without clear backing. The Latest Total APR and Farm APR of 352.21% suggest a significant portion of the APY is from compounding, which further indicates high volatility and potential for rapid changes. • The APY is much higher than the APR, indicating a large effect from compounding, which can lead to significant fluctuations in yield over short periods. • The VAULT VS HODL performance shows extreme volatility with a 24h increase of +378.28% followed by a weekly decrease of -283.89% and a 57-day decrease of -38.47%. This indicates highly inconsistent performance and high risk of significant losses. • Compared to WETH HODL, the vault shows a similar pattern of extreme volatility, with a 24h increase of +420.68% and a weekly decrease of -393.54%, culminating in a 57-day decrease of -45.34%. • The VAULT VS Missor HODL performance also shows high variability, with a 24h increase of +17.98%, a weekly increase of +484.39%, and a 57-day increase of +19.32%. This suggests inconsistent outperformance and high risk. • The vault's price has depreciated significantly over 57 days by -72.15%, which is a clear sign of high risk and potential for substantial losses. • The price changes of WETH and Missor over the same period are -26.81% and -91.47%, respectively, indicating that the vault's performance is not isolated but part of a broader market trend, yet its depreciation is much more severe. • The overall volatility and potential for losses are extremely high, as evidenced by the large swings in performance metrics and the significant price depreciation. Key risks: Extreme APY/APR volatility, unsustainable yields, high price depreciation, and inconsistent VS HODL performance, all pointing to a high risk of significant losses.",
+    "risk_level": "high",
+    "risk_reason": "REASONING: \u2022 The Latest Total APY of 3,228.86% is extremely high and unsustainable without clear backing. The Latest Total APR and Farm APR of 352.21% suggest a significant portion of the APY is from compounding, which further indicates high volatility and potential for rapid changes. \u2022 The APY is much higher than the APR, indicating a large effect from compounding, which can lead to significant fluctuations in yield over short periods. \u2022 The VAULT VS HODL performance shows extreme volatility with a 24h increase of +378.28% followed by a weekly decrease of -283.89% and a 57-day decrease of -38.47%. This indicates highly inconsistent performance and high risk of significant losses. \u2022 Compared to WETH HODL, the vault shows a similar pattern of extreme volatility, with a 24h increase of +420.68% and a weekly decrease of -393.54%, culminating in a 57-day decrease of -45.34%. \u2022 The VAULT VS Missor HODL performance also shows high variability, with a 24h increase of +17.98%, a weekly increase of +484.39%, and a 57-day increase of +19.32%. This suggests inconsistent outperformance and high risk. \u2022 The vault's price has depreciated significantly over 57 days by -72.15%, which is a clear sign of high risk and potential for substantial losses. \u2022 The price changes of WETH and Missor over the same period are -26.81% and -91.47%, respectively, indicating that the vault's performance is not isolated but part of a broader market trend, yet its depreciation is much more severe. \u2022 The overall volatility and potential for losses are extremely high, as evidenced by the large swings in performance metrics and the significant price depreciation. Key risks: Extreme APY/APR volatility, unsustainable yields, high price depreciation, and inconsistent VS HODL performance, all pointing to a high risk of significant losses.",
     "analyzed_at": "2025-03-11 01:15:01",
     "description": "Earn EQUAL by WETH-Missor vLP",
     "impermanent_loss": "Low",
@@ -2925,13 +2962,14 @@
           "change_57_days": "-91.47%"
         }
       ]
-    }
+    },
+    "original_index": 37
   },
   {
     "address": "0xa1e0968601f57f7f771a585a7d8844b1a7d733ff",
     "name": "latest",
-    "risk_level": "High",
-    "risk_reason": "REASONING: • APY/APR shows extreme volatility with a latest Total APY of 199.08% and a Total APR of 109.72%. The farm APR matches the Total APR, indicating a significant portion of the yield is from farming, which may not be sustainable. • VS HODL performance exhibits extreme swings: 24h performance ranges from -2563.58% to +1615.78%, weekly performance ranges from -918.1% to +2064.31%, and 57-day performance ranges from +33.24% to +41.56%. This indicates high volatility and inconsistent performance. • Price changes over 57 days show the vault token has relatively stable with a -3.19% depreciation, but the wS and GOGLZ tokens have significant depreciation at -36.43% and -44.75% respectively, suggesting potential for high impermanent loss if the vault involves these tokens. • Overall, the volatility in APY/APR, extreme swings in VS HODL performance, and significant price depreciation in related tokens indicate high risk. Key risks: High volatility in yields, extreme performance swings relative to holding, potential for significant impermanent loss due to price depreciation in associated tokens.",
+    "risk_level": "high",
+    "risk_reason": "REASONING: \u2022 APY/APR shows extreme volatility with a latest Total APY of 199.08% and a Total APR of 109.72%. The farm APR matches the Total APR, indicating a significant portion of the yield is from farming, which may not be sustainable. \u2022 VS HODL performance exhibits extreme swings: 24h performance ranges from -2563.58% to +1615.78%, weekly performance ranges from -918.1% to +2064.31%, and 57-day performance ranges from +33.24% to +41.56%. This indicates high volatility and inconsistent performance. \u2022 Price changes over 57 days show the vault token has relatively stable with a -3.19% depreciation, but the wS and GOGLZ tokens have significant depreciation at -36.43% and -44.75% respectively, suggesting potential for high impermanent loss if the vault involves these tokens. \u2022 Overall, the volatility in APY/APR, extreme swings in VS HODL performance, and significant price depreciation in related tokens indicate high risk. Key risks: High volatility in yields, extreme performance swings relative to holding, potential for significant impermanent loss due to price depreciation in associated tokens.",
     "analyzed_at": "2025-03-11 01:13:36",
     "description": "Earn SWPx by SwapX classic wS-GOGLZ vLP",
     "impermanent_loss": "Low",
@@ -3003,12 +3041,13 @@
           "change_57_days": "-44.75%"
         }
       ]
-    }
+    },
+    "original_index": 38
   },
   {
     "address": "0x2406989a785b317ac3ba0da3548dad3315b62bfe",
     "name": "latest",
-    "risk_level": "High",
+    "risk_level": "high",
     "risk_reason": "REASONING: - **APY/APR Metrics**: The latest Total APY of 18.16% and Total APR of 16.69% are within a reasonable range and do not indicate unsustainable yields. However, without data on 24h or weekly rates, it's impossible to assess volatility directly. The Farm APR matches the Total APR, suggesting that the yield is primarily from farming activities. - **VS HODL Performance**: The vault underperforms significantly in the short term (24h: -26.77% to -29.66%, Week: -39.73% to -43.02%) but shows a slight positive performance over 57 days (5.45% to 5.54%). This indicates high volatility and inconsistent performance compared to holding the underlying assets. - **Price Stability**: Over the 57-day period, the vault's price has decreased by -27.41%, which is significant. The correlated assets wS and stS have seen even larger declines (-32.96% and -32.50% respectively), suggesting a high risk of impermanent loss and overall price instability. - **Overall Volatility and Potential for Losses**: The vault's performance shows extreme volatility, with significant short-term underperformance and a notable price depreciation over the 57-day period. The inconsistent VS HODL performance and high price volatility indicate a high risk of losses. Key risks: High short-term volatility, significant price depreciation, and inconsistent long-term performance relative to holding the underlying assets.",
     "analyzed_at": "2025-03-11 01:13:15",
     "description": "Earn SWPx and fees on SwapX pool wS-stS by Ichi IV-SWAPX-7-wS-stS",
@@ -3081,12 +3120,13 @@
           "change_57_days": "-32.50%"
         }
       ]
-    }
+    },
+    "original_index": 39
   },
   {
     "address": "0x880c1f4f63c4fbb9907f5c880ba70d0421a4bf6b",
     "name": "latest",
-    "risk_level": "High",
+    "risk_level": "high",
     "risk_reason": "REASONING: - **APY/APR Metrics**: The latest Total APY of 9.81% and Total APR of 9.36% are consistent with each other, suggesting no hidden fees or additional yield sources. The farm APR matches the total APR, indicating that the yield is solely from farming activities. These rates are sustainable and not excessively high, but the stability of these rates over time cannot be assessed due to lack of historical data points. - **Price Stability**: Over the 57-day period, the vault's price has decreased by 36%, which is significant. The prices of scETH and WETH have also decreased, by 38.08% and 34.71% respectively, indicating a general market downturn. The vault's price change is slightly worse than WETH but better than scETH, but the overall depreciation is concerning. - **VS HODL Performance**: The vault's performance against holding the underlying assets is highly volatile. The 24-hour performance shows a positive return of +6.43% against the overall basket, but a negative return of -15.79% against scETH and a positive return of +28.28% against WETH. Over a week, the performance swings dramatically with -220.38% against the basket, +270.49% against scETH, and -804.06% against WETH. Over 57 days, the performance is +0.38% against the basket, +2.08% against scETH, and -1.29% against WETH. This indicates extreme volatility and inconsistent performance across different time frames and against different assets. - **Overall Volatility and Potential for Losses**: The vault exhibits extreme volatility in its performance metrics, with significant swings in short-term and long-term returns. The substantial price depreciation over 57 days further increases the risk of losses. Key risks: High volatility in returns, significant price depreciation, and inconsistent performance against holding underlying assets.",
     "analyzed_at": "2025-03-11 01:12:58",
     "description": "Earn SWPx and fees on SwapX pool scETH-WETH by Ichi IV-SWAPX-34-scETH-WETH",
@@ -3159,12 +3199,13 @@
           "change_57_days": "-34.71%"
         }
       ]
-    }
+    },
+    "original_index": 40
   },
   {
     "address": "0x296f519403b01b47ccf95a8f6791dd031186533a",
     "name": "latest",
-    "risk_level": "High",
+    "risk_level": "high",
     "risk_reason": "REASONING: - **APY/APR Metrics**: The latest Total APY is 9.7% and Total APR is 9.26%, with the Farm APR matching the Total APR. There is no data on historical APY/APR, making it impossible to assess volatility or sustainability directly. However, the reported rates are within a reasonable range and not flagged as unsustainable (>1000%). - **VS HOLD Performance**: The vault's performance compared to holding strategies shows extreme volatility. The 24-hour performance ranges from -113.19% to +536.07%, indicating high short-term volatility. Over the week and 57 days, the performance remains volatile but less extreme, with figures ranging from -201.28% to +133.21% and -14.19% to +14.15% respectively. The vault underperforms against HODL in the short term but shows some positive performance over the longer term. - **Price Stability**: Over the last 57 days, the vault's price has depreciated significantly by -40.75%. This is a substantial decline and suggests high risk. The tokens ECO and EQUAL also show significant price movements, with ECO at -26.56% and EQUAL at -54.90%. The vault's price change is more extreme than ECO but less than EQUAL, indicating a high level of price instability. - **Overall Volatility and Potential for Losses**: The combination of extreme short-term VS HOLD volatility, significant price depreciation over 57 days, and lack of data on historical APY/APR volatility leads to a high risk classification. The vault's performance suggests a high potential for losses, especially given the significant price drop and the volatility in short-term returns. Key risks: Extreme short-term volatility, significant price depreciation, and potential for substantial losses.",
     "analyzed_at": "2025-03-11 01:15:20",
     "description": "Earn EQUAL by ECO-EQUAL vLP",
@@ -3237,12 +3278,13 @@
           "change_57_days": "-54.90%"
         }
       ]
-    }
+    },
+    "original_index": 41
   },
   {
     "address": "0x4ba442dc3817838ad2fbbac5d9a2119bbeeb0b68",
     "name": "latest",
-    "risk_level": "Low",
+    "risk_level": "low",
     "risk_reason": "REASONING: - APY/APR metrics show zero yield across all measures, indicating no volatility or unsustainable yields. This suggests a highly stable, albeit non-yielding, strategy. - VS HODL performance is consistently at 0% across all time frames (24h, week, 57d), indicating no outperformance or underperformance relative to holding the underlying assets directly. - Price changes over 57 days show the vault itself has maintained a 0% change, indicating perfect price stability. However, the underlying assets (wS and SACRA_GEM_1) have experienced significant depreciation (-40.12% and -52.58% respectively), which does not affect the vault's value directly but highlights potential risks if the vault were to hold these assets. - The overall volatility is minimal for the vault itself, with no potential for losses based on the provided metrics. Key risks: The vault's zero yield strategy might not attract yield-seeking investors, and while the vault itself shows no volatility, the underlying assets have experienced significant depreciation, which could pose risks if the vault's strategy changes to include these assets.",
     "analyzed_at": "2025-03-11 01:14:04",
     "description": "Earn SWPx and fees on SwapX pool wS-SACRA_GEM_1 by Ichi IV-SWAPX-14-SACRA_GEM_1-wS",
@@ -3315,13 +3357,14 @@
           "change_57_days": "-52.58%"
         }
       ]
-    }
+    },
+    "original_index": 42
   },
   {
     "address": "0x709833e5b4b98aab812d175510f94bc91cfabd89",
     "name": "latest",
-    "risk_level": "High",
-    "risk_reason": "REASONING: • **APY/APR Metrics**: The latest Total APY of 50.75% and APR of 41.07% suggest a high yield, but without historical data, it's challenging to assess volatility. The Farm APR matches the Total APR, indicating that the yield is primarily from farming activities. The high yield raises concerns about sustainability, especially if it's not backed by clear mechanisms. • **VS HODL Performance**: The vault significantly outperforms holding over short periods (24h +829.93%, Week +2033.24%), but the long-term (57d) performance is only +4.98%. This indicates extreme short-term volatility and inconsistent long-term returns, suggesting high risk. • **Price Stability**: Over 57 days, the vault's price has depreciated by -22.98%, and the stS token by -27.96%. This level of depreciation is significant and indicates a high risk of price instability and potential for losses. • **Overall Volatility and Potential for Losses**: The combination of high short-term volatility in VS HODL performance and significant price depreciation over 57 days suggests a high overall risk profile. The extreme short-term gains are not sustainable and indicate potential for significant losses. Key risks: High short-term volatility, unsustainable yield rates, significant price depreciation, and inconsistent long-term performance relative to holding.",
+    "risk_level": "high",
+    "risk_reason": "REASONING: \u2022 **APY/APR Metrics**: The latest Total APY of 50.75% and APR of 41.07% suggest a high yield, but without historical data, it's challenging to assess volatility. The Farm APR matches the Total APR, indicating that the yield is primarily from farming activities. The high yield raises concerns about sustainability, especially if it's not backed by clear mechanisms. \u2022 **VS HODL Performance**: The vault significantly outperforms holding over short periods (24h +829.93%, Week +2033.24%), but the long-term (57d) performance is only +4.98%. This indicates extreme short-term volatility and inconsistent long-term returns, suggesting high risk. \u2022 **Price Stability**: Over 57 days, the vault's price has depreciated by -22.98%, and the stS token by -27.96%. This level of depreciation is significant and indicates a high risk of price instability and potential for losses. \u2022 **Overall Volatility and Potential for Losses**: The combination of high short-term volatility in VS HODL performance and significant price depreciation over 57 days suggests a high overall risk profile. The extreme short-term gains are not sustainable and indicate potential for significant losses. Key risks: High short-term volatility, unsustainable yield rates, significant price depreciation, and inconsistent long-term performance relative to holding.",
     "analyzed_at": "2025-03-11 01:15:32",
     "description": "Supply stS and borrow wS on Silo V2 market 3 with leverage looping",
     "impermanent_loss": "None",
@@ -3375,12 +3418,13 @@
           "change_57_days": "-27.96%"
         }
       ]
-    }
+    },
+    "original_index": 43
   },
   {
     "address": "0xcfcd4d96af5a70fece99591e22618328ee1e314b",
     "name": "latest",
-    "risk_level": "High",
+    "risk_level": "high",
     "risk_reason": "REASONING: - **APY/APR Metrics**: The latest Total APY and APR are relatively stable at 4.31% and 4.22% respectively, with the farm APR matching the total APR. This indicates a consistent yield source without extreme volatility. However, the APY is below the threshold for unsustainable yields, suggesting a sustainable yield rate. - **VS HOLD Performance**: The vault's performance compared to holding the underlying assets shows extreme volatility. Against HODL, the vault underperforms significantly over short periods (24h: -84.14%, Week: -135.75%) but shows a moderate underperformance over 57 days (-4.64%). Against scUSD, the underperformance is even more pronounced (24h: -586.19%, Week: -1361.83%, 57d: -29.64%). Conversely, against stS, the vault outperforms significantly in the short term (24h: +278.3%, Week: +581.6%) but only moderately over 57 days (+14.66%). This indicates highly inconsistent performance and significant risk. - **Price Stability**: Over 57 days, the vault's price has decreased by -29.64%, which is a significant depreciation. The scUSD price remains stable at 0.00%, while stS has depreciated by -44.30%. The vault's price movement aligns more closely with stS, suggesting a potential correlation that could amplify losses if stS continues to depreciate. - **Overall Volatility and Potential for Losses**: The vault exhibits high volatility in its performance against different HODL scenarios and significant price depreciation over 57 days. The extreme swings in short-term performance (both positive and negative) against different assets indicate a high level of risk and potential for significant losses. Key risks: High volatility in short-term performance, significant price depreciation, and inconsistent outperformance against different assets.",
     "analyzed_at": "2025-03-11 01:14:39",
     "description": "Earn BEETS and fees on Beets weighted pool by scUSD-stS LP",
@@ -3453,13 +3497,14 @@
           "change_57_days": "-44.30%"
         }
       ]
-    }
+    },
+    "original_index": 44
   },
   {
     "address": "0x116f30ae3c28c11e1a915e122eb48cf4be3b93c8",
     "name": "latest",
-    "risk_level": "Medium",
-    "risk_reason": "REASONING: • APY/APR shows no volatility or yield, with all metrics at 0%, indicating no income generation from the vault. • VS HODL performance data is missing for all time frames, making it impossible to assess the vault's performance relative to holding the underlying assets directly. • Vault price stability is perfect over 57 days with a 0.00% change, indicating no price movement in the vault itself. • Significant price depreciation in wS (-35.94%) and stS (-36.10%) over 57 days suggests high volatility and potential for losses in the underlying assets. Key risks: Lack of yield generation, missing VS HODL performance data, and high volatility in underlying assets.",
+    "risk_level": "medium",
+    "risk_reason": "REASONING: \u2022 APY/APR shows no volatility or yield, with all metrics at 0%, indicating no income generation from the vault. \u2022 VS HODL performance data is missing for all time frames, making it impossible to assess the vault's performance relative to holding the underlying assets directly. \u2022 Vault price stability is perfect over 57 days with a 0.00% change, indicating no price movement in the vault itself. \u2022 Significant price depreciation in wS (-35.94%) and stS (-36.10%) over 57 days suggests high volatility and potential for losses in the underlying assets. Key risks: Lack of yield generation, missing VS HODL performance data, and high volatility in underlying assets.",
     "analyzed_at": "2025-03-11 01:12:54",
     "description": "Earn EQUAL by wS-stS sLP",
     "impermanent_loss": "Zero exp",
@@ -3531,12 +3576,13 @@
           "change_57_days": "-36.10%"
         }
       ]
-    }
+    },
+    "original_index": 45
   },
   {
     "address": "0x276fde27ded4352117cefca3037790b9d0912c52",
     "name": "latest",
-    "risk_level": "Medium",
+    "risk_level": "medium",
     "risk_reason": "REASONING: - **APY/APR Metrics:** The latest Total APY of 19.82% and Total APR of 18.09% suggest a relatively stable yield, with no extreme volatility observed. The Farm APR matches the Total APR, indicating that the yield is primarily sourced from farming activities. The yields are sustainable and not flagged as unsustainable (>1000%). - **Price Stability:** Over the 57-day period, the vault's price has decreased by 28.27%, which is within the medium risk range (-30% to +30%). The tokens wS and stS have experienced slightly higher depreciation at -32.87% and -32.43% respectively, suggesting a moderate correlation in price movements. The risk of impermanent loss is present due to the price depreciation. - **VS HOLD Performance:** The vault's performance compared to holding the underlying assets shows significant variability. The 24-hour performance ranges from -36.09% to +1.55%, indicating high short-term volatility. However, over the longer term (57 days), the vault has consistently outperformed holding, with gains ranging from +4.15% to +4.59%. This suggests a mixed performance with potential for both short-term losses and long-term gains. - **Overall Volatility and Potential for Losses:** The vault exhibits moderate volatility in both APY/APR and price movements. The short-term VS HOLD performance indicates potential for significant losses, but the long-term performance suggests some stability and potential for gains. Key risks: - Moderate price depreciation and potential for impermanent loss. - High short-term volatility in VS HOLD performance, indicating potential for significant short-term losses. - Dependence on farming yields which could be subject to market fluctuations.",
     "analyzed_at": "2025-03-11 01:13:49",
     "description": "Earn SWPx and fees on SwapX pool wS-stS by Ichi IV-SWAPX-6-stS-wS",
@@ -3609,13 +3655,14 @@
           "change_57_days": "-32.43%"
         }
       ]
-    }
+    },
+    "original_index": 46
   },
   {
     "address": "0xa51e7204054464e656b3658e7dbb63d9b0f150f1",
     "name": "latest",
-    "risk_level": "Low",
-    "risk_reason": "REASONING: • APY and APR show minimal volatility with Latest Total APY at 8.88% and Latest Total APR at 8.51%, indicating stable yield rates. The Farm APR matches the Total APR, suggesting a straightforward yield source without additional complexities. • The VS HODL performance shows consistent positive returns over different time frames (24h 0%, Week +0.61%, 57d +2.14%), indicating reliable outperformance against holding the underlying assets directly. • Price changes over 57 days are stable with the Vault increasing by +2.14% and USDC remaining at 0.00%, demonstrating low price volatility and no significant depreciation. • The overall volatility is low, and the potential for losses appears minimal given the stable APY/APR and consistent positive VS HODL performance. Key risks: The strategy may face challenges if the underlying farm APR decreases significantly, but current metrics suggest a low risk profile.",
+    "risk_level": "low",
+    "risk_reason": "REASONING: \u2022 APY and APR show minimal volatility with Latest Total APY at 8.88% and Latest Total APR at 8.51%, indicating stable yield rates. The Farm APR matches the Total APR, suggesting a straightforward yield source without additional complexities. \u2022 The VS HODL performance shows consistent positive returns over different time frames (24h 0%, Week +0.61%, 57d +2.14%), indicating reliable outperformance against holding the underlying assets directly. \u2022 Price changes over 57 days are stable with the Vault increasing by +2.14% and USDC remaining at 0.00%, demonstrating low price volatility and no significant depreciation. \u2022 The overall volatility is low, and the potential for losses appears minimal given the stable APY/APR and consistent positive VS HODL performance. Key risks: The strategy may face challenges if the underlying farm APR decreases significantly, but current metrics suggest a low risk profile.",
     "analyzed_at": "2025-03-11 01:13:04",
     "description": "Earn wS and supply APR by lending USDC.e to Silo V2",
     "impermanent_loss": "None",
@@ -3669,13 +3716,14 @@
           "change_57_days": "0.00%"
         }
       ]
-    }
+    },
+    "original_index": 47
   },
   {
     "address": "0x42ba95418791259cd50d0ca8062e164ee32a7baf",
     "name": "latest",
-    "risk_level": "High",
-    "risk_reason": "REASONING: • APY/APR shows extreme volatility, with all metrics at 0%, indicating no yield generation which is highly unsustainable. • VS HODL performance exhibits extreme volatility across all time frames, with significant negative returns over 57 days (-52.6% to -60.99%) and extreme short-term fluctuations (e.g., -319.83% to +2330.36% in 24h). • Price changes over 57 days show significant depreciation for the vault (-60.98%) and correlated tokens (wS at -19.45%), indicating high risk of impermanent loss and market exposure. • Overall, the vault demonstrates high volatility and potential for substantial losses, as evidenced by the drastic negative performance against holding various assets. Key risks: Extreme volatility in yields and returns, significant price depreciation, and high potential for losses.",
+    "risk_level": "high",
+    "risk_reason": "REASONING: \u2022 APY/APR shows extreme volatility, with all metrics at 0%, indicating no yield generation which is highly unsustainable. \u2022 VS HODL performance exhibits extreme volatility across all time frames, with significant negative returns over 57 days (-52.6% to -60.99%) and extreme short-term fluctuations (e.g., -319.83% to +2330.36% in 24h). \u2022 Price changes over 57 days show significant depreciation for the vault (-60.98%) and correlated tokens (wS at -19.45%), indicating high risk of impermanent loss and market exposure. \u2022 Overall, the vault demonstrates high volatility and potential for substantial losses, as evidenced by the drastic negative performance against holding various assets. Key risks: Extreme volatility in yields and returns, significant price depreciation, and high potential for losses.",
     "analyzed_at": "2025-03-11 01:15:45",
     "description": "Earn xSHADOW in Shadow wS-USDC.e pool by Stability ALM with Fill-Up algo and Narrow preset (range: 1500 ticks, re-balance trigger: 600 ticks)",
     "impermanent_loss": "High",
@@ -3747,13 +3795,14 @@
           "change_57_days": "+0.01%"
         }
       ]
-    }
+    },
+    "original_index": 48
   },
   {
     "address": "0x46809f950deccf7d9762a07428ae58c46b964069",
     "name": "latest",
-    "risk_level": "High",
-    "risk_reason": "REASONING: • The latest Total APY of 97.13% and APR of 67.93% suggest high yield, but sustainability is questionable given the lack of comparative historical data. The farm APR matches the total APR, indicating all yield comes from farming, which could be volatile. • VS HODL performance shows extreme volatility with significant swings in both short-term and long-term periods. The 24-hour performance ranges from -2928.77% to +2645.91%, and the 57-day performance ranges from -78.57% to +62.81%. This indicates highly inconsistent returns compared to holding the underlying assets. • Price changes over 57 days show varied performance: Vault +28.64%, wS -34.17%, and NAVI +107.21%. The significant depreciation of wS and appreciation of NAVI suggest potential for impermanent loss and high price volatility. • Overall, the vault exhibits extreme volatility in both yield and performance metrics, coupled with significant price movements in the underlying assets. This suggests a high risk of losses due to the unpredictability of returns and the potential for impermanent loss. Key risks: High yield volatility, extreme VS HODL performance swings, significant price volatility, and potential for impermanent loss.",
+    "risk_level": "high",
+    "risk_reason": "REASONING: \u2022 The latest Total APY of 97.13% and APR of 67.93% suggest high yield, but sustainability is questionable given the lack of comparative historical data. The farm APR matches the total APR, indicating all yield comes from farming, which could be volatile. \u2022 VS HODL performance shows extreme volatility with significant swings in both short-term and long-term periods. The 24-hour performance ranges from -2928.77% to +2645.91%, and the 57-day performance ranges from -78.57% to +62.81%. This indicates highly inconsistent returns compared to holding the underlying assets. \u2022 Price changes over 57 days show varied performance: Vault +28.64%, wS -34.17%, and NAVI +107.21%. The significant depreciation of wS and appreciation of NAVI suggest potential for impermanent loss and high price volatility. \u2022 Overall, the vault exhibits extreme volatility in both yield and performance metrics, coupled with significant price movements in the underlying assets. This suggests a high risk of losses due to the unpredictability of returns and the potential for impermanent loss. Key risks: High yield volatility, extreme VS HODL performance swings, significant price volatility, and potential for impermanent loss.",
     "analyzed_at": "2025-03-11 01:11:33",
     "description": "Earn EQUAL by wS-NAVI vLP",
     "impermanent_loss": "Low",
@@ -3825,13 +3874,14 @@
           "change_57_days": "+107.21%"
         }
       ]
-    }
+    },
+    "original_index": 49
   },
   {
     "address": "0xf20a89e4097e476a176b0f91ec19e14e6466334a",
     "name": "latest",
-    "risk_level": "Low",
-    "risk_reason": "REASONING: • **APY/APR Metrics:** The latest Total APY and APR are both at 0.16%, with the Farm APR matching at 0.16%. This indicates very low volatility and a stable yield, well within the sustainable range and far below the threshold for flagging unsustainable yields. • **VS HODL Performance:** The vault shows consistent performance against holding various assets. Over 24 hours, the vault outperforms holding by +1.02% against HODL, +0.03% against USDC, and +1.96% against scUSD. Over a week, the performance remains positive against HODL (+0.43%) and scUSD (+1.06%), though it slightly underperforms against USDC (-0.24%). Over 57 days, the vault consistently outperforms all three benchmarks, with gains of +0.46% against HODL, +0.49% against USDC, and +0.44% against scUSD. This indicates a stable and reliable outperformance. • **Price Stability:** Over 57 days, the vault's price has increased by +0.50%, while USDC and scUSD have seen minimal changes (+0.01% and +0.06% respectively). This suggests strong price stability and minimal risk of impermanent loss or significant depreciation. • **Overall Volatility and Potential for Losses:** The vault exhibits low volatility in both its yield and price performance. The consistent positive returns against various benchmarks and the stable price changes indicate a low risk of significant losses. Key risks: The primary risk appears to be the low yield, which may not be attractive to investors seeking higher returns, but this does not increase the risk level of the vault itself.",
+    "risk_level": "low",
+    "risk_reason": "REASONING: \u2022 **APY/APR Metrics:** The latest Total APY and APR are both at 0.16%, with the Farm APR matching at 0.16%. This indicates very low volatility and a stable yield, well within the sustainable range and far below the threshold for flagging unsustainable yields. \u2022 **VS HODL Performance:** The vault shows consistent performance against holding various assets. Over 24 hours, the vault outperforms holding by +1.02% against HODL, +0.03% against USDC, and +1.96% against scUSD. Over a week, the performance remains positive against HODL (+0.43%) and scUSD (+1.06%), though it slightly underperforms against USDC (-0.24%). Over 57 days, the vault consistently outperforms all three benchmarks, with gains of +0.46% against HODL, +0.49% against USDC, and +0.44% against scUSD. This indicates a stable and reliable outperformance. \u2022 **Price Stability:** Over 57 days, the vault's price has increased by +0.50%, while USDC and scUSD have seen minimal changes (+0.01% and +0.06% respectively). This suggests strong price stability and minimal risk of impermanent loss or significant depreciation. \u2022 **Overall Volatility and Potential for Losses:** The vault exhibits low volatility in both its yield and price performance. The consistent positive returns against various benchmarks and the stable price changes indicate a low risk of significant losses. Key risks: The primary risk appears to be the low yield, which may not be attractive to investors seeking higher returns, but this does not increase the risk level of the vault itself.",
     "analyzed_at": "2025-03-11 01:15:07",
     "description": "Earn BEETS and fees on Beets stable pool by USDC.e-scUSD LP",
     "impermanent_loss": "Zero exp",
@@ -3903,13 +3953,14 @@
           "change_57_days": "+0.06%"
         }
       ]
-    }
+    },
+    "original_index": 50
   },
   {
     "address": "0x748b75ea1a241e0e1379a58b745fe0073b647bf9",
     "name": "latest",
-    "risk_level": "High",
-    "risk_reason": "REASONING: • APY/APR shows minimal volatility with Latest Total APY at 2.12% and Latest Total APR at 2.1%, which suggests stable yield rates. However, the Farm APR at 2.1% indicates that the entire yield comes from farming, which could be risky if dependent on a single source. • VS HODL performance exhibits extreme volatility across different time frames and token comparisons. The 24-hour performance ranges from +68.13% to +229.23% to -227.32%, while the weekly performance swings from -154.39% to -767.6% to +757.16%. Over 57 days, the performance varies from -4.23% to -13.19% to +11.99%. This indicates a lack of consistency and high risk of significant losses or gains. • Price stability over 57 days shows significant depreciation across all tokens: Vault at -56.08%, wS at -42.89%, and FS at -68.07%. This level of price depreciation suggests high risk of capital loss and potential for impermanent loss if involved in liquidity pools. • Overall, the vault exhibits high volatility and potential for losses due to extreme swings in VS HODL performance and significant price depreciation over the 57-day period. Key risks: High volatility in short-term and long-term VS HODL performance, significant price depreciation, and potential over-reliance on a single source of yield.",
+    "risk_level": "high",
+    "risk_reason": "REASONING: \u2022 APY/APR shows minimal volatility with Latest Total APY at 2.12% and Latest Total APR at 2.1%, which suggests stable yield rates. However, the Farm APR at 2.1% indicates that the entire yield comes from farming, which could be risky if dependent on a single source. \u2022 VS HODL performance exhibits extreme volatility across different time frames and token comparisons. The 24-hour performance ranges from +68.13% to +229.23% to -227.32%, while the weekly performance swings from -154.39% to -767.6% to +757.16%. Over 57 days, the performance varies from -4.23% to -13.19% to +11.99%. This indicates a lack of consistency and high risk of significant losses or gains. \u2022 Price stability over 57 days shows significant depreciation across all tokens: Vault at -56.08%, wS at -42.89%, and FS at -68.07%. This level of price depreciation suggests high risk of capital loss and potential for impermanent loss if involved in liquidity pools. \u2022 Overall, the vault exhibits high volatility and potential for losses due to extreme swings in VS HODL performance and significant price depreciation over the 57-day period. Key risks: High volatility in short-term and long-term VS HODL performance, significant price depreciation, and potential over-reliance on a single source of yield.",
     "analyzed_at": "2025-03-11 01:13:11",
     "description": "Earn EQUAL by wS-FS vLP",
     "impermanent_loss": "Low",
@@ -3981,12 +4032,13 @@
           "change_57_days": "-68.07%"
         }
       ]
-    }
+    },
+    "original_index": 51
   },
   {
     "address": "0xda7b4c61202946957f77bfdafcc740dc8ec14ca3",
     "name": "latest",
-    "risk_level": "High",
+    "risk_level": "high",
     "risk_reason": "REASONING: - APY/APR shows extreme volatility, with all metrics at 0%, indicating no current yield or return, which is unsustainable and highly risky. - VS HODL performance exhibits significant negative returns across all time frames, with 24h at -751.27%, Week at -274.53%, and 57d at -215.63%, indicating severe underperformance and high risk. - Price movements over 57 days show a drastic depreciation of the vault's value by -96.04%, while SACRA appreciates by +211.04% and scUSD remains stable at -0.01%, suggesting high risk of loss and potential impermanent loss. - Overall, the vault displays extreme volatility and potential for significant losses, as evidenced by the negative VS HODL performance and sharp price depreciation. Key risks: Lack of yield, severe underperformance against holding, high price depreciation, and potential for significant losses.",
     "analyzed_at": "2025-03-11 01:12:46",
     "description": "Earn xSHADOW in Shadow SACRA-scUSD pool by Stability ALM with Fill-Up algo and Aggressive preset (range: 800 ticks, re-balance trigger: 400 ticks)",
@@ -4059,12 +4111,13 @@
           "change_57_days": "-0.01%"
         }
       ]
-    }
+    },
+    "original_index": 52
   },
   {
     "address": "0x72c993aacaf25d6327f53c6a65c9d7f8b868881a",
     "name": "latest",
-    "risk_level": "High",
+    "risk_level": "high",
     "risk_reason": "REASONING: - **APY/APR Metrics**: The latest Total APY and APR are both at 1.46% and 1.45% respectively, with Farm APR at 1.45%. This indicates a stable but low yield. However, the lack of historical data to compare the latest rates against 24h and weekly rates makes it impossible to assess volatility directly. The low yield suggests a potentially sustainable rate, but without more data, we cannot confirm this fully. - **VS HODL Performance**: The vault shows varied performance against different HODL metrics. Against HODL, it has a 24h gain of +3.69%, a weekly gain of +0.65%, and a 57-day gain of +0.4%. Against wS HODL, it shows a 24h gain of +9.54%, a weekly loss of -5.93%, and a 57-day gain of +0.63%. Against stS HODL, it has a 24h loss of -1.58%, a weekly gain of +6.52%, and a 57-day gain of +0.19%. The performance is inconsistent across different time frames and against different assets, indicating high volatility and unpredictability. - **Price Stability**: Over the last 57 days, the vault's price has dropped by -48.66%, wS by -49.29%, and stS by -48.85%. This indicates significant price depreciation across all assets involved, suggesting high risk of loss. - **Overall Volatility and Potential for Losses**: The significant price depreciation and the inconsistent VS HODL performance highlight a high level of volatility and potential for substantial losses. The stable but low APY/APR cannot offset the high risk indicated by the price drops and performance inconsistency. Key risks: High price depreciation, inconsistent VS HODL performance, and potential for significant losses despite a seemingly sustainable yield rate.",
     "analyzed_at": "2025-03-11 01:11:59",
     "description": "Earn BEETS and fees on Beets stable pool by wS-stS LP",
@@ -4137,12 +4190,13 @@
           "change_57_days": "-48.85%"
         }
       ]
-    }
+    },
+    "original_index": 53
   },
   {
     "address": "0x3037a9ec06c25a2190794b533703755cdd137079",
     "name": "latest",
-    "risk_level": "High",
+    "risk_level": "high",
     "risk_reason": "REASONING: - **APY/APR Metrics:** The Latest Total APY of 9,564.63% and Latest Total APR of 459.98% are extremely high and unsustainable. Such high yields, especially when exceeding 1000%, are often indicative of high risk and potential for significant volatility. The Farm APR matches the Total APR, suggesting that the yield is entirely dependent on the farm's performance, which adds to the risk if the farm's conditions change. - **Price Stability:** Over 57 days, the vault's price has decreased by 16.16%, which is within a moderate range. However, the tokens wS and SACRA show significant volatility, with wS dropping by 34.49% and SACRA increasing by 133.39%. This indicates high volatility and potential for impermanent loss, especially given the large price movements in the underlying assets. - **VS HOLD Performance:** The vault's performance compared to holding the assets directly shows extreme volatility. In the short term (24h and Week), the vault significantly outperforms holding, with gains of +1308.02% and +880.75% respectively. However, over the longer term (57 days), the vault underperforms by -139.42%. This indicates a high risk of significant losses over time despite short-term gains. The same pattern is observed with wS and SACRA, showing +18.11% and -149.77% over 57 days, respectively, further highlighting the volatility and risk. - **Overall Volatility and Potential for Losses:** The combination of extreme APY/APR volatility, significant price movements in the underlying assets, and highly variable VS HOLD performance over different time frames points to a high risk of losses. The vault's strategy appears to be highly leveraged or dependent on complex mechanisms to achieve such high short-term gains, which increases the risk of significant downturns. Key risks: Extreme yield volatility, potential for significant losses over time, high dependency on farm performance, and exposure to highly volatile underlying assets.",
     "analyzed_at": "2025-03-11 01:14:27",
     "description": "Earn SWPx and fees on SwapX pool wS-SACRA by Ichi IV-SWAPX-12-SACRA-wS",
@@ -4215,13 +4269,14 @@
           "change_57_days": "+133.39%"
         }
       ]
-    }
+    },
+    "original_index": 54
   },
   {
     "address": "0x14c1d7008dd0d0d2e4e4e4a792c47f492250c6a4",
     "name": "latest",
-    "risk_level": "Medium",
-    "risk_reason": "REASONING: • APY/APR metrics show no volatility or yield, with all metrics at 0%. This indicates a lack of income generation, which could be due to a paused strategy or no active farming. The sustainability is not applicable due to the absence of yields. • VS HODL performance data is missing for all time frames, making it impossible to evaluate the vault's performance relative to holding the underlying assets. This lack of data adds uncertainty to the assessment. • Price stability shows a significant depreciation in the underlying assets wS (-34.16%) and SACRA_GEM_1 (-72.09%) over 57 days, while the vault itself has maintained a 0% change. This suggests the vault might be insulated from the price drops of the underlying assets, but it also indicates potential issues with the assets themselves. • The overall volatility is low for the vault itself due to the 0% price change, but the significant depreciation in the underlying assets indicates high volatility in the broader market context. Key risks: - Lack of income generation as indicated by 0% APY/APR. - Uncertainty due to missing VS HODL performance data. - Potential for significant losses in underlying assets despite the vault's price stability.",
+    "risk_level": "medium",
+    "risk_reason": "REASONING: \u2022 APY/APR metrics show no volatility or yield, with all metrics at 0%. This indicates a lack of income generation, which could be due to a paused strategy or no active farming. The sustainability is not applicable due to the absence of yields. \u2022 VS HODL performance data is missing for all time frames, making it impossible to evaluate the vault's performance relative to holding the underlying assets. This lack of data adds uncertainty to the assessment. \u2022 Price stability shows a significant depreciation in the underlying assets wS (-34.16%) and SACRA_GEM_1 (-72.09%) over 57 days, while the vault itself has maintained a 0% change. This suggests the vault might be insulated from the price drops of the underlying assets, but it also indicates potential issues with the assets themselves. \u2022 The overall volatility is low for the vault itself due to the 0% price change, but the significant depreciation in the underlying assets indicates high volatility in the broader market context. Key risks: - Lack of income generation as indicated by 0% APY/APR. - Uncertainty due to missing VS HODL performance data. - Potential for significant losses in underlying assets despite the vault's price stability.",
     "analyzed_at": "2025-03-11 01:14:31",
     "description": "Earn SWPx and fees on SwapX pool wS-SACRA_GEM_1 by Ichi IV-SWAPX-15-wS-SACRA_GEM_1",
     "impermanent_loss": "Medium",
@@ -4293,13 +4348,14 @@
           "change_57_days": "-72.09%"
         }
       ]
-    }
+    },
+    "original_index": 55
   },
   {
     "address": "0xec0080f59d7b41a64ccdb12ca229dc42db967152",
     "name": "latest",
-    "risk_level": "Medium",
-    "risk_reason": "REASONING: • APY/APR metrics show no volatility with all values at 0%, indicating no yield, which is sustainable but also not beneficial. • VS HODL performance data is missing for all time frames, making it impossible to assess the vault's performance relative to holding the underlying assets. • Price stability over 57 days shows no change in the vault's value, indicating perfect stability for the vault itself. However, fBOMB and EGGS have depreciated by -9.23% and -17.43% respectively, suggesting potential for losses in the underlying assets. • Overall, the vault shows no volatility in terms of yield but lacks data on performance against holding, and the underlying assets have experienced depreciation. Key risks: Lack of yield, potential losses in underlying assets, and inability to assess performance against holding due to missing data.",
+    "risk_level": "medium",
+    "risk_reason": "REASONING: \u2022 APY/APR metrics show no volatility with all values at 0%, indicating no yield, which is sustainable but also not beneficial. \u2022 VS HODL performance data is missing for all time frames, making it impossible to assess the vault's performance relative to holding the underlying assets. \u2022 Price stability over 57 days shows no change in the vault's value, indicating perfect stability for the vault itself. However, fBOMB and EGGS have depreciated by -9.23% and -17.43% respectively, suggesting potential for losses in the underlying assets. \u2022 Overall, the vault shows no volatility in terms of yield but lacks data on performance against holding, and the underlying assets have experienced depreciation. Key risks: Lack of yield, potential losses in underlying assets, and inability to assess performance against holding due to missing data.",
     "analyzed_at": "2025-03-11 01:15:49",
     "description": "Earn SWPx by SwapX classic fBOMB-EGGS vLP",
     "impermanent_loss": "Low",
@@ -4371,12 +4427,13 @@
           "change_57_days": "-17.43%"
         }
       ]
-    }
+    },
+    "original_index": 56
   },
   {
     "address": "0x5f95d779c14a3c42e7c4361524b29debc8f73ef1",
     "name": "latest",
-    "risk_level": "High",
+    "risk_level": "high",
     "risk_reason": "REASONING: - **APY/APR Metrics**: The latest Total APY and APR are both at 0%, indicating no current yield. The Farm APR is also 0%, suggesting no income from farming activities. The absence of any yield is highly concerning as it indicates no return on investment, which is unsustainable for a vault strategy. - **VS HODL Performance**: The vault's performance compared to holding other assets is extremely volatile. The 24-hour and weekly performance against HODL is significantly negative (-519.34% and -213.87% respectively), indicating high short-term risk. Even though the 57-day performance shows a positive return (+14.45%), the extreme swings suggest high instability. The performance against USDC and SWPx also shows dramatic short-term volatility, with 24-hour changes of -1465.02% and +1512.49% respectively, further highlighting the risk. - **Price Stability**: Over 57 days, the vault's price has increased by +16.08%, which is relatively stable compared to the drastic short-term performance changes. USDC and SWPx show minimal price changes (-0.02% and +5.71% respectively), indicating that the vault's price movement is not highly correlated with these assets. However, the significant short-term volatility suggests a high risk of impermanent loss. - **Overall Volatility and Potential for Losses**: The vault exhibits extreme volatility in its short-term performance metrics, with significant negative returns over 24 hours and a week, despite a positive long-term return. This indicates a high risk of losses due to the unpredictability of the vault's performance. Key risks: The vault's lack of any yield, extreme short-term volatility, and potential for significant losses make it a high-risk strategy. The absence of sustainable income and the dramatic swings in performance against holding other assets highlight the instability and risk associated with this vault.",
     "analyzed_at": "2025-03-11 01:12:15",
     "description": "Earn SWPx and fees on SwapX pool USDC.e-SWPx by Ichi IV-SWAPX-18-USDC.e-SWPx",
@@ -4449,12 +4506,13 @@
           "change_57_days": "+5.71%"
         }
       ]
-    }
+    },
+    "original_index": 57
   },
   {
     "address": "0xe78d8595f7b9b8f0b01da0f2739dbfcefc32082d",
     "name": "latest",
-    "risk_level": "High",
+    "risk_level": "high",
     "risk_reason": "REASONING: - **APY/APR Metrics**: The latest Total APY and APR are both at 0%, indicating no current yield from the vault. The Farm APR is also 0%, which suggests that there is no income being generated from farming activities. This lack of yield raises concerns about the sustainability of the vault's strategy, as there is no visible source of income. - **Price Stability**: Over the 57-day period, the vault's price has depreciated significantly by -50.04%. This is a stark contrast to the more stable price changes of wS (-3.66%) and WETH (-27.24%). The large price drop in the vault indicates high volatility and potential for significant losses. - **VS HOLD Performance**: The vault's performance compared to holding assets directly shows extreme volatility. The 24-hour performance varies widely (+42.09% vs wS, -69.15% vs wS HODL, +160.74% vs WETH HODL), and the longer-term performance over the week and 57 days is equally erratic (-636.56% vs wS, +299.68% vs wS HODL, -2195.38% vs WETH HODL, -35.83% vs wS, -46.38% vs wS HODL, -22.79% vs WETH HODL). This indicates a lack of consistency and high risk of significant losses. - **Overall Volatility and Potential for Losses**: The combination of no yield, significant price depreciation, and extreme volatility in VS HOLD performance points to a high-risk strategy. The vault's value has dropped by half over 57 days, and the performance metrics suggest a high potential for losses. Key risks: - Lack of yield generation, indicating potential for strategy failure. - Significant price depreciation, increasing the risk of capital loss. - Extreme volatility in performance relative to holding assets, indicating high risk and unpredictability.",
     "analyzed_at": "2025-03-11 01:13:58",
     "description": "Earn xSHADOW in Shadow wS-WETH pool by Stability ALM with Fill-Up algo and Narrow preset (range: 1500 ticks, re-balance trigger: 400 ticks)",
@@ -4527,13 +4585,14 @@
           "change_57_days": "-27.24%"
         }
       ]
-    }
+    },
+    "original_index": 58
   },
   {
     "address": "0xa31d440b93c4d31b78e55faeb9e6bf2f7ccdea55",
     "name": "latest",
-    "risk_level": "High",
-    "risk_reason": "REASONING: • The APY and APR metrics show a stable yield with Latest Total APY at 8.83% and Latest Total APR at 8.46%, which are consistent with the Farm APR of 8.46%. This suggests a sustainable yield without extreme volatility. • However, the VS HODL performance exhibits extreme volatility. The 24-hour performance ranges from -97.6% to +432.9%, and the weekly performance ranges from -140.94% to +934.95%. Even over 57 days, the performance varies significantly from -21.22% to +18.64%. This indicates high risk due to inconsistent and volatile returns compared to holding the underlying assets directly. • Price changes over 57 days show significant depreciation for both the Vault (-21.31%) and wS (-39.95%), while USDC remains stable (-0.09%). The substantial price drops for Vault and wS indicate potential for significant losses. • Overall, the combination of stable but low APY/APR, extreme VS HODL performance volatility, and significant price depreciation over 57 days suggests a high-risk strategy. Key risks: High volatility in short-term and long-term VS HODL performance, significant price depreciation over 57 days, and potential for substantial losses despite stable yield metrics.",
+    "risk_level": "high",
+    "risk_reason": "REASONING: \u2022 The APY and APR metrics show a stable yield with Latest Total APY at 8.83% and Latest Total APR at 8.46%, which are consistent with the Farm APR of 8.46%. This suggests a sustainable yield without extreme volatility. \u2022 However, the VS HODL performance exhibits extreme volatility. The 24-hour performance ranges from -97.6% to +432.9%, and the weekly performance ranges from -140.94% to +934.95%. Even over 57 days, the performance varies significantly from -21.22% to +18.64%. This indicates high risk due to inconsistent and volatile returns compared to holding the underlying assets directly. \u2022 Price changes over 57 days show significant depreciation for both the Vault (-21.31%) and wS (-39.95%), while USDC remains stable (-0.09%). The substantial price drops for Vault and wS indicate potential for significant losses. \u2022 Overall, the combination of stable but low APY/APR, extreme VS HODL performance volatility, and significant price depreciation over 57 days suggests a high-risk strategy. Key risks: High volatility in short-term and long-term VS HODL performance, significant price depreciation over 57 days, and potential for substantial losses despite stable yield metrics.",
     "analyzed_at": "2025-03-11 01:11:38",
     "description": "Earn EQUAL by wS-USDC.e vLP",
     "impermanent_loss": "Low",
@@ -4605,6 +4664,7 @@
           "change_57_days": "-0.09%"
         }
       ]
-    }
+    },
+    "original_index": 59
   }
 ]

@@ -8,7 +8,8 @@ use sonic_defai_ai::ai::{prompt_gen, AI};
 use sonic_defai_ai::types::{ SYSTEM};
 use sonic_defai_defi::types::{ UserInfo};
 use sonic_defai_defi::parser::strategy_filter;
-use crate::types::{AppState};
+use crate::parser::hashtag_num_parser;
+use crate::types::{AppState, RecommendationResponse};
 
 pub async fn recommend<AI_: AI>(
     State(state): State<Arc<AppState<AI_>>>,
@@ -34,9 +35,26 @@ pub async fn recommend<AI_: AI>(
 
         let result = join_all(v).await;
 
-        Json(result)
+        let index_list:Vec<_> =result.iter().map(|s| hashtag_num_parser(s) ).collect();
+
+        let chosen_stratigies: Vec<_> = index_list.into_iter().map(|index|
+            if let Some(st)  = state.strategies.get(index).clone(){
+                st.clone()
+            }
+            else{
+                state.strategies[0].clone()
+            }
+        ).collect();
+
+        Json(RecommendationResponse {
+            ai_responses: Some(result),
+            strategies: Some(chosen_stratigies),
+        })
     }
     else{
-        Json(vec!["Wrong requests".to_string()])
+        Json(RecommendationResponse {
+            ai_responses: None,
+            strategies: None,
+        })
     }
 }

@@ -44,3 +44,10 @@ impl AppState<DeepSeek>{
     }
 
 }
+
+
+#[derive(serde::Serialize)]
+pub struct RecommendationResponse {
+    pub ai_responses: Option<Vec<String>>,
+    pub strategies: Option<Vec<Strategy>>, // Strategy 타입은 코드에 맞게 수정 필요
+}

@@ -196,7 +196,7 @@ impl From<Strategy> for String{
             0
         };
         format!(
-            "Strategy #{}:\nName: {} Description: {}\n Risk Level: {} Reason for risk level: {}\n Impermanent loss: {} impermanent_loss_description: {} \n YieldRates: {} ",
+            "Strategy index number #{}:\nName: {} Description: {}\n Risk Level: {} Reason for risk level: {}\n Impermanent loss: {} impermanent_loss_description: {} \n YieldRates: {} ",
             idx,
             strategy.name,
             strategy.description,
