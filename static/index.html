@@ -43,6 +43,15 @@
         .btn-recommend:hover {
             background-color: #00a383;
         }
+        .btn-combination {
+            background-color: #0984e3;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+        .btn-combination:hover {
+            background-color: #0870c0;
+        }
         .risk-selector {
             border-radius: 10px;
             padding: 10px;
@@ -127,6 +136,9 @@
             background-color: #6c5ce7;
             color: white;
         }
+        .combination-tab .nav-link.active {
+            background-color: #0984e3;
+        }
         .markdown-content {
             line-height: 1.6;
         }
@@ -153,6 +165,26 @@
             font-size: 0.8rem;
             opacity: 0.8;
             margin-left: 5px;
+        }
+        .recommendation-type-tabs {
+            margin-bottom: 20px;
+        }
+        .recommendation-type-tabs .nav-link {
+            border-radius: 10px;
+            margin-right: 10px;
+            padding: 8px 16px;
+            font-weight: 500;
+        }
+        .recommendation-type-tabs .nav-link.active {
+            background-color: #6c5ce7;
+            color: white;
+        }
+        .mode-combination .card-header {
+            background-color: #0984e3;
+        }
+        .asset-checkbox {
+            width: 18px;
+            height: 18px;
         }
     </style>
 </head>
@@ -192,10 +224,14 @@
                 <p>Connect your wallet to view assets</p>
             </div>
             <div id="assets-container" class="d-none">
+                <div class="alert alert-info mb-3">
+                    <small>For combination strategy, check the assets you want to include.</small>
+                </div>
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
                         <tr>
+                            <th>Select</th>
                             <th>Token</th>
                             <th>Balance</th>
                         </tr>
@@ -222,21 +258,43 @@
         </div>
     </div>
 
-    <div class="d-grid gap-2">
-        <button id="get-recommendations" class="btn btn-recommend text-white" disabled>
-            Get DeFi Recommendations
-        </button>
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <button id="get-recommendations" class="btn btn-recommend text-white w-100" disabled>
+                Get Individual Strategies
+            </button>
+        </div>
+        <div class="col-md-6 mb-3">
+            <button id="get-combination" class="btn btn-combination text-white w-100" disabled>
+                Get Combination Strategy
+            </button>
+        </div>
     </div>
 
     <div id="loading" class="loading mt-4">
         <div class="spinner-border" role="status">
             <span class="visually-hidden">Loading...</span>
         </div>
-        <p class="mt-2">Analyzing your portfolio and generating personalized recommendations...</p>
+        <p class="mt-2" id="loading-text">Analyzing your portfolio and generating personalized recommendations...</p>
     </div>
 
-    <div id="recommendations-container" class="mt-4">
-        <!-- Recommendations will be displayed here -->
+    <div id="recommendation-type-container" class="mt-4 d-none">
+        <ul class="nav nav-pills recommendation-type-tabs" id="recommendation-type-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" id="individual-tab" data-bs-toggle="pill" href="#individual-content">Individual Strategies</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="combination-tab" data-bs-toggle="pill" href="#combination-content">Combination Strategy</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="recommendation-type-content">
+            <div class="tab-pane fade show active" id="individual-content">
+                <div id="recommendations-container"></div>
+            </div>
+            <div class="tab-pane fade" id="combination-content">
+                <div id="combination-container"></div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -282,13 +340,16 @@
         'wETH': '0x50971F8978C431D560ff658a83a8a03fdf199055'
     };
 
-    // Backend API URL
-    const apiUrl = 'http://localhost:4000/api/recommend';
+    // Backend API URLs
+    const recommendApiUrl = 'http://localhost:4000/api/recommend';
+    const combinationApiUrl = 'http://localhost:4000/api/combination';
 
     let web3;
     let userAccount;
     let userAssets = [];
     let currentChainId;
+    let hasIndividualRecommendations = false;
+    let hasCombinationRecommendation = false;
 
     // Check if connected to Sonic Testnet
     async function checkNetwork() {
@@ -367,9 +428,11 @@
 
                 if (isCorrectNetwork) {
                     document.getElementById('get-recommendations').disabled = false;
+                    document.getElementById('get-combination').disabled = false;
                     await getUserAssets();
                 } else {
                     document.getElementById('get-recommendations').disabled = true;
+                    document.getElementById('get-combination').disabled = true;
                 }
             } catch (error) {
                 console.error('Error connecting to MetaMask:', error);
@@ -461,9 +524,12 @@
         document.getElementById('assets-loading').classList.add('d-none');
         document.getElementById('assets-container').classList.remove('d-none');
 
-        userAssets.forEach(asset => {
+        userAssets.forEach((asset, index) => {
             const row = document.createElement('tr');
             row.innerHTML = `
+              <td>
+                <input type="checkbox" class="form-check-input asset-checkbox" id="asset-check-${index}" data-asset-index="${index}" checked>
+              </td>
               <td>${asset.name}</td>
               <td>${asset.balance}</td>
             `;
@@ -471,7 +537,7 @@
         });
     }
 
-    // Get recommendations from API
+    // Get individual recommendations from API
     async function getRecommendations() {
         if (userAssets.length === 0) {
             alert('Please connect your wallet and ensure you have assets to get recommendations.');
@@ -489,14 +555,15 @@
             risk: riskLevel
         };
 
-        console.log('Sending recommendation request with payload:', payload);
+        console.log('Sending individual recommendation request with payload:', payload);
 
         // Show loading indicator
         document.getElementById('loading').style.display = 'block';
+        document.getElementById('loading-text').textContent = 'Analyzing your portfolio and generating individual strategies...';
         document.getElementById('recommendations-container').innerHTML = '';
 
         try {
-            const response = await fetch(apiUrl, {
+            const response = await fetch(recommendApiUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -509,13 +576,102 @@
             }
 
             const responseData = await response.json();
-            console.log('Received API response:', responseData);
+            console.log('Received individual API response:', responseData);
+
             displayIntegratedRecommendations(responseData);
+            hasIndividualRecommendations = true;
+
+            // Show recommendation type tabs if both recommendation types are available
+            updateRecommendationTypeTabs();
+
+            // Activate individual tab
+            const individualTab = document.getElementById('individual-tab');
+            const individualTabBS = new bootstrap.Tab(individualTab);
+            individualTabBS.show();
+
         } catch (error) {
-            console.error('Error fetching recommendations:', error);
+            console.error('Error fetching individual recommendations:', error);
             document.getElementById('recommendations-container').innerHTML = `
               <div class="alert alert-danger">
-                Failed to get recommendations. Please try again later.
+                Failed to get individual recommendations. Please try again later.
+              </div>
+            `;
+        } finally {
+            document.getElementById('loading').style.display = 'none';
+        }
+    }
+
+    // Get combination strategy recommendation
+    async function getCombinationStrategy() {
+        if (userAssets.length === 0) {
+            alert('Please connect your wallet and ensure you have assets to get recommendations.');
+            return;
+        }
+
+        // Get selected assets
+        const selectedAssets = [];
+        document.querySelectorAll('.asset-checkbox:checked').forEach(checkbox => {
+            const assetIndex = parseInt(checkbox.getAttribute('data-asset-index'));
+            if (!isNaN(assetIndex) && assetIndex >= 0 && assetIndex < userAssets.length) {
+                selectedAssets.push(userAssets[assetIndex]);
+            }
+        });
+
+        if (selectedAssets.length === 0) {
+            alert('Please select at least one asset for the combination strategy.');
+            return;
+        }
+
+        const riskLevel = document.getElementById('risk-level').value;
+
+        // Prepare request payload
+        const payload = {
+            wallet_balance: selectedAssets.map(asset => ({
+                name: asset.name,
+                balance: parseFloat(asset.balance.toFixed(4))
+            })),
+            risk: riskLevel
+        };
+
+        console.log('Sending combination strategy request with payload:', payload);
+
+        // Show loading indicator
+        document.getElementById('loading').style.display = 'block';
+        document.getElementById('loading-text').textContent = 'Analyzing your selected assets and generating a combination strategy...';
+        document.getElementById('combination-container').innerHTML = '';
+
+        try {
+            const response = await fetch(combinationApiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            });
+
+            if (!response.ok) {
+                throw new Error(`API responded with status: ${response.status}`);
+            }
+
+            const responseData = await response.json();
+            console.log('Received combination API response:', responseData);
+
+            displayCombinationRecommendation(responseData);
+            hasCombinationRecommendation = true;
+
+            // Show recommendation type tabs if both recommendation types are available
+            updateRecommendationTypeTabs();
+
+            // Activate combination tab
+            const combinationTab = document.getElementById('combination-tab');
+            const combinationTabBS = new bootstrap.Tab(combinationTab);
+            combinationTabBS.show();
+
+        } catch (error) {
+            console.error('Error fetching combination strategy:', error);
+            document.getElementById('combination-container').innerHTML = `
+              <div class="alert alert-danger">
+                Failed to get combination strategy. Please try again later.
               </div>
             `;
         } finally {
@@ -555,7 +711,7 @@
 
         const recommendationsHeader = document.createElement('div');
         recommendationsHeader.className = 'card-header';
-        recommendationsHeader.innerHTML = '<h5 class="mb-0">Personalized Recommendations</h5>';
+        recommendationsHeader.innerHTML = '<h5 class="mb-0">Individual Asset Strategies</h5>';
 
         const recommendationsBody = document.createElement('div');
         recommendationsBody.className = 'card-body';
@@ -737,10 +893,236 @@
         container.appendChild(recommendationsCard);
     }
 
+    // Display combination strategy recommendation
+    function displayCombinationRecommendation(data) {
+        const container = document.getElementById('combination-container');
+        container.innerHTML = '';
+
+        if (!data || (!data.ai_responses && !data.strategies)) {
+            container.innerHTML = `
+              <div class="alert alert-warning">
+                No combination strategy available for your selected assets.
+              </div>
+            `;
+            return;
+        }
+
+        // Verify that we have AI response and strategy
+        if (!data.ai_responses || !data.strategies) {
+            container.innerHTML = `
+              <div class="alert alert-warning">
+                Incomplete combination strategy data received.
+              </div>
+            `;
+            return;
+        }
+
+        const strategy = data.strategies;
+        const aiResponse = data.ai_responses;
+
+        // Create combination strategy card
+        const combinationCard = document.createElement('div');
+        combinationCard.className = 'card mb-4 mode-combination';
+
+        const combinationHeader = document.createElement('div');
+        combinationHeader.className = 'card-header';
+        combinationHeader.innerHTML = '<h5 class="mb-0">Combination Strategy</h5>';
+
+        const combinationBody = document.createElement('div');
+        combinationBody.className = 'card-body';
+
+        // Create selected assets info
+        const selectedAssetsDiv = document.createElement('div');
+        selectedAssetsDiv.className = 'selected-assets mb-4';
+
+        // Get selected assets
+        const selectedAssets = [];
+        document.querySelectorAll('.asset-checkbox:checked').forEach(checkbox => {
+            const assetIndex = parseInt(checkbox.getAttribute('data-asset-index'));
+            if (!isNaN(assetIndex) && assetIndex >= 0 && assetIndex < userAssets.length) {
+                selectedAssets.push(userAssets[assetIndex]);
+            }
+        });
+
+        selectedAssetsDiv.innerHTML = `
+            <h6>Selected Assets</h6>
+            <div class="d-flex flex-wrap gap-2 mb-3">
+                ${selectedAssets.map(asset => `
+                    <span class="badge bg-info">${asset.name}: ${asset.balance}</span>
+                `).join('')}
+            </div>
+        `;
+
+        combinationBody.appendChild(selectedAssetsDiv);
+
+        // AI Analysis Section
+        const aiAnalysisSection = document.createElement('div');
+        aiAnalysisSection.className = 'ai-analysis mb-4';
+
+        // Parse markdown content
+        const parsedContent = marked.parse(aiResponse);
+        // Format special tags
+        const formattedContent = parsedContent
+            .replace(/#green/g, '<span class="positive">')
+            .replace(/#red/g, '<span class="negative">')
+            .replace(/(<\/li>|<\/p>|<\/h[1-6]>)(?=\s*<span class="(positive|negative)">)/g, '$1</span>');
+
+        aiAnalysisSection.innerHTML = `
+            <h5>Combination Strategy Analysis</h5>
+            <div class="markdown-content">
+                ${formattedContent}
+            </div>
+        `;
+
+        combinationBody.appendChild(aiAnalysisSection);
+
+        // Strategy Details Section
+        const strategySection = document.createElement('div');
+        strategySection.className = 'strategy-section mt-4';
+
+        const strategyContent = `
+            <h5>Strategy Details</h5>
+            <div class="card strategy-card">
+                <div class="card-body">
+                    <h5 class="strategy-title">${strategy.description}</h5>
+                    <div class="mb-3">
+                        <span class="badge ${strategy.risk_level === 'low' ? 'bg-success' : strategy.risk_level === 'medium' ? 'bg-warning' : 'bg-danger'}">
+                            ${strategy.risk_level.charAt(0).toUpperCase() + strategy.risk_level.slice(1)} Risk
+                        </span>
+                        <span class="ms-2">Impermanent Loss: ${strategy.impermanent_loss}</span>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <h6>Yield Rates</h6>
+                            <table class="table table-sm table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Metric</th>
+                                        <th>Latest</th>
+                                        <th>24h</th>
+                                        <th>Week</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Total APY</td>
+                                        <td>${strategy.yield_rates.income['total apy'].latest}</td>
+                                        <td>${strategy.yield_rates.income['total apy']['24h']}</td>
+                                        <td>${strategy.yield_rates.income['total apy'].week}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Total APR</td>
+                                        <td>${strategy.yield_rates.income['total apr'].latest}</td>
+                                        <td>${strategy.yield_rates.income['total apr']['24h']}</td>
+                                        <td>${strategy.yield_rates.income['total apr'].week}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Farm APR</td>
+                                        <td>${strategy.yield_rates.income['farm apr'].latest}</td>
+                                        <td>${strategy.yield_rates.income['farm apr']['24h']}</td>
+                                        <td>${strategy.yield_rates.income['farm apr'].week}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="col-md-6">
+                            <h6>VS HODL Performance</h6>
+                            <table class="table table-sm table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Comparison</th>
+                                        <th>24h</th>
+                                        <th>Week</th>
+                                        <th>57 Days</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${strategy.yield_rates.vs_hold.map(holdItem => `
+                                        <tr>
+                                            <td>${holdItem.type}</td>
+                                            <td class="${holdItem.apr_24h.startsWith('+') ? 'positive' : 'negative'}">${holdItem.apr_24h}</td>
+                                            <td class="${holdItem.apr_week.startsWith('+') ? 'positive' : 'negative'}">${holdItem.apr_week}</td>
+                                            <td class="${holdItem.days_57.startsWith('+') ? 'positive' : 'negative'}">${holdItem.days_57}</td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <h6>Price Changes (57 Days)</h6>
+                    <table class="table table-sm table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Asset</th>
+                                <th>Initial Price</th>
+                                <th>Current Price</th>
+                                <th>Change</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${strategy.yield_rates.prices.map(price => `
+                                <tr>
+                                    <td>${price.token}</td>
+                                    <td>${price.init_price}</td>
+                                    <td>${price.price}</td>
+                                    <td class="${price.change_57_days.startsWith('+') ? 'positive' : price.change_57_days === '0.00%' ? '' : 'negative'}">${price.change_57_days}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+
+                    <div class="strategy-reasoning mt-3 p-3 bg-light rounded">
+                        <h6>Risk Analysis</h6>
+                        <p>${strategy.risk_reason}</p>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        strategySection.innerHTML = strategyContent;
+        combinationBody.appendChild(strategySection);
+
+        combinationCard.appendChild(combinationHeader);
+        combinationCard.appendChild(combinationBody);
+
+        container.appendChild(combinationCard);
+    }
+
+    // Update recommendation type tabs visibility
+    function updateRecommendationTypeTabs() {
+        const tabsContainer = document.getElementById('recommendation-type-container');
+
+        if (hasIndividualRecommendations || hasCombinationRecommendation) {
+            tabsContainer.classList.remove('d-none');
+        } else {
+            tabsContainer.classList.add('d-none');
+        }
+
+        // Enable/disable individual tab
+        const individualTab = document.getElementById('individual-tab');
+        if (!hasIndividualRecommendations) {
+            individualTab.classList.add('disabled');
+        } else {
+            individualTab.classList.remove('disabled');
+        }
+
+        // Enable/disable combination tab
+        const combinationTab = document.getElementById('combination-tab');
+        if (!hasCombinationRecommendation) {
+            combinationTab.classList.add('disabled');
+        } else {
+            combinationTab.classList.remove('disabled');
+        }
+    }
+
     // Event listeners
     document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('connect-wallet').addEventListener('click', connectWallet);
         document.getElementById('get-recommendations').addEventListener('click', getRecommendations);
+        document.getElementById('get-combination').addEventListener('click', getCombinationStrategy);
         document.getElementById('switch-network').addEventListener('click', switchToSonicNetwork);
 
         // Check network on page load
@@ -755,9 +1137,13 @@
                     document.getElementById('wallet-address').textContent = '';
                     document.getElementById('connect-wallet').textContent = 'Connect MetaMask';
                     document.getElementById('get-recommendations').disabled = true;
+                    document.getElementById('get-combination').disabled = true;
                     document.getElementById('assets-loading').textContent = 'Connect your wallet to view assets';
                     document.getElementById('assets-container').classList.add('d-none');
                     userAssets = [];
+                    hasIndividualRecommendations = false;
+                    hasCombinationRecommendation = false;
+                    updateRecommendationTypeTabs();
                 } else {
                     // User switched account
                     userAccount = accounts[0];
@@ -776,9 +1162,11 @@
                 checkNetwork().then(isCorrectNetwork => {
                     if (isCorrectNetwork && userAccount) {
                         document.getElementById('get-recommendations').disabled = false;
+                        document.getElementById('get-combination').disabled = false;
                         getUserAssets();
                     } else {
                         document.getElementById('get-recommendations').disabled = true;
+                        document.getElementById('get-combination').disabled = true;
                     }
                 });
             });
@@ -787,3 +1175,4 @@
 </script>
 </body>
 </html>
+

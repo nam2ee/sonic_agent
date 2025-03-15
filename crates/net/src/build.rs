@@ -5,7 +5,7 @@ use axum::routing::post;
 use tower_http::cors::{Any, CorsLayer};
 use tower_http::services::ServeDir;
 use sonic_defai_ai::claude::Claude;
-use crate::handlers::recommend;
+use crate::handlers::{combination, recommend};
 
 //WARNING!! Change CORS!
 pub async fn build_server() {
@@ -25,6 +25,7 @@ pub async fn build_server() {
         .allow_credentials(false);
 
     let api_routers = Router::new().route("/recommend", post(recommend))
+        .route("/combination", post(combination))
         .with_state(shared_state)
         .layer(cors);
 

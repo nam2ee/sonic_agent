@@ -52,3 +52,9 @@ pub struct RecommendationResponse {
     pub ai_responses: Option<Vec<String>>,
     pub strategies: Option<Vec<Strategy>>, // Strategy 타입은 코드에 맞게 수정 필요
 }
+
+#[derive(serde::Serialize)]
+pub struct CombinationResponse {
+    pub ai_responses: Option<String>,
+    pub strategies: Option<Strategy>, // Strategy 타입은 코드에 맞게 수정 필요
+}

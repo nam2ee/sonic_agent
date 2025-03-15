@@ -4,12 +4,12 @@ use axum::{
     response::{IntoResponse, Json},
 };
 use futures::future::join_all;
-use sonic_defai_ai::ai::{prompt_gen, AI};
+use sonic_defai_ai::ai::{prompt_gen, prompt_gen_combination, AI};
 use sonic_defai_ai::types::{ SYSTEM};
 use sonic_defai_defi::types::{ UserInfo};
 use sonic_defai_defi::parser::strategy_filter;
 use crate::parser::hashtag_num_parser;
-use crate::types::{AppState, RecommendationResponse};
+use crate::types::{AppState, CombinationResponse, RecommendationResponse};
 
 pub async fn recommend<AI_: AI + Send + Sync + 'static >(
     State(state): State<Arc<AppState<AI_>>>,
@@ -69,6 +69,44 @@ pub async fn recommend<AI_: AI + Send + Sync + 'static >(
     }
     else{
         Json(RecommendationResponse {
+            ai_responses: None,
+            strategies: None,
+        })
+    }
+}
+
+pub async fn combination<AI_: AI + Send + Sync + 'static >(
+    State(state): State<Arc<AppState<AI_>>>,
+    Json(payload): Json<UserInfo>,
+) -> impl IntoResponse {
+    let risk_level = payload.risk;
+    let risk_use = risk_level.clone();
+    let stratigies = strategy_filter(state.strategies.clone(), risk_level);
+    let wallet_balances = payload.wallet_balance;
+
+
+    if let Some(assets) = wallet_balances {
+        let user_prompt = prompt_gen_combination(risk_use, assets, stratigies.clone());
+        let ai_response = if let Ok(result) = state.ai_client.query(SYSTEM, user_prompt.as_str()).await {
+            result
+        } else {
+            "Wrong requests".to_string()
+        };
+        let index = hashtag_num_parser(&ai_response);
+
+        let chosen_stratigy = if let Some(st) = state.strategies.get(index).clone() {
+            st.clone()
+        } else {
+            state.strategies[0].clone()
+        };
+
+
+        Json(CombinationResponse {
+            ai_responses: Some(ai_response),
+            strategies: Some(chosen_stratigy),
+        })
+    } else {
+        Json(CombinationResponse {
             ai_responses: None,
             strategies: None,
         })
