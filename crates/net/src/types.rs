@@ -29,6 +29,7 @@ impl AppState<Claude>{
 
 
 impl AppState<DeepSeek>{
+    #[allow(dead_code)]
     pub async fn new() -> AppState<DeepSeek>{
         let file_content = tokio::fs::read_to_string("analyzed_vaults.json").await.unwrap();
         let v: Vec<Strategy> = serde_json::from_str(&file_content).unwrap();

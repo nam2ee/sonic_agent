@@ -26,8 +26,15 @@ impl AI for DeepSeek {
         let response = client.chat_completions(request).await;
 
         if let Ok(result ) = response{
-            let s = result.choices[0].message.content.clone().unwrap();
-            Ok(s)
+            let output = result.choices[0].message.content.clone();
+            match output {
+                Some(s) =>{
+                    Ok(s)
+                }
+                None => {
+                    Ok("Failed".to_string())
+                }
+            }
         }
         else{
             Err(AIError{msg:"Request Failed".to_string()})

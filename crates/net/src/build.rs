@@ -35,6 +35,6 @@ pub async fn build_server() {
         .fallback_service(static_service);
 
 
-    let listener = tokio::net::TcpListener::bind("0.0.0.0:443").await.unwrap();
+    let listener = tokio::net::TcpListener::bind("0.0.0.0:4000").await.unwrap();
     axum::serve(listener, app).await.unwrap();
 }

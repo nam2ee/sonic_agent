@@ -11,7 +11,7 @@ use sonic_defai_defi::parser::strategy_filter;
 use crate::parser::hashtag_num_parser;
 use crate::types::{AppState, RecommendationResponse};
 
-pub async fn recommend<AI_: AI>(
+pub async fn recommend<AI_: AI + Send + Sync + 'static >(
     State(state): State<Arc<AppState<AI_>>>,
     Json(payload): Json<UserInfo>,
 ) -> impl IntoResponse {
@@ -19,22 +19,38 @@ pub async fn recommend<AI_: AI>(
     let risk_level = payload.risk;
     let risk_use = risk_level.clone();
     let stratigies = strategy_filter(state.strategies.clone(), risk_level);
-
     let wallet_balances = payload.wallet_balance;
+
     if let Some(assets) = wallet_balances {
 
-        let v:Vec<_> = assets.into_iter().map( async | asset| {
-            let user_prompt = prompt_gen(risk_use.clone(), asset, stratigies.clone());
-            if let Ok(result) = state.ai_client.query( SYSTEM , user_prompt.as_str()).await{
-                result
-            }
-            else{
-                "Wrong requests".to_string()
-            }
-        }).collect();
+        let mut v = vec![];
+        for asset in assets{
+            let stratigies_clone = stratigies.clone();
+            let risk_clone = risk_use.clone();
+            let state_clone = state.clone();
+            let handle = tokio::spawn(
+                async move {
+                    let user_prompt = prompt_gen(risk_clone, asset, stratigies_clone);
+                    if let Ok(result) = state_clone.ai_client.query( SYSTEM , user_prompt.as_str()).await{
+                             result
+                         }
+                         else{
+                             "Wrong requests".to_string()
+                         }
+                }
+            );
+            v.push(handle);
+        }
 
         let result = join_all(v).await;
-
+        let result: Vec<String> = result.iter().map(|s|
+            if let Ok(re) = s{
+                re.clone()
+            }
+            else{
+                "Error Occurred!".to_string()
+            }
+        ).collect();
         let index_list:Vec<_> =result.iter().map(|s| hashtag_num_parser(s) ).collect();
 
         let chosen_stratigies: Vec<_> = index_list.into_iter().map(|index|
