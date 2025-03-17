@@ -32,8 +32,8 @@ impl From<Risk> for String{
 
 #[derive(Debug,Serialize, Deserialize, Clone)]
 pub struct Asset{
-    name: String,
-    balance: f64
+    pub name: String,
+    pub balance: f64
 }
 
 impl From<Asset> for String{

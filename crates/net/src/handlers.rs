@@ -86,7 +86,7 @@ pub async fn combination<AI_: AI + Send + Sync + 'static >(
 
 
     if let Some(assets) = wallet_balances {
-        let user_prompt = prompt_gen_combination(risk_use, assets, stratigies.clone());
+        let user_prompt = prompt_gen_combination(risk_use, assets, stratigies.clone()).await;
         let ai_response = if let Ok(result) = state.ai_client.query(SYSTEM, user_prompt.as_str()).await {
             result
         } else {
