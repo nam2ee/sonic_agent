@@ -70,13 +70,14 @@ pub async fn prompt_gen_combination(risk_level: Risk, user_assets: Vec<Asset>, f
     format!(
         "As a DeFi strategy advisor, provide a well-structured analysis with clear paragraphs \
         for a user seeking {} risk investments.\n
-        user's Asset state: {:?} . ***You must think about strategies using this asset combination - consider ALL possible number of cases (2^n-1)(explicitly reveal your thinking about number of cases). Don't just look at surface-level factors, but deeply analyze based on the user's asset amounts as well. - U must explicitly reveal your thinking process at Main Recommendation phase. *** \
-        **And, U must ensure u can use only one kind of asset for the given asset state. But, Also, u can use several kinds of assets for the given asset state. EX) option1: using A. option2: Using A,B,C,D. - So, In this, u must pick optimal choice.\
+        user's Asset state: {:?} . ***You must think about strategies using this asset combination - consider ALL possible number of cases (2^n-1)(explicitly reveal your thinking about number of cases ).\
+        U must recommend optimal strategies for the each number of cases, then u finally recommend optimal combinations of one or several (Asset case, Strategy) - For example, for asset A,B,C,D -> u can return (A,B,strategy #13) (C,strategy #45) (D,strategy #65)    \
+        Don't just look at surface-level factors, but deeply analyze based on the user's asset amounts as well. - U must explicitly reveal your thinking process at Main Recommendation phase. *** \
         And u can also refer to SWAP. I mean, swap, u can recommend user SWAP some assets to other assets first, then conduct strategy.** \n
         Available Strategies:\n\n
         {}\n\n\
         **Please structure your response as follows**(**Strictly follow the structure**):\n\
-        1. Main Recommendation (4-5 paragraphs with clear line breaks) **WARNING: U must start with 'I recommend  Strategy_Name #(Strategy index number)~**'\n\
+        1. Main Recommendation (4-5 paragraphs with clear line breaks) **WARNING: U must start with 'I recommend following combinations,  Strategy_Name #(Strategy index number)~ for (assets) and, Strategy_Name #(Strategy index number)~ for (another assets). . .   **'\n\
         2. Key Benefits (bullet points)\n\
         3. Risk Considerations\n\
         4. Strategy Comparisons (compare 2-3 strategies):\n\
@@ -108,8 +109,13 @@ struct PriceResponse {
 }
 
 
-async fn fetch_asset_price(asset_name: &str) -> Result<f64, anyhow::Error> {
+async fn fetch_asset_price(mut asset_name: &str) -> Result<f64, anyhow::Error> {
     let client = Client::new();
+
+    if asset_name.to_lowercase() == "sonic"{
+        asset_name = "sonic-3"
+    }
+
     let url = format!(
         "https://api.coingecko.com/api/v3/simple/price?ids={}&vs_currencies=usd",
         asset_name.to_lowercase()
@@ -125,6 +131,6 @@ async fn fetch_asset_price(asset_name: &str) -> Result<f64, anyhow::Error> {
     // 안전하게 JSON에서 값 추출
     json.get(asset_name.to_lowercase())
         .and_then(|coin| coin.get("usd"))
-        .and_then(|price| price.as_f64())
+        .and_then(|price|  price.as_f64())
         .ok_or_else(|| anyhow!("Price not found for {}", asset_name))
 }

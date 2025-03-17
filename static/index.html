@@ -335,9 +335,9 @@
 
     // Updated Sonic Testnet token addresses
     const tokenAddresses = {
-        'sETH': '0x30BF3761147Ef0c86E2f84c3784FBD89E7954670',
-        'USDC': '0xAF93888cbD250300470A1618206e036E11470149',
-        'wETH': '0x50971F8978C431D560ff658a83a8a03fdf199055'
+        'defive': '0x30BF3761147Ef0c86E2f84c3784FBD89E7954670',
+        'ethena': '0xAF93888cbD250300470A1618206e036E11470149',
+        'Tether': '0x50971F8978C431D560ff658a83a8a03fdf199055'
     };
 
     // Backend API URLs
@@ -461,7 +461,7 @@
 
                 if (parseFloat(adjustedSBalance) > 0) {
                     userAssets.push({
-                        name: 'S',
+                        name: 'Sonic',
                         balance: parseFloat(parseFloat(adjustedSBalance).toFixed(4))
                     });
                 }
