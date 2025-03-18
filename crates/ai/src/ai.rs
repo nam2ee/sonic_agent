@@ -71,9 +71,10 @@ pub async fn prompt_gen_combination(risk_level: Risk, user_assets: Vec<Asset>, f
         "As a DeFi strategy advisor, provide a well-structured analysis with clear paragraphs \
         for a user seeking {} risk investments.\n
         user's Asset state: {:?} . ***You must think about strategies using this asset combination - consider ALL possible number of cases (2^n-1)(explicitly reveal your thinking about number of cases ).\
-        U must recommend optimal strategies for the each number of cases, then u finally recommend optimal combinations of one or several (Asset case, Strategy) - For example, for asset A,B,C,D -> u can return (A,B,strategy #13) (C,strategy #45) (D,strategy #65)    \
-        Don't just look at surface-level factors, but deeply analyze based on the user's asset amounts as well. - U must explicitly reveal your thinking process at Main Recommendation phase. *** \
-        And u can also refer to SWAP. I mean, swap, u can recommend user SWAP some assets to other assets first, then conduct strategy.** \n
+        U must recommend optimal strategies for the each number of cases, then u finally recommend optimal combinations of one or several (Asset case, Strategy) - For example, for asset A,B,C,D -> u can return (A,B,strategy #13) (C,strategy #45) (D,strategy #65)** \
+        ***Don't just look at surface-level factors, but deeply analyze based on the user's asset amounts as well. - U must explicitly reveal your thinking process at Main Recommendation phase. *** \
+        ***And u must strategies considering asset. Don't recommend unrelevant strategies for assets.(For example, don't recommend strategy wS<>SwapX staking for sDog asset. they are not relevant.
+        If there are not relevant strategies, just ignore that asset(u don't have to use all the asset). OR refer the purpose - the asset is can be converted~)*** \n
         Available Strategies:\n\n
         {}\n\n\
         **Please structure your response as follows**(**Strictly follow the structure**):\n\
@@ -184,6 +185,6 @@ async fn fetch_asset_price(mut asset_name: &str) -> Result<f64, Error> {
     // Safely extract the price from the JSON response.
     json.get(mapped_asset)
         .and_then(|coin| coin.get("usd"))
-        .and_then(|price| { println!("{}", price); price.as_f64()})
+        .and_then(|price| { price.as_f64()})
         .ok_or_else(|| anyhow!("Price not found for {}", mapped_asset))
 }

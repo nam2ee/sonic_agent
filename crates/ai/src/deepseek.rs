@@ -39,7 +39,5 @@ impl AI for DeepSeek {
         else{
             Err(AIError{msg:"Request Failed".to_string()})
         }
-
-
     }
 }

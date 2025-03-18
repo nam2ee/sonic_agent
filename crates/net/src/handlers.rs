@@ -19,7 +19,7 @@ pub async fn recommend<AI_: AI + Send + Sync + 'static >(
     let risk_level = payload.risk;
     let risk_use = risk_level.clone();
     let stratigies = strategy_filter(state.strategies.clone(), risk_level);
-    let wallet_balances = payload.wallet_balance;
+    let wallet_balances: Option<Vec<sonic_defai_defi::types::Asset>> = payload.wallet_balance;
 
     if let Some(assets) = wallet_balances {
 
