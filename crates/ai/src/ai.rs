@@ -1,4 +1,4 @@
-use anyhow::anyhow;
+use anyhow::{anyhow, Error};
 use async_trait::async_trait;
 use sonic_defai_defi::types::{Asset, Risk, Strategy};
 
@@ -109,28 +109,81 @@ struct PriceResponse {
 }
 
 
-async fn fetch_asset_price(mut asset_name: &str) -> Result<f64, anyhow::Error> {
+async fn fetch_asset_price(mut asset_name: &str) -> Result<f64, Error> {
     let client = Client::new();
 
-    if asset_name.to_lowercase() == "sonic"{
-        asset_name = "sonic-3"
+    // Map asset ticker to its CoinGecko API name.
+    // For assets not explicitly mapped, the input asset_name will be used.
+    let mapped_asset = match asset_name.to_lowercase().as_str() {
+        "sonic" => "sonic-3",
+        "ws" => "wrapped-sonic",
+        "sacra" => "sacra",
+        "swpx" => "swapx-2",
+        "ateth" => "atoll-eth",
+        "sceth" => "rings-sceth",
+        "os" => "origin-staked-s",
+        "wos" => "wrapped-sonic-origin",
+        "usdc.e" => "sonic-bridged-usdc-e-sonic",
+        "scusd" => "rings-scusd",
+        "equal" => "equalizer-on-sonic",
+        "tails" => "tails-2",
+        "brush" => "paintswap",
+        "fsonic" => "fantomsonicinu-2",
+        "sdog" => asset_name,  // no mapping provided
+        "moon" => "moon-bay",
+        "donks" => asset_name, // no mapping provided
+        "eco" => "fantom-eco-2",   // no mapping provided
+        "sts" | "st s" => "beets-staked-sonic",
+        "xshadow" => "shadow-2",
+        "indi" => "indi",  // no mapping provided
+        "fs" => "fantomstarter",    // no mapping provided
+        "weth" => "weth",
+        "stbl" => "stability",
+        "tysg" => asset_name,  // no mapping provided
+        "goglz" => "goggles",
+        "missor" => asset_name,  // no mapping provided
+        "sacra_gem_1" => asset_name,  // no mapping provided
+        "fbomb" => "fbomb", // no mapping provided
+        "eggs" => "eggs-finance",
+        "navi" => "navigator-exchange",
+        "beets" => "beethoven-x",
+        _ => asset_name,
+    };
+
+    if asset_name == "donks"{
+        return Ok(0.00002109_f64)
+    }
+    else if asset_name == "tysg"{
+        return Ok(0.0004813_f64)
+    }
+    else if asset_name =="missor"{
+        return Ok(0.03461_f64)
+    }
+    else if asset_name=="sdog"{
+        return Ok(0.01346_f64)
+    }
+    else if asset_name == "sacra_gem_1"{
+        return Ok(0.4241_f64)
     }
 
     let url = format!(
         "https://api.coingecko.com/api/v3/simple/price?ids={}&vs_currencies=usd",
-        asset_name.to_lowercase()
+        mapped_asset
     );
 
-    // 에러 처리를 anyhow로 단순화
+    // Send the GET request.
     let resp = client.get(&url)
         .send()
         .await?;
 
+    println!("{}", mapped_asset);
+
+    // Parse JSON response.
     let json: Value = resp.json().await?;
 
-    // 안전하게 JSON에서 값 추출
-    json.get(asset_name.to_lowercase())
+    // Safely extract the price from the JSON response.
+    json.get(mapped_asset)
         .and_then(|coin| coin.get("usd"))
-        .and_then(|price|  price.as_f64())
-        .ok_or_else(|| anyhow!("Price not found for {}", asset_name))
+        .and_then(|price| { println!("{}", price); price.as_f64()})
+        .ok_or_else(|| anyhow!("Price not found for {}", mapped_asset))
 }

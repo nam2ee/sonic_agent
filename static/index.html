@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DeFi Strategy Recommender</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+    />
     <style>
         body {
             background-color: #f8f9fa;
@@ -194,7 +197,9 @@
 
     <div class="alert alert-warning network-alert" id="network-alert">
         Please connect to Sonic Testnet to use this application.
-        <button class="btn btn-sm btn-outline-dark ms-2" id="switch-network">Switch Network</button>
+        <button class="btn btn-sm btn-outline-dark ms-2" id="switch-network">
+            Switch Network
+        </button>
     </div>
 
     <div class="card mb-4">
@@ -275,16 +280,26 @@
         <div class="spinner-border" role="status">
             <span class="visually-hidden">Loading...</span>
         </div>
-        <p class="mt-2" id="loading-text">Analyzing your portfolio and generating personalized recommendations...</p>
+        <p class="mt-2" id="loading-text">
+            Analyzing your portfolio and generating personalized recommendations...
+        </p>
     </div>
 
     <div id="recommendation-type-container" class="mt-4 d-none">
         <ul class="nav nav-pills recommendation-type-tabs" id="recommendation-type-tabs">
             <li class="nav-item">
-                <a class="nav-link active" id="individual-tab" data-bs-toggle="pill" href="#individual-content">Individual Strategies</a>
+                <a
+                        class="nav-link active"
+                        id="individual-tab"
+                        data-bs-toggle="pill"
+                        href="#individual-content"
+                >Individual Strategies</a
+                >
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="combination-tab" data-bs-toggle="pill" href="#combination-content">Combination Strategy</a>
+                <a class="nav-link" id="combination-tab" data-bs-toggle="pill" href="#combination-content"
+                >Combination Strategy</a
+                >
             </li>
         </ul>
         <div class="tab-content" id="recommendation-type-content">
@@ -304,41 +319,70 @@
 
 <script>
     // Sonic Testnet configuration
-    const SONIC_CHAIN_ID = '0xdede'; // 57054 in hexadecimal
-    const SONIC_RPC_URL = 'https://rpc.blaze.soniclabs.com';
-    const SONIC_NETWORK_NAME = 'Sonic Testnet';
+    const SONIC_CHAIN_ID = '0x92'; // 57054 in hexadecimal
+    const SONIC_RPC_URL = 'rpc.soniclabs.com';
+    const SONIC_NETWORK_NAME = 'Sonic Mainnet';
 
     // Token ABI for ERC-20 tokens
     const tokenABI = [
         {
-            "constant": true,
-            "inputs": [{"name": "_owner", "type": "address"}],
-            "name": "balanceOf",
-            "outputs": [{"name": "balance", "type": "uint256"}],
-            "type": "function"
+            constant: true,
+            inputs: [{ name: '_owner', type: 'address' }],
+            name: 'balanceOf',
+            outputs: [{ name: 'balance', type: 'uint256' }],
+            type: 'function'
         },
         {
-            "constant": true,
-            "inputs": [],
-            "name": "decimals",
-            "outputs": [{"name": "", "type": "uint8"}],
-            "type": "function"
+            constant: true,
+            inputs: [],
+            name: 'decimals',
+            outputs: [{ name: '', type: 'uint8' }],
+            type: 'function'
         },
         {
-            "constant": true,
-            "inputs": [],
-            "name": "symbol",
-            "outputs": [{"name": "", "type": "string"}],
-            "type": "function"
+            constant: true,
+            inputs: [],
+            name: 'symbol',
+            outputs: [{ name: '', type: 'string' }],
+            type: 'function'
         }
     ];
 
     // Updated Sonic Testnet token addresses
     const tokenAddresses = {
-        'defive': '0x30BF3761147Ef0c86E2f84c3784FBD89E7954670',
-        'ethena': '0xAF93888cbD250300470A1618206e036E11470149',
-        'Tether': '0x50971F8978C431D560ff658a83a8a03fdf199055'
-    };
+          'wS': '0x039e2fB66102314Ce7b64Ce5Ce3E5183bc94aD38',
+          'SACRA': '0x7ad5935ea295c4e743e4f2f5b4cda951f41223c2',
+          'SWPx': '0xa04bc7140c26fc9bb1f36b1a604c7a5a88fb0e70',
+          'atETH': '0x284D81e48fBc782Aa9186a03a226690aEA5cBe0E',
+          'scETH': '0x3bce5cb273f0f148010bbea2470e7b5df84c7812',
+          'OS': '0xb1e25689d55734fd3fffc939c4c3eb52dff8a794',
+          'wOS': '0x9F0dF7799f6FDAd409300080cfF680f5A23df4b1',
+          'USDC.e': '0x29219dd400f2Bf60E5a23d13Be72B486D4038894',
+          'scUSD': '0xd3dce716f3ef535c5ff8d041c1a41c3bd89b97ae',
+          'EQUAL': '0xddf26b42c1d903de8962d3f79a74a501420d5f19',
+          'TAILS': '0xaf3890e82befc1efc6538611fa4fb0ddb79fd04c',
+          'BRUSH': '0xe51ee9868c1f0d6cd968a8b8c8376dc2991bfe44',
+          'fSONIC': '0x05e31a691405d06708a355c029599c12d5da8b28',
+          'sDOG': '0xaa87f3f135cf5856980ee4c49165fae64f6c33e3',
+          'MOON': '0x486b6fa0419b33a0c7a6e4698c231d7e2f2d5299',
+          'DONKS': '0x0a54364631ea37813a63edb3bba1c46f8d8304b2',
+          'ECO': '0xa00da5cfbcf7a8fb9451ec170967e7d22f1a6ba7',
+          'stS': '0xe5da20f15420ad15de0fa650600afc998bbe3955',
+          'xSHADOW': '0x5050bc082ff4a74fb6b0b04385defddb114b2424',
+          'INDI': '0x4EEC869d847A6d13b0F6D1733C5DEC0d1E741B4f',
+          'FS': '0xBC0d0650412EF353D672c0Bbd12eFFF90591B251',
+          'WETH': '0x50c42dEAcD8Fc9773493ED674b675bE577f2634b',
+          'STBL': '0x78a76316F66224CBaCA6e70acB24D5ee5b2Bd2C7',
+          'TYSG': '0x9b732365d6406c42e54c6b1d71cf835a257b350f',
+          'GOGLZ': '0x3c5ba99108d44746b95ac9f4207176fe5d2458ab',
+          'Missor': '0xf26b3fd147619df61d4c1d0a9f7200b31a73fafa',
+          'SACRA_GEM_1': '0xfc0dd337b92baa949bc5d25fd9a99cb3b6873204',
+          'fBOMB': '0xedf8b632b537d5993adb5e2e15882cd791c284cb',
+          'EGGS': '0xf26ff70573ddc8a90bd7865af8d7d70b8ff019bc',
+          'NAVI': '0x6881b80ea7c858e4aeef63893e18a8a36f3682f3',
+          'BEETS': '0x2d0e0814e62d80056181f5cd932274405966e4f0'
+        };
+
 
     // Backend API URLs
     const recommendApiUrl = 'http://localhost:4000/api/recommend';
@@ -381,10 +425,9 @@
         try {
             await window.ethereum.request({
                 method: 'wallet_switchEthereumChain',
-                params: [{ chainId: SONIC_CHAIN_ID }],
+                params: [{ chainId: SONIC_CHAIN_ID }]
             });
         } catch (switchError) {
-            // This error code indicates that the chain has not been added to MetaMask
             if (switchError.code === 4902) {
                 try {
                     await window.ethereum.request({
@@ -400,8 +443,8 @@
                                 },
                                 rpcUrls: [SONIC_RPC_URL],
                                 blockExplorerUrls: ['https://explorer.oasys.games/']
-                            },
-                        ],
+                            }
+                        ]
                     });
                 } catch (addError) {
                     console.error('Error adding Sonic network to MetaMask:', addError);
@@ -461,7 +504,7 @@
 
                 if (parseFloat(adjustedSBalance) > 0) {
                     userAssets.push({
-                        name: 'Sonic',
+                        name: 'sonic',
                         balance: parseFloat(parseFloat(adjustedSBalance).toFixed(4))
                     });
                 }
@@ -471,6 +514,7 @@
 
             // Check each ERC20 token balance
             for (const [tokenName, tokenAddress] of Object.entries(tokenAddresses)) {
+                if (!tokenAddress) continue; // Skip tokens without an address
                 try {
                     console.log(`Checking ${tokenName} token at address: ${tokenAddress}`);
                     const tokenContract = new web3.eth.Contract(tokenABI, tokenAddress);
@@ -527,12 +571,10 @@
         userAssets.forEach((asset, index) => {
             const row = document.createElement('tr');
             row.innerHTML = `
-              <td>
-                <input type="checkbox" class="form-check-input asset-checkbox" id="asset-check-${index}" data-asset-index="${index}" checked>
-              </td>
-              <td>${asset.name}</td>
-              <td>${asset.balance}</td>
-            `;
+          <td>            <input type="checkbox" class="form-check-input asset-checkbox" id="asset-check-${index}" data-asset-index="${index}" checked>
+          </td>          <td>${asset.name}</td>
+          <td>${asset.balance}</td>
+        `;
             assetsList.appendChild(row);
         });
     }
@@ -588,14 +630,10 @@
             const individualTab = document.getElementById('individual-tab');
             const individualTabBS = new bootstrap.Tab(individualTab);
             individualTabBS.show();
-
         } catch (error) {
             console.error('Error fetching individual recommendations:', error);
             document.getElementById('recommendations-container').innerHTML = `
-              <div class="alert alert-danger">
-                Failed to get individual recommendations. Please try again later.
-              </div>
-            `;
+          <div class="alert alert-danger">            Failed to get individual recommendations. Please try again later.          </div>        `;
         } finally {
             document.getElementById('loading').style.display = 'none';
         }
@@ -666,14 +704,10 @@
             const combinationTab = document.getElementById('combination-tab');
             const combinationTabBS = new bootstrap.Tab(combinationTab);
             combinationTabBS.show();
-
         } catch (error) {
             console.error('Error fetching combination strategy:', error);
             document.getElementById('combination-container').innerHTML = `
-              <div class="alert alert-danger">
-                Failed to get combination strategy. Please try again later.
-              </div>
-            `;
+          <div class="alert alert-danger">            Failed to get combination strategy. Please try again later.          </div>        `;
         } finally {
             document.getElementById('loading').style.display = 'none';
         }
@@ -686,26 +720,22 @@
 
         if (!data || (!data.ai_responses && !data.strategies)) {
             container.innerHTML = `
-              <div class="alert alert-warning">
-                No recommendations available for your portfolio.
-              </div>
-            `;
+          <div class="alert alert-warning">            No recommendations available for your portfolio.          </div>        `;
             return;
         }
 
-        // Verify that we have both AI responses and strategies
-        if (!data.ai_responses || !data.strategies ||
-            data.ai_responses.length === 0 || data.strategies.length === 0 ||
-            data.ai_responses.length !== data.strategies.length) {
+        if (
+            !data.ai_responses ||
+            !data.strategies ||
+            data.ai_responses.length === 0 ||
+            data.strategies.length === 0 ||
+            data.ai_responses.length !== data.strategies.length
+        ) {
             container.innerHTML = `
-              <div class="alert alert-warning">
-                Incomplete recommendation data received.
-              </div>
-            `;
+          <div class="alert alert-warning">            Incomplete recommendation data received.          </div>        `;
             return;
         }
 
-        // Create integrated recommendation display
         const recommendationsCard = document.createElement('div');
         recommendationsCard.className = 'card mb-4';
 
@@ -716,7 +746,6 @@
         const recommendationsBody = document.createElement('div');
         recommendationsBody.className = 'card-body';
 
-        // Create tabs for each integrated recommendation
         const tabsNav = document.createElement('ul');
         tabsNav.className = 'nav nav-tabs strategy-tabs';
         tabsNav.id = 'recommendation-tabs';
@@ -725,15 +754,12 @@
         tabContent.className = 'tab-content mt-3';
         tabContent.id = 'recommendation-tab-content';
 
-        // Map asset names to recommendations based on the order
         const assetTokens = userAssets.map(asset => asset.name);
 
-        // Create tabs and content for each recommendation pair
         data.strategies.forEach((strategy, index) => {
             const aiResponse = data.ai_responses[index];
             const assetName = index < assetTokens.length ? assetTokens[index] : `Asset ${index + 1}`;
 
-            // Create tab nav item
             const tabNav = document.createElement('li');
             tabNav.className = 'nav-item';
 
@@ -746,138 +772,60 @@
             tabNav.appendChild(tabLink);
             tabsNav.appendChild(tabNav);
 
-            // Create tab content with both AI analysis and strategy details
             const tabPane = document.createElement('div');
             tabPane.className = index === 0 ? 'tab-pane fade show active' : 'tab-pane fade';
             tabPane.id = `recommendation-${index}`;
 
-            // First, show the AI analysis
             const aiAnalysisSection = document.createElement('div');
             aiAnalysisSection.className = 'ai-analysis mb-4';
 
-            // Parse markdown content
             const parsedContent = marked.parse(aiResponse);
-            // Format special tags
             const formattedContent = parsedContent
                 .replace(/#green/g, '<span class="positive">')
                 .replace(/#red/g, '<span class="negative">')
                 .replace(/(<\/li>|<\/p>|<\/h[1-6]>)(?=\s*<span class="(positive|negative)">)/g, '$1</span>');
 
             aiAnalysisSection.innerHTML = `
-                <h5>Investment Analysis</h5>
-                <div class="markdown-content">
-                    ${formattedContent}
-                </div>
-            `;
-
+          <h5>Investment Analysis</h5>          <div class="markdown-content">            ${formattedContent}
+          </div>        `;
             tabPane.appendChild(aiAnalysisSection);
 
-            // Then, show the strategy details
             const strategySection = document.createElement('div');
             strategySection.className = 'strategy-section mt-4';
 
             const strategyContent = `
-                <h5>Strategy Details</h5>
-                <div class="card strategy-card">
-                    <div class="card-body">
-                        <h5 class="strategy-title">${strategy.description}</h5>
-                        <div class="mb-3">
-                            <span class="badge ${strategy.risk_level === 'low' ? 'bg-success' : strategy.risk_level === 'medium' ? 'bg-warning' : 'bg-danger'}">
-                                ${strategy.risk_level.charAt(0).toUpperCase() + strategy.risk_level.slice(1)} Risk
-                            </span>
-                            <span class="ms-2">Impermanent Loss: ${strategy.impermanent_loss}</span>
-                        </div>
-
-                        <div class="row mb-4">
-                            <div class="col-md-6">
-                                <h6>Yield Rates</h6>
-                                <table class="table table-sm table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>Metric</th>
-                                            <th>Latest</th>
-                                            <th>24h</th>
-                                            <th>Week</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Total APY</td>
-                                            <td>${strategy.yield_rates.income['total apy'].latest}</td>
-                                            <td>${strategy.yield_rates.income['total apy']['24h']}</td>
-                                            <td>${strategy.yield_rates.income['total apy'].week}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Total APR</td>
-                                            <td>${strategy.yield_rates.income['total apr'].latest}</td>
-                                            <td>${strategy.yield_rates.income['total apr']['24h']}</td>
-                                            <td>${strategy.yield_rates.income['total apr'].week}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Farm APR</td>
-                                            <td>${strategy.yield_rates.income['farm apr'].latest}</td>
-                                            <td>${strategy.yield_rates.income['farm apr']['24h']}</td>
-                                            <td>${strategy.yield_rates.income['farm apr'].week}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            <div class="col-md-6">
-                                <h6>VS HODL Performance</h6>
-                                <table class="table table-sm table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>Comparison</th>
-                                            <th>24h</th>
-                                            <th>Week</th>
-                                            <th>57 Days</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        ${strategy.yield_rates.vs_hold.map(holdItem => `
-                                            <tr>
-                                                <td>${holdItem.type}</td>
-                                                <td class="${holdItem.apr_24h.startsWith('+') ? 'positive' : 'negative'}">${holdItem.apr_24h}</td>
-                                                <td class="${holdItem.apr_week.startsWith('+') ? 'positive' : 'negative'}">${holdItem.apr_week}</td>
-                                                <td class="${holdItem.days_57.startsWith('+') ? 'positive' : 'negative'}">${holdItem.days_57}</td>
-                                            </tr>
-                                        `).join('')}
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
-                        <h6>Price Changes (57 Days)</h6>
-                        <table class="table table-sm table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>Asset</th>
-                                    <th>Initial Price</th>
-                                    <th>Current Price</th>
-                                    <th>Change</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                ${strategy.yield_rates.prices.map(price => `
-                                    <tr>
-                                        <td>${price.token}</td>
-                                        <td>${price.init_price}</td>
-                                        <td>${price.price}</td>
-                                        <td class="${price.change_57_days.startsWith('+') ? 'positive' : price.change_57_days === '0.00%' ? '' : 'negative'}">${price.change_57_days}</td>
-                                    </tr>
-                                `).join('')}
-                            </tbody>
-                        </table>
-
-                        <div class="strategy-reasoning mt-3 p-3 bg-light rounded">
-                            <h6>Risk Analysis</h6>
-                            <p>${strategy.risk_reason}</p>
-                        </div>
-                    </div>
-                </div>
-            `;
-
+          <h5>Strategy Details</h5>          <div class="card strategy-card">            <div class="card-body">              <h5 class="strategy-title">${strategy.description}</h5>
+              <div class="mb-3">                <span class="badge ${strategy.risk_level === 'low' ? 'bg-success' : strategy.risk_level === 'medium' ? 'bg-warning' : 'bg-danger'}">
+                  ${strategy.risk_level.charAt(0).toUpperCase() + strategy.risk_level.slice(1)} Risk                </span>                <span class="ms-2">Impermanent Loss: ${strategy.impermanent_loss}</span>
+              </div>              <div class="row mb-4">                <div class="col-md-6">                  <h6>Yield Rates</h6>                  <table class="table table-sm table-bordered">                    <thead>                      <tr>                        <th>Metric</th>                        <th>Latest</th>                        <th>24h</th>                        <th>Week</th>                      </tr>                    </thead>                    <tbody>                      <tr>                        <td>Total APY</td>                        <td>${strategy.yield_rates.income['total apy'].latest}</td>
+                        <td>${strategy.yield_rates.income['total apy']['24h']}</td>
+                        <td>${strategy.yield_rates.income['total apy'].week}</td>
+                      </tr>                      <tr>                        <td>Total APR</td>                        <td>${strategy.yield_rates.income['total apr'].latest}</td>
+                        <td>${strategy.yield_rates.income['total apr']['24h']}</td>
+                        <td>${strategy.yield_rates.income['total apr'].week}</td>
+                      </tr>                      <tr>                        <td>Farm APR</td>                        <td>${strategy.yield_rates.income['farm apr'].latest}</td>
+                        <td>${strategy.yield_rates.income['farm apr']['24h']}</td>
+                        <td>${strategy.yield_rates.income['farm apr'].week}</td>
+                      </tr>                    </tbody>                  </table>                </div>                <div class="col-md-6">                  <h6>VS HODL Performance</h6>                  <table class="table table-sm table-bordered">                    <thead>                      <tr>                        <th>Comparison</th>                        <th>24h</th>                        <th>Week</th>                        <th>57 Days</th>                      </tr>                    </thead>                    <tbody>                      ${strategy.yield_rates.vs_hold
+                .map(
+                    holdItem => `
+                        <tr>                          <td>${holdItem.type}</td>
+                          <td class="${holdItem.apr_24h.startsWith('+') ? 'positive' : 'negative'}">${holdItem.apr_24h}</td>
+                          <td class="${holdItem.apr_week.startsWith('+') ? 'positive' : 'negative'}">${holdItem.apr_week}</td>
+                          <td class="${holdItem.days_57.startsWith('+') ? 'positive' : 'negative'}">${holdItem.days_57}</td>
+                        </tr>                      `                )
+                .join('')}
+                    </tbody>                  </table>                </div>              </div>              <h6>Price Changes (57 Days)</h6>              <table class="table table-sm table-bordered">                <thead>                  <tr>                    <th>Asset</th>                    <th>Initial Price</th>                    <th>Current Price</th>                    <th>Change</th>                  </tr>                </thead>                <tbody>                  ${strategy.yield_rates.prices
+                .map(
+                    price => `
+                    <tr>                      <td>${price.token}</td>
+                      <td>${price.init_price}</td>
+                      <td>${price.price}</td>
+                      <td class="${price.change_57_days.startsWith('+') ? 'positive' : price.change_57_days === '0.00%' ? '' : 'negative'}">${price.change_57_days}</td>
+                    </tr>                  `                )
+                .join('')}
+                </tbody>              </table>              <div class="strategy-reasoning mt-3 p-3 bg-light rounded">                <h6>Risk Analysis</h6>                <p>${strategy.risk_reason}</p>
+              </div>            </div>          </div>        `;
             strategySection.innerHTML = strategyContent;
             tabPane.appendChild(strategySection);
 
@@ -886,10 +834,8 @@
 
         recommendationsBody.appendChild(tabsNav);
         recommendationsBody.appendChild(tabContent);
-
         recommendationsCard.appendChild(recommendationsHeader);
         recommendationsCard.appendChild(recommendationsBody);
-
         container.appendChild(recommendationsCard);
     }
 
@@ -900,27 +846,18 @@
 
         if (!data || (!data.ai_responses && !data.strategies)) {
             container.innerHTML = `
-              <div class="alert alert-warning">
-                No combination strategy available for your selected assets.
-              </div>
-            `;
+          <div class="alert alert-warning">            No combination strategy available for your selected assets.          </div>        `;
             return;
         }
 
-        // Verify that we have AI response and strategy
         if (!data.ai_responses || !data.strategies) {
             container.innerHTML = `
-              <div class="alert alert-warning">
-                Incomplete combination strategy data received.
-              </div>
-            `;
+          <div class="alert alert-warning">            Incomplete combination strategy data received.          </div>        `;
             return;
         }
 
         const strategy = data.strategies;
         const aiResponse = data.ai_responses;
-
-        // Create combination strategy card
         const combinationCard = document.createElement('div');
         combinationCard.className = 'card mb-4 mode-combination';
 
@@ -931,11 +868,9 @@
         const combinationBody = document.createElement('div');
         combinationBody.className = 'card-body';
 
-        // Create selected assets info
         const selectedAssetsDiv = document.createElement('div');
         selectedAssetsDiv.className = 'selected-assets mb-4';
 
-        // Get selected assets
         const selectedAssets = [];
         document.querySelectorAll('.asset-checkbox:checked').forEach(checkbox => {
             const assetIndex = parseInt(checkbox.getAttribute('data-asset-index'));
@@ -945,149 +880,68 @@
         });
 
         selectedAssetsDiv.innerHTML = `
-            <h6>Selected Assets</h6>
-            <div class="d-flex flex-wrap gap-2 mb-3">
-                ${selectedAssets.map(asset => `
-                    <span class="badge bg-info">${asset.name}: ${asset.balance}</span>
-                `).join('')}
-            </div>
-        `;
-
+        <h6>Selected Assets</h6>        <div class="d-flex flex-wrap gap-2 mb-3">          ${selectedAssets
+            .map(
+                asset => `<span class="badge bg-info">${asset.name}: ${asset.balance}</span>`
+            )
+            .join('')}
+        </div>      `;
         combinationBody.appendChild(selectedAssetsDiv);
 
-        // AI Analysis Section
         const aiAnalysisSection = document.createElement('div');
         aiAnalysisSection.className = 'ai-analysis mb-4';
 
-        // Parse markdown content
         const parsedContent = marked.parse(aiResponse);
-        // Format special tags
         const formattedContent = parsedContent
             .replace(/#green/g, '<span class="positive">')
             .replace(/#red/g, '<span class="negative">')
             .replace(/(<\/li>|<\/p>|<\/h[1-6]>)(?=\s*<span class="(positive|negative)">)/g, '$1</span>');
 
         aiAnalysisSection.innerHTML = `
-            <h5>Combination Strategy Analysis</h5>
-            <div class="markdown-content">
-                ${formattedContent}
-            </div>
-        `;
-
+        <h5>Combination Strategy Analysis</h5>        <div class="markdown-content">          ${formattedContent}
+        </div>      `;
         combinationBody.appendChild(aiAnalysisSection);
 
-        // Strategy Details Section
         const strategySection = document.createElement('div');
         strategySection.className = 'strategy-section mt-4';
 
         const strategyContent = `
-            <h5>Strategy Details</h5>
-            <div class="card strategy-card">
-                <div class="card-body">
-                    <h5 class="strategy-title">${strategy.description}</h5>
-                    <div class="mb-3">
-                        <span class="badge ${strategy.risk_level === 'low' ? 'bg-success' : strategy.risk_level === 'medium' ? 'bg-warning' : 'bg-danger'}">
-                            ${strategy.risk_level.charAt(0).toUpperCase() + strategy.risk_level.slice(1)} Risk
-                        </span>
-                        <span class="ms-2">Impermanent Loss: ${strategy.impermanent_loss}</span>
-                    </div>
-
-                    <div class="row mb-4">
-                        <div class="col-md-6">
-                            <h6>Yield Rates</h6>
-                            <table class="table table-sm table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>Metric</th>
-                                        <th>Latest</th>
-                                        <th>24h</th>
-                                        <th>Week</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Total APY</td>
-                                        <td>${strategy.yield_rates.income['total apy'].latest}</td>
-                                        <td>${strategy.yield_rates.income['total apy']['24h']}</td>
-                                        <td>${strategy.yield_rates.income['total apy'].week}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Total APR</td>
-                                        <td>${strategy.yield_rates.income['total apr'].latest}</td>
-                                        <td>${strategy.yield_rates.income['total apr']['24h']}</td>
-                                        <td>${strategy.yield_rates.income['total apr'].week}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Farm APR</td>
-                                        <td>${strategy.yield_rates.income['farm apr'].latest}</td>
-                                        <td>${strategy.yield_rates.income['farm apr']['24h']}</td>
-                                        <td>${strategy.yield_rates.income['farm apr'].week}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <div class="col-md-6">
-                            <h6>VS HODL Performance</h6>
-                            <table class="table table-sm table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>Comparison</th>
-                                        <th>24h</th>
-                                        <th>Week</th>
-                                        <th>57 Days</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    ${strategy.yield_rates.vs_hold.map(holdItem => `
-                                        <tr>
-                                            <td>${holdItem.type}</td>
-                                            <td class="${holdItem.apr_24h.startsWith('+') ? 'positive' : 'negative'}">${holdItem.apr_24h}</td>
-                                            <td class="${holdItem.apr_week.startsWith('+') ? 'positive' : 'negative'}">${holdItem.apr_week}</td>
-                                            <td class="${holdItem.days_57.startsWith('+') ? 'positive' : 'negative'}">${holdItem.days_57}</td>
-                                        </tr>
-                                    `).join('')}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <h6>Price Changes (57 Days)</h6>
-                    <table class="table table-sm table-bordered">
-                        <thead>
-                            <tr>
-                                <th>Asset</th>
-                                <th>Initial Price</th>
-                                <th>Current Price</th>
-                                <th>Change</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            ${strategy.yield_rates.prices.map(price => `
-                                <tr>
-                                    <td>${price.token}</td>
-                                    <td>${price.init_price}</td>
-                                    <td>${price.price}</td>
-                                    <td class="${price.change_57_days.startsWith('+') ? 'positive' : price.change_57_days === '0.00%' ? '' : 'negative'}">${price.change_57_days}</td>
-                                </tr>
-                            `).join('')}
-                        </tbody>
-                    </table>
-
-                    <div class="strategy-reasoning mt-3 p-3 bg-light rounded">
-                        <h6>Risk Analysis</h6>
-                        <p>${strategy.risk_reason}</p>
-                    </div>
-                </div>
-            </div>
-        `;
-
+        <h5>Strategy Details</h5>        <div class="card strategy-card">          <div class="card-body">            <h5 class="strategy-title">${strategy.description}</h5>
+            <div class="mb-3">              <span class="badge ${strategy.risk_level === 'low' ? 'bg-success' : strategy.risk_level === 'medium' ? 'bg-warning' : 'bg-danger'}">
+                ${strategy.risk_level.charAt(0).toUpperCase() + strategy.risk_level.slice(1)} Risk              </span>              <span class="ms-2">Impermanent Loss: ${strategy.impermanent_loss}</span>
+            </div>            <div class="row mb-4">              <div class="col-md-6">                <h6>Yield Rates</h6>                <table class="table table-sm table-bordered">                  <thead>                    <tr>                      <th>Metric</th>                      <th>Latest</th>                      <th>24h</th>                      <th>Week</th>                    </tr>                  </thead>                  <tbody>                    <tr>                      <td>Total APY</td>                      <td>${strategy.yield_rates.income['total apy'].latest}</td>
+                      <td>${strategy.yield_rates.income['total apy']['24h']}</td>
+                      <td>${strategy.yield_rates.income['total apy'].week}</td>
+                    </tr>                    <tr>                      <td>Total APR</td>                      <td>${strategy.yield_rates.income['total apr'].latest}</td>
+                      <td>${strategy.yield_rates.income['total apr']['24h']}</td>
+                      <td>${strategy.yield_rates.income['total apr'].week}</td>
+                    </tr>                    <tr>                      <td>Farm APR</td>                      <td>${strategy.yield_rates.income['farm apr'].latest}</td>
+                      <td>${strategy.yield_rates.income['farm apr']['24h']}</td>
+                      <td>${strategy.yield_rates.income['farm apr'].week}</td>
+                    </tr>                  </tbody>                </table>              </div>              <div class="col-md-6">                <h6>VS HODL Performance</h6>                <table class="table table-sm table-bordered">                  <thead>                    <tr>                      <th>Comparison</th>                      <th>24h</th>                      <th>Week</th>                      <th>57 Days</th>                    </tr>                  </thead>                  <tbody>                    ${strategy.yield_rates.vs_hold
+            .map(
+                holdItem => `
+                      <tr>                        <td>${holdItem.type}</td>
+                        <td class="${holdItem.apr_24h.startsWith('+') ? 'positive' : 'negative'}">${holdItem.apr_24h}</td>
+                        <td class="${holdItem.apr_week.startsWith('+') ? 'positive' : 'negative'}">${holdItem.apr_week}</td>
+                        <td class="${holdItem.days_57.startsWith('+') ? 'positive' : 'negative'}">${holdItem.days_57}</td>
+                      </tr>                    `            )
+            .join('')}
+                  </tbody>                </table>              </div>            </div>            <h6>Price Changes (57 Days)</h6>            <table class="table table-sm table-bordered">              <thead>                <tr>                  <th>Asset</th>                  <th>Initial Price</th>                  <th>Current Price</th>                  <th>Change</th>                </tr>              </thead>              <tbody>                ${strategy.yield_rates.prices
+            .map(
+                price => `
+                  <tr>                    <td>${price.token}</td>
+                    <td>${price.init_price}</td>
+                    <td>${price.price}</td>
+                    <td class="${price.change_57_days.startsWith('+') ? 'positive' : price.change_57_days === '0.00%' ? '' : 'negative'}">${price.change_57_days}</td>
+                  </tr>                `            )
+            .join('')}
+              </tbody>            </table>            <div class="strategy-reasoning mt-3 p-3 bg-light rounded">              <h6>Risk Analysis</h6>              <p>${strategy.risk_reason}</p>
+            </div>          </div>        </div>      `;
         strategySection.innerHTML = strategyContent;
         combinationBody.appendChild(strategySection);
-
         combinationCard.appendChild(combinationHeader);
         combinationCard.appendChild(combinationBody);
-
         container.appendChild(combinationCard);
     }
 
@@ -1101,7 +955,6 @@
             tabsContainer.classList.add('d-none');
         }
 
-        // Enable/disable individual tab
         const individualTab = document.getElementById('individual-tab');
         if (!hasIndividualRecommendations) {
             individualTab.classList.add('disabled');
@@ -1109,7 +962,6 @@
             individualTab.classList.remove('disabled');
         }
 
-        // Enable/disable combination tab
         const combinationTab = document.getElementById('combination-tab');
         if (!hasCombinationRecommendation) {
             combinationTab.classList.add('disabled');
@@ -1125,14 +977,11 @@
         document.getElementById('get-combination').addEventListener('click', getCombinationStrategy);
         document.getElementById('switch-network').addEventListener('click', switchToSonicNetwork);
 
-        // Check network on page load
         if (window.ethereum) {
             checkNetwork();
 
-            // Listen for account changes
             window.ethereum.on('accountsChanged', (accounts) => {
                 if (accounts.length === 0) {
-                    // User disconnected wallet
                     document.getElementById('wallet-status').textContent = 'Wallet not connected';
                     document.getElementById('wallet-address').textContent = '';
                     document.getElementById('connect-wallet').textContent = 'Connect MetaMask';
@@ -1145,7 +994,6 @@
                     hasCombinationRecommendation = false;
                     updateRecommendationTypeTabs();
                 } else {
-                    // User switched account
                     userAccount = accounts[0];
                     document.getElementById('wallet-address').textContent = `${userAccount.substring(0, 6)}...${userAccount.substring(38)}`;
                     checkNetwork().then(isCorrectNetwork => {
@@ -1156,7 +1004,6 @@
                 }
             });
 
-            // Listen for chain changes
             window.ethereum.on('chainChanged', (chainId) => {
                 currentChainId = chainId;
                 checkNetwork().then(isCorrectNetwork => {
