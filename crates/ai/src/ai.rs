@@ -73,7 +73,8 @@ pub async fn prompt_gen_combination(risk_level: Risk, user_assets: Vec<Asset>, f
         user's Asset state: {:?} . ***You must think about strategies using this asset combination - consider ALL possible number of cases (2^n-1)(explicitly reveal your thinking about number of cases ).\
         U must recommend optimal strategies for the each number of cases, then u finally recommend optimal combinations of one or several (Asset case, Strategy) - For example, for asset A,B,C,D -> u can return (A,B,strategy #13) (C,strategy #45) (D,strategy #65)** \
         ***Don't just look at surface-level factors, but deeply analyze based on the user's asset amounts as well. - U must explicitly reveal your thinking process at Main Recommendation phase. *** \
-        ***And u must strategies considering asset. Don't recommend unrelevant strategies for assets.(For example, don't recommend strategy wS<>SwapX staking for sDog asset. they are not relevant.
+        ***U must recommend strategies for each asset whose depositable asset is include the asset. - This creteria is depositable asset field. not name or description. For example, Earn SWPx by SwapX classic wS-GOGLZ vLP seems like include SWPx for depositable asset, but actually, it doesn't include SWPx for depositable asset!!! . So u shouldn't recommend this strategies for SWPx. but can for wS or GOGLZ, or USDC, stS.***.
+        also u can skip the asset which is not included for any depositable asset.
         If there are not relevant strategies, just ignore that asset(u don't have to use all the asset). OR refer the purpose - the asset is can be converted~)*** \n
         Available Strategies:\n\n
         {}\n\n\

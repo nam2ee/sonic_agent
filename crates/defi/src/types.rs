@@ -169,6 +169,7 @@ pub struct Strategy {
     pub(crate) impermanent_loss: Option<String>,
     pub(crate) impermanent_loss_description: Option<String>,
     pub(crate) yield_rates: YieldRates,
+    pub(crate) depositable_asset: Vec<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub(crate) original_index: Option<usize>,
 }
@@ -196,10 +197,11 @@ impl From<Strategy> for String{
             0
         };
         format!(
-            "Strategy index number #{}:\nName: {} Description: {}\n Risk Level: {} Reason for risk level: {}\n Impermanent loss: {} impermanent_loss_description: {} \n YieldRates: {} ",
+            "Strategy index number #{}:\nName: {} Description: {}\n Usable asset for this strategy: {:?} Risk Level: {} Reason for risk level: {}\n Impermanent loss: {} impermanent_loss_description: {} \n YieldRates: {} ",
             idx,
             strategy.name,
             strategy.description,
+            strategy.depositable_asset,
             risk,
             strategy.risk_reason,
             il,

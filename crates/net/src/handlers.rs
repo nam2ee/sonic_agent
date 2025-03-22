@@ -7,7 +7,7 @@ use futures::future::join_all;
 use sonic_defai_ai::ai::{prompt_gen, prompt_gen_combination, AI};
 use sonic_defai_ai::types::{ SYSTEM};
 use sonic_defai_defi::types::{ UserInfo};
-use sonic_defai_defi::parser::strategy_filter;
+use sonic_defai_defi::parser::{extract_wallet_asset_names, strategy_filter_by_depositable_asset, strategy_filter_by_risk};
 use crate::parser::hashtag_num_parser;
 use crate::types::{AppState, CombinationResponse, RecommendationResponse};
 
@@ -15,10 +15,10 @@ pub async fn recommend<AI_: AI + Send + Sync + 'static >(
     State(state): State<Arc<AppState<AI_>>>,
     Json(payload): Json<UserInfo>,
 ) -> impl IntoResponse {
-
+    let asset_names = extract_wallet_asset_names(&payload);
     let risk_level = payload.risk;
     let risk_use = risk_level.clone();
-    let stratigies = strategy_filter(state.strategies.clone(), risk_level);
+    let stratigies = strategy_filter_by_depositable_asset( strategy_filter_by_risk(state.strategies.clone(), risk_level),asset_names );
     let wallet_balances: Option<Vec<sonic_defai_defi::types::Asset>> = payload.wallet_balance;
 
     if let Some(assets) = wallet_balances {
@@ -79,9 +79,10 @@ pub async fn combination<AI_: AI + Send + Sync + 'static >(
     State(state): State<Arc<AppState<AI_>>>,
     Json(payload): Json<UserInfo>,
 ) -> impl IntoResponse {
+    let asset_names = extract_wallet_asset_names(&payload);
     let risk_level = payload.risk;
     let risk_use = risk_level.clone();
-    let stratigies = strategy_filter(state.strategies.clone(), risk_level);
+    let stratigies = strategy_filter_by_depositable_asset( strategy_filter_by_risk(state.strategies.clone(), risk_level),asset_names );
     let wallet_balances = payload.wallet_balance;
 
 
