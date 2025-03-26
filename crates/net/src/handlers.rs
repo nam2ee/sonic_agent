@@ -128,6 +128,7 @@ pub async fn combination<AI_: AI + Send + Sync + 'static>(
     let mut remaining_assets = payload.wallet_balance.unwrap_or_default();
     let mut recommendations = Vec::new();
     let mut ai_response_vec = Vec::new();
+    let mut loop_counter = 0;
 
     let filtered_strategies = strategy_filter_by_depositable_asset(
         strategy_filter_by_risk(state.strategies.clone(), risk_level.clone()),
@@ -136,6 +137,10 @@ pub async fn combination<AI_: AI + Send + Sync + 'static>(
 
 
     while !remaining_assets.is_empty() && !filtered_strategies.is_empty() {
+        if loop_counter >= 4 || remaining_assets.iter().all(|a| a.balance < 0.000001) {
+            break;
+        }
+        loop_counter += 1;
         let user_prompt = prompt_gen_combination(
             risk_level.clone(),
             remaining_assets.clone(),
@@ -205,7 +210,6 @@ pub async fn combination<AI_: AI + Send + Sync + 'static>(
 
             remaining_assets.retain(|asset| asset.balance > 0.000001);
 
-
             recommendations.push(StrategyRecommendation {
                 strategy: strategy.clone(),
                 used_assets,
@@ -214,10 +218,7 @@ pub async fn combination<AI_: AI + Send + Sync + 'static>(
             ai_response_vec.push(ai_response);
         }
 
-        // 최소 자산 임계값 확인 또는 최대 전략 수 도달 확인
-        if recommendations.len() >= 4 || remaining_assets.iter().all(|a| a.balance < 0.000001) {
-            break;
-        }
+
     }
 
     Json(CombinationResponse {
