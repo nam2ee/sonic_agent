@@ -838,24 +838,30 @@
     }
 
     // Display combination strategy recommendation
+
+    // Display combination strategy recommendation
     function displayCombinationRecommendation(data) {
         const container = document.getElementById('combination-container');
         container.innerHTML = '';
 
-        if (!data || (!data.ai_responses && !data.strategies)) {
+        if (!data || (!data.ai_responses && !data.recommendations)) {
             container.innerHTML = `
-          <div class="alert alert-warning">            No combination strategy available for your selected assets.          </div>        `;
+          <div class="alert alert-warning">
+            No combination strategy available for your selected assets.
+          </div>
+        `;
             return;
         }
 
-        if (!data.ai_responses || !data.strategies) {
+        if (!data.recommendations || data.recommendations.length === 0) {
             container.innerHTML = `
-          <div class="alert alert-warning">            Incomplete combination strategy data received.          </div>        `;
+          <div class="alert alert-warning">
+            Incomplete combination strategy data received.
+          </div>
+        `;
             return;
         }
 
-        const strategy = data.strategies;
-        const aiResponse = data.ai_responses;
         const combinationCard = document.createElement('div');
         combinationCard.className = 'card mb-4 mode-combination';
 
@@ -866,6 +872,7 @@
         const combinationBody = document.createElement('div');
         combinationBody.className = 'card-body';
 
+        // Selected assets section
         const selectedAssetsDiv = document.createElement('div');
         selectedAssetsDiv.className = 'selected-assets mb-4';
 
@@ -878,70 +885,213 @@
         });
 
         selectedAssetsDiv.innerHTML = `
-        <h6>Selected Assets</h6>        <div class="d-flex flex-wrap gap-2 mb-3">          ${selectedAssets
+        <h6>Selected Assets</h6>
+        <div class="d-flex flex-wrap gap-2 mb-3">
+          ${selectedAssets
             .map(
                 asset => `<span class="badge bg-info">${asset.name}: ${asset.balance}</span>`
             )
             .join('')}
-        </div>      `;
+        </div>
+    `;
         combinationBody.appendChild(selectedAssetsDiv);
 
-        const aiAnalysisSection = document.createElement('div');
-        aiAnalysisSection.className = 'ai-analysis mb-4';
+        // AI Analysis section - show all AI responses
+        if (data.ai_responses && data.ai_responses.length > 0) {
+            const aiAnalysisSection = document.createElement('div');
+            aiAnalysisSection.className = 'ai-analysis mb-4';
 
-        const parsedContent = marked.parse(aiResponse);
-        const formattedContent = parsedContent
-            .replace(/#green/g, '<span class="positive">')
-            .replace(/#red/g, '<span class="negative">')
-            .replace(/(<\/li>|<\/p>|<\/h[1-6]>)(?=\s*<span class="(positive|negative)">)/g, '$1</span>');
+            let aiResponsesHtml = '<h5>Combination Strategy Analysis</h5>';
 
-        aiAnalysisSection.innerHTML = `
-        <h5>Combination Strategy Analysis</h5>        <div class="markdown-content">          ${formattedContent}
-        </div>      `;
-        combinationBody.appendChild(aiAnalysisSection);
+            data.ai_responses.forEach((response, index) => {
+                const parsedContent = marked.parse(response);
+                const formattedContent = parsedContent
+                    .replace(/#green/g, '<span class="positive">')
+                    .replace(/#red/g, '<span class="negative">')
+                    .replace(/(<\/li>|<\/p>|<\/h[1-6]>)(?=\s*<span class="(positive|negative)">)/g, '$1</span>');
 
-        const strategySection = document.createElement('div');
-        strategySection.className = 'strategy-section mt-4';
+                aiResponsesHtml += `
+                <div class="markdown-content mb-3 ${index > 0 ? 'mt-4 pt-3 border-top' : ''}">
+                    <h6>Strategy Component ${index + 1}</h6>
+                    ${formattedContent}
+                </div>
+            `;
+            });
 
-        const strategyContent = `
-        <h5>Strategy Details</h5>        <div class="card strategy-card">          <div class="card-body">            <h5 class="strategy-title">${strategy.description}</h5>
-            <div class="mb-3">              <span class="badge ${strategy.risk_level === 'low' ? 'bg-success' : strategy.risk_level === 'medium' ? 'bg-warning' : 'bg-danger'}">
-                ${strategy.risk_level.charAt(0).toUpperCase() + strategy.risk_level.slice(1)} Risk              </span>              <span class="ms-2">Impermanent Loss: ${strategy.impermanent_loss}</span>
-            </div>            <div class="row mb-4">              <div class="col-md-6">                <h6>Yield Rates</h6>                <table class="table table-sm table-bordered">                  <thead>                    <tr>                      <th>Metric</th>                      <th>Latest</th>                      <th>24h</th>                      <th>Week</th>                    </tr>                  </thead>                  <tbody>                    <tr>                      <td>Total APY</td>                      <td>${strategy.yield_rates.income['total apy'].latest}</td>
+            aiAnalysisSection.innerHTML = aiResponsesHtml;
+            combinationBody.appendChild(aiAnalysisSection);
+        }
+
+        // Recommendations section
+        const recommendationsSection = document.createElement('div');
+        recommendationsSection.className = 'recommendations-section mt-4';
+        recommendationsSection.innerHTML = '<h5>Recommended Strategy Combination</h5>';
+
+        // Create tabs for multiple recommendations
+        const tabsNav = document.createElement('ul');
+        tabsNav.className = 'nav nav-tabs strategy-tabs combination-tab';
+        tabsNav.id = 'combination-tabs';
+
+        const tabContent = document.createElement('div');
+        tabContent.className = 'tab-content mt-3';
+        tabContent.id = 'combination-tab-content';
+
+        data.recommendations.forEach((recommendation, index) => {
+            const strategy = recommendation.strategy;
+
+            // Tab navigation item
+            const tabNav = document.createElement('li');
+            tabNav.className = 'nav-item';
+
+            const tabLink = document.createElement('a');
+            tabLink.className = index === 0 ? 'nav-link active' : 'nav-link';
+            tabLink.href = `#combination-${index}`;
+            tabLink.setAttribute('data-bs-toggle', 'tab');
+            tabLink.innerHTML = `Strategy ${index + 1} <span class="nav-strategy-token">(${strategy.description.split(' ')[0]})</span>`;
+
+            tabNav.appendChild(tabLink);
+            tabsNav.appendChild(tabNav);
+
+            // Tab content
+            const tabPane = document.createElement('div');
+            tabPane.className = index === 0 ? 'tab-pane fade show active' : 'tab-pane fade';
+            tabPane.id = `combination-${index}`;
+
+            // Used assets section
+            const usedAssetsDiv = document.createElement('div');
+            usedAssetsDiv.className = 'used-assets mb-3';
+
+            let usedAssetsHtml = '<h6>Assets Used</h6><div class="d-flex flex-wrap gap-2 mb-3">';
+            recommendation.used_assets.forEach(([assetName, amount]) => {
+                usedAssetsHtml += `<span class="badge bg-success">${assetName}: ${amount}</span>`;
+            });
+            usedAssetsHtml += '</div>';
+
+            if (recommendation.vault_address) {
+                usedAssetsHtml += `<p class="small text-muted">Vault Address: ${recommendation.vault_address}</p>`;
+            }
+
+            usedAssetsDiv.innerHTML = usedAssetsHtml;
+            tabPane.appendChild(usedAssetsDiv);
+
+            // Strategy details
+            const strategyContent = `
+        <div class="card strategy-card">
+          <div class="card-body">
+            <h5 class="strategy-title">${strategy.description}</h5>
+            <div class="mb-3">
+              <span class="badge ${strategy.risk_level === 'low' ? 'bg-success' : strategy.risk_level === 'medium' ? 'bg-warning' : 'bg-danger'}">
+                ${strategy.risk_level.charAt(0).toUpperCase() + strategy.risk_level.slice(1)} Risk
+              </span>
+              <span class="ms-2">Impermanent Loss: ${strategy.impermanent_loss}</span>
+            </div>
+            <div class="row mb-4">
+              <div class="col-md-6">
+                <h6>Yield Rates</h6>
+                <table class="table table-sm table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Metric</th>
+                      <th>Latest</th>
+                      <th>24h</th>
+                      <th>Week</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Total APY</td>
+                      <td>${strategy.yield_rates.income['total apy'].latest}</td>
                       <td>${strategy.yield_rates.income['total apy']['24h']}</td>
                       <td>${strategy.yield_rates.income['total apy'].week}</td>
-                    </tr>                    <tr>                      <td>Total APR</td>                      <td>${strategy.yield_rates.income['total apr'].latest}</td>
+                    </tr>
+                    <tr>
+                      <td>Total APR</td>
+                      <td>${strategy.yield_rates.income['total apr'].latest}</td>
                       <td>${strategy.yield_rates.income['total apr']['24h']}</td>
                       <td>${strategy.yield_rates.income['total apr'].week}</td>
-                    </tr>                    <tr>                      <td>Farm APR</td>                      <td>${strategy.yield_rates.income['farm apr'].latest}</td>
+                    </tr>
+                    <tr>
+                      <td>Farm APR</td>
+                      <td>${strategy.yield_rates.income['farm apr'].latest}</td>
                       <td>${strategy.yield_rates.income['farm apr']['24h']}</td>
                       <td>${strategy.yield_rates.income['farm apr'].week}</td>
-                    </tr>                  </tbody>                </table>              </div>              <div class="col-md-6">                <h6>VS HODL Performance</h6>                <table class="table table-sm table-bordered">                  <thead>                    <tr>                      <th>Comparison</th>                      <th>24h</th>                      <th>Week</th>                      <th>57 Days</th>                    </tr>                  </thead>                  <tbody>                    ${strategy.yield_rates.vs_hold
-            .map(
-                holdItem => `
-                      <tr>                        <td>${holdItem.type}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-md-6">
+                <h6>VS HODL Performance</h6>
+                <table class="table table-sm table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Comparison</th>
+                      <th>24h</th>
+                      <th>Week</th>
+                      <th>57 Days</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${strategy.yield_rates.vs_hold
+                .map(
+                    holdItem => `
+                      <tr>
+                        <td>${holdItem.type}</td>
                         <td class="${holdItem.apr_24h.startsWith('+') ? 'positive' : 'negative'}">${holdItem.apr_24h}</td>
                         <td class="${holdItem.apr_week.startsWith('+') ? 'positive' : 'negative'}">${holdItem.apr_week}</td>
                         <td class="${holdItem.days_57.startsWith('+') ? 'positive' : 'negative'}">${holdItem.days_57}</td>
-                      </tr>                    `            )
-            .join('')}
-                  </tbody>                </table>              </div>            </div>            <h6>Price Changes (57 Days)</h6>            <table class="table table-sm table-bordered">              <thead>                <tr>                  <th>Asset</th>                  <th>Initial Price</th>                  <th>Current Price</th>                  <th>Change</th>                </tr>              </thead>              <tbody>                ${strategy.yield_rates.prices
-            .map(
-                price => `
-                  <tr>                    <td>${price.token}</td>
+                      </tr>
+                    `
+                )
+                .join('')}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <h6>Price Changes (57 Days)</h6>
+            <table class="table table-sm table-bordered">
+              <thead>
+                <tr>
+                  <th>Asset</th>
+                  <th>Initial Price</th>
+                  <th>Current Price</th>
+                  <th>Change</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${strategy.yield_rates.prices
+                .map(
+                    price => `
+                  <tr>
+                    <td>${price.token}</td>
                     <td>${price.init_price}</td>
                     <td>${price.price}</td>
                     <td class="${price.change_57_days.startsWith('+') ? 'positive' : price.change_57_days === '0.00%' ? '' : 'negative'}">${price.change_57_days}</td>
-                  </tr>                `            )
-            .join('')}
-              </tbody>            </table>            <div class="strategy-reasoning mt-3 p-3 bg-light rounded">              <h6>Risk Analysis</h6>              <p>${strategy.risk_reason}</p>
-            </div>          </div>        </div>      `;
-        strategySection.innerHTML = strategyContent;
-        combinationBody.appendChild(strategySection);
+                  </tr>
+                `
+                )
+                .join('')}
+              </tbody>
+            </table>
+            <div class="strategy-reasoning mt-3 p-3 bg-light rounded">
+              <h6>Risk Analysis</h6>
+              <p>${strategy.risk_reason}</p>
+            </div>
+          </div>
+        </div>
+      `;
+            tabPane.innerHTML += strategyContent;
+            tabContent.appendChild(tabPane);
+        });
+
+        recommendationsSection.appendChild(tabsNav);
+        recommendationsSection.appendChild(tabContent);
+        combinationBody.appendChild(recommendationsSection);
+
         combinationCard.appendChild(combinationHeader);
         combinationCard.appendChild(combinationBody);
         container.appendChild(combinationCard);
     }
+
 
     // Update recommendation type tabs visibility
     function updateRecommendationTypeTabs() {

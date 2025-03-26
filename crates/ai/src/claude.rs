@@ -1,6 +1,7 @@
 use anthropic::client::Client;
 use anthropic::client::ClientBuilder;
-use anthropic::types::{ContentBlock, MessagesRequestBuilder};
+use anthropic::error::AnthropicError;
+use anthropic::types::{ContentBlock, MessagesRequestBuilder, MessagesResponse};
 use async_trait::async_trait;
 use crate::ai::{AIError, AI};
 
@@ -37,22 +38,26 @@ impl AI for Claude{
         if let Ok(result) = message_request {
             let message_response = self.client.messages(result).await;
 
-            if let Ok(msg) = message_response{
-                let recommendation = msg.content.iter()
-                    .filter_map(|block| {
-                        if let anthropic::types::ContentBlock::Text { text } = block {
-                            Some(text.clone())
-                        } else {
-                            None
-                        }
-                    })
-                    .collect::<Vec<String>>()
-                    .join("");
-                Ok(recommendation)
+            match message_response {
+                Ok(msg) => {
+                    let recommendation = msg.content.iter()
+                        .filter_map(|block| {
+                            if let anthropic::types::ContentBlock::Text { text } = block {
+                                Some(text.clone())
+                            } else {
+                                None
+                            }
+                        })
+                        .collect::<Vec<String>>()
+                        .join("");
+                    Ok(recommendation)
+                }
+                Err(e) => {
+                    println!("{:?}", e);
+                    Err(AIError{msg: "Fail to fetch msg response".to_string()})
+                }
             }
-            else{
-                Err(AIError{msg: "Fail to fetch msg response".to_string()})
-            }
+
         }
         else{
             Err(AIError{msg: "Fail to build msg request".to_string()})

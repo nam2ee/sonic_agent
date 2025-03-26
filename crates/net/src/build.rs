@@ -5,6 +5,7 @@ use axum::routing::post;
 use tower_http::cors::{Any, CorsLayer};
 use tower_http::services::ServeDir;
 use sonic_defai_ai::claude::Claude;
+use sonic_defai_ai::deepseek::DeepSeek;
 use crate::handlers::{combination, recommend};
 
 //WARNING!! Change CORS!

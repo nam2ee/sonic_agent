@@ -56,8 +56,8 @@ pub async fn prompt_gen_combination(risk_level: Risk, user_assets: Vec<Asset>, f
         if let Ok(x) = price{
             let total_value = x * asset.balance;
             asset_descriptions.push(format!(
-                "name: {}, in USD total value: ${:.2}",
-                asset.name, total_value
+                "name: {}, balance: {}, in USD total value: ${:.2}",
+                asset.name, asset.balance, total_value
             ));
         }
         else{
@@ -67,19 +67,22 @@ pub async fn prompt_gen_combination(risk_level: Risk, user_assets: Vec<Asset>, f
 
     }
 
+
     format!(
         "As a DeFi strategy advisor, provide a well-structured analysis with clear paragraphs \
         for a user seeking {} risk investments.\n
         user's Asset state: {:?} . ***You must think about strategies using this asset combination - consider ALL possible number of cases (2^n-1)(explicitly reveal your thinking about number of cases ).\
-        U must recommend optimal strategies for the each number of cases, then u finally recommend optimal combinations of one or several (Asset case, Strategy) - For example, for asset A,B,C,D -> u can return (A,B,strategy #13) (C,strategy #45) (D,strategy #65)** \
+        U must recommend only one optimal strategy for all of cases\
         ***Don't just look at surface-level factors, but deeply analyze based on the user's asset amounts as well. - U must explicitly reveal your thinking process at Main Recommendation phase. *** \
-        ***U must recommend strategies for each asset whose depositable asset is include the asset. - This creteria is depositable asset field. not name or description. For example, Earn SWPx by SwapX classic wS-GOGLZ vLP seems like include SWPx for depositable asset, but actually, it doesn't include SWPx for depositable asset!!! . So u shouldn't recommend this strategies for SWPx. but can for wS or GOGLZ, or USDC, stS.***.
-        also u can skip the asset which is not included for any depositable asset.
-        If there are not relevant strategies, just ignore that asset(u don't have to use all the asset). OR refer the purpose - the asset is can be converted~)*** \n
-        Available Strategies:\n\n
+        *** we are in production and we are building transaction depend on your input. So, U must recommend strategey and deposit asset: amount .
+        WARNING: Be careful for returning asset: amount. U must return usable asset in both user assets and strategy. for example, if depositable_asset are [LP(wS,TAILS), wS, USDC, stS], u must pick one in it and it also usable in user balance.
+        LP(A,B) is Liquidity pool. So, if u choose LP, u must ensure both asset A and B is usable in user balance. ***.
+        *** ENSURE: So, the most important thing in your recommendation is ensuring Asset_1 or Asset_1, Asset_2 pair is real in user's Asset state. and also ensure Asset_amount is lower or equal for user balance ***.
+        **When recommend  Asset_1, Asset_2 pair (actually, LP pool deposit), U must ensure the both assets in user asset state.***
+        Available Strategies:\n\
         {}\n\n\
-        **Please structure your response as follows**(**Strictly follow the structure**):\n\
-        1. Main Recommendation (4-5 paragraphs with clear line breaks) **WARNING: U must start with 'I recommend following combinations,  Strategy_Name #(Strategy index number)~ for (assets) and, Strategy_Name #(Strategy index number)~ for (another assets). . .   **'\n\
+        **Please structure your response as follows**(**Strictly follow the structure**) !we are in production so u must ensure following Main Recommendation's rule! :\n\
+        1. Main Recommendation (4-5 paragraphs with clear line breaks) **WARNING: Case1. IF u chose Single asset for strategy, U must strictly start with <I recommend following combination,  #(Strategy index number) Strategy - (Strategy_Name) for Asset#1_name: (asset1_name) Asset#1_amount: (asset1_balance for conducting strategy- in decimal)>   Case2. If u chose LP asset pair,   U must strictly start with <I recommend following combination,   #(Strategy index number) Strategy - (Strategy_Name) for Asset#1_name: (asset1_name) Asset#1_amount: (asset1_balance for conducting strategy in decimal) and Amount#2_name: (asset2_name) Asset#2_amount: (asset2_balance for conducting strategy in decimal)>  **'\n\
         2. Key Benefits (bullet points)\n\
         3. Risk Considerations\n\
         4. Strategy Comparisons (compare 2-3 strategies):\n\
@@ -96,6 +99,8 @@ pub async fn prompt_gen_combination(risk_level: Risk, user_assets: Vec<Asset>, f
         asset_descriptions,
         stratigies_description.join("\n")
     )
+
+
 }
 
 
@@ -177,8 +182,6 @@ async fn fetch_asset_price(mut asset_name: &str) -> Result<f64, Error> {
     let resp = client.get(&url)
         .send()
         .await?;
-
-    println!("{}", mapped_asset);
 
     // Parse JSON response.
     let json: Value = resp.json().await?;

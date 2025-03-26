@@ -162,6 +162,7 @@ impl From<YieldRates> for String {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Strategy {
+    pub address: String,  // address 필드 추가
     pub(crate) name: String,
     pub(crate) risk_level: Risk,
     pub(crate) risk_reason: String,
@@ -174,33 +175,21 @@ pub struct Strategy {
     pub(crate) original_index: Option<usize>,
 }
 
-
-impl From<Strategy> for String{
+impl From<Strategy> for String {
     fn from(strategy: Strategy) -> Self {
         let risk: String = strategy.risk_level.into();
         let yield_rates: String = strategy.yield_rates.into();
 
-        let il = if let Some(x) = strategy.impermanent_loss {
-             x
-        }
-        else{ "N/A".to_string()};
+        let il = strategy.impermanent_loss.unwrap_or_else(|| "N/A".to_string());
+        let ild = strategy.impermanent_loss_description.unwrap_or_else(|| "N/A".to_string());
+        let idx = strategy.original_index.unwrap_or(0);
 
-        let ild = if let Some(y) = strategy.impermanent_loss_description {
-            y
-        }
-        else{ "N/A".to_string()};
-
-        let idx = if let Some(z) = strategy.original_index {
-            z
-        }
-        else{
-            0
-        };
         format!(
-            "Strategy index number #{}:\nName: {} Description: {}\n Usable asset for this strategy: {:?} Risk Level: {} Reason for risk level: {}\n Impermanent loss: {} impermanent_loss_description: {} \n YieldRates: {} ",
+            "Strategy index number #{}:\nName: {} Description: {}\n Vault Address: {}\n Usable asset for this strategy: {:?} Risk Level: {} Reason for risk level: {}\n Impermanent loss: {} impermanent_loss_description: {} \n YieldRates: {} ",
             idx,
             strategy.name,
             strategy.description,
+            strategy.address,     // address 정보 추가
             strategy.depositable_asset,
             risk,
             strategy.risk_reason,
