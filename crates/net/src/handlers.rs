@@ -1,3 +1,4 @@
+use std::ops::Add;
 use std::sync::Arc;
 use axum::{
     extract::State,
@@ -135,7 +136,6 @@ pub async fn combination<AI_: AI + Send + Sync + 'static>(
 
 
     while !remaining_assets.is_empty() && !filtered_strategies.is_empty() {
-        // AI 추천 생성
         let user_prompt = prompt_gen_combination(
             risk_level.clone(),
             remaining_assets.clone(),
@@ -147,22 +147,57 @@ pub async fn combination<AI_: AI + Send + Sync + 'static>(
             Err(_) => break,
         };
 
-        // AI 응답 파싱
         let strategy_index = hashtag_num_parser(&ai_response);
         let asset_info = parse_asset_info(&ai_response);
 
 
         if let Some(strategy) = state.strategies.get(strategy_index).cloned() {
 
+            if asset_info.len() == 1 {
+                let asset_name = asset_info[0].0.to_lowercase();
+                let depositable_assets_lower: Vec<String> = strategy.depositable_asset
+                    .iter()
+                    .map(|s| s.to_lowercase())
+                    .collect();
+
+                if !depositable_assets_lower.contains(&asset_name) {
+                    continue;
+                }
+            }
+            else if asset_info.len() == 2 {
+
+                let lp_asset_1 = asset_info[0].0.to_lowercase();
+                let lp_asset_2 = asset_info[1].0.to_lowercase();
+
+                let pair1 = format!("lp({},{})", lp_asset_1, lp_asset_2);
+                let pair2 = format!("lp({},{})", lp_asset_2, lp_asset_1);
+
+                let depositable_assets_lower: Vec<String> = strategy.depositable_asset
+                    .iter()
+                    .map(|s| s.to_lowercase())
+                    .collect();
+
+                if !depositable_assets_lower.contains(&pair1) && !depositable_assets_lower.contains(&pair2) && !( depositable_assets_lower.contains(&lp_asset_2) && depositable_assets_lower.contains(&lp_asset_1) ) {
+                    continue;
+                }
+            }
+            else{
+                continue;
+            }
+
             let mut used_assets = Vec::new();
+
             for (asset_name, amount_str) in asset_info {
-                println!("{} ,{}", asset_name,amount_str);
+
                 if let Ok(amount) = amount_str.parse::<f64>() {
-                    // remaining_assets에서 사용된 자산 차감
                     if let Some(pos) = remaining_assets.iter().position(|a| a.name == asset_name) {
                         if remaining_assets[pos].balance >= amount {
                             remaining_assets[pos].balance -= amount;
                             used_assets.push((asset_name, amount));
+                        }
+                        else{
+                            used_assets.push((asset_name, remaining_assets[pos].balance));
+                            remaining_assets[pos].balance = 0_f64;
                         }
                     }
                 }

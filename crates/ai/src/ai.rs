@@ -67,22 +67,26 @@ pub async fn prompt_gen_combination(risk_level: Risk, user_assets: Vec<Asset>, f
 
     }
 
+//U must return usable asset in both user assets and strategy. for example, if depositable_asset are [LP(wS,TAILS), wS, USDC, stS], u must pick one in it and it also usable in user balance.
 
     format!(
         "As a DeFi strategy advisor, provide a well-structured analysis with clear paragraphs \
         for a user seeking {} risk investments.\n
         user's Asset state: {:?} . ***You must think about strategies using this asset combination - consider ALL possible number of cases (2^n-1)(explicitly reveal your thinking about number of cases ).\
-        U must recommend only one optimal strategy for all of cases\
         ***Don't just look at surface-level factors, but deeply analyze based on the user's asset amounts as well. - U must explicitly reveal your thinking process at Main Recommendation phase. *** \
-        *** we are in production and we are building transaction depend on your input. So, U must recommend strategey and deposit asset: amount .
-        WARNING: Be careful for returning asset: amount. U must return usable asset in both user assets and strategy. for example, if depositable_asset are [LP(wS,TAILS), wS, USDC, stS], u must pick one in it and it also usable in user balance.
-        LP(A,B) is Liquidity pool. So, if u choose LP, u must ensure both asset A and B is usable in user balance. ***.
-        *** ENSURE: So, the most important thing in your recommendation is ensuring Asset_1 or Asset_1, Asset_2 pair is real in user's Asset state. and also ensure Asset_amount is lower or equal for user balance ***.
-        **When recommend  Asset_1, Asset_2 pair (actually, LP pool deposit), U must ensure the both assets in user asset state.***
+
+        think in the way\n\
+        0. seek which asset(s) from user asset state is optimal choice for using as deposit asset.
+        1. U must recommend only one **user-asset based available** strategy considering user asset state. - I mean, **user-asset based available**, user has at least, one asset of strategy's depositable_asset.
+
         Available Strategies:\n\
         {}\n\n\
+        Reference: in depositable_asset, LP(A,B) is Liquidity pool deposit. So, if u choose LP, u must ensure both asset A and B are in user balance. -> if usable, u can return Asset#1 and Asset#2 ***.
         **Please structure your response as follows**(**Strictly follow the structure**) !we are in production so u must ensure following Main Recommendation's rule! :\n\
-        1. Main Recommendation (4-5 paragraphs with clear line breaks) **WARNING: Case1. IF u chose Single asset for strategy, U must strictly start with <I recommend following combination,  #(Strategy index number) Strategy - (Strategy_Name) for Asset#1_name: (asset1_name) Asset#1_amount: (asset1_balance for conducting strategy- in decimal)>   Case2. If u chose LP asset pair,   U must strictly start with <I recommend following combination,   #(Strategy index number) Strategy - (Strategy_Name) for Asset#1_name: (asset1_name) Asset#1_amount: (asset1_balance for conducting strategy in decimal) and Amount#2_name: (asset2_name) Asset#2_amount: (asset2_balance for conducting strategy in decimal)>  **'\n\
+        1. Main Recommendation (4-5 paragraphs with clear line breaks - strictly write ensuring - about(starting format, asset_amount rule) following WARNING)  \
+        ***WARNING: PLZ Don't recommend zero Asset#_amount: 0. u must Allocate the MAXIMUM POSSIBLE AMOUNT from the user's balanc ;***
+        **WARNING: Case1. IF u chose Single asset for strategy, U must strictly start with <I recommend following combination,  #(Strategy index number) Strategy - (Strategy_Name) and corresponding depositable_assets are [(depositable_asset)] from them, I can pick asset(s) which is also included in user asset state; Asset#1_name: (asset1_name) Asset#1_balance: (asset1_balance for conducting strategy- in decimal - Allocate the MAXIMUM POSSIBLE AMOUNT from the user's balance)> \
+        Case2. Dont be afraid for recommending LP pool deposit. If u chose LP asset pair for strategy, U must strictly start with <I recommend following combination,   #(Strategy index number) Strategy - (Strategy_Name) and corresponding depositable_assets are [(depositable_asset)] from them, I can pick asset(s) which is also included in user asset state; Asset#1_name: (asset1_name) Asset#1_balance: (asset1_balance for conducting strategy in decimal - Allocate the MAXIMUM POSSIBLE AMOUNT from the user's balanc) and Amount#2_name: (asset2_name) Asset#2_balance: (asset2_balance for conducting strategy in decimal- Allocate the MAXIMUM POSSIBLE AMOUNT from the user's balanc)>  **'\n\
         2. Key Benefits (bullet points)\n\
         3. Risk Considerations\n\
         4. Strategy Comparisons (compare 2-3 strategies):\n\
@@ -94,7 +98,9 @@ pub async fn prompt_gen_combination(risk_level: Risk, user_assets: Vec<Asset>, f
         1. Clear paragraph structure\n\
         2. Risk-return analysis\n\
         3. Quantitative comparison\
-        WARNING: When u struct the Comparsion Phase, you must attech #green or #red for each single setences for noticing which sentences must be displayed in Green for Red. Red texts mean which points of (Comparison target) are more worse then recommended strategy. Green texts mean Which points of(Comparison target) are better than recommended strategy.",
+        WARNING: When u struct the Comparsion Phase, you must attech #green or #red for each single setences for noticing which sentences must be displayed in Green for Red. Red texts mean which points of (Comparison target) are more worse then recommended strategy. Green texts mean Which points of(Comparison target) are better than recommended strategy.
+        *** ENSURE: So, the most important thing in your recommendation is ensuring Asset_1 or Asset_1, Asset_2 pair is real in user's Asset state.***.
+        **When recommend  Asset_1, Asset_2 pair (actually, LP pool deposit), U must ensure the both assets in user asset state.***. ",
         risk,
         asset_descriptions,
         stratigies_description.join("\n")

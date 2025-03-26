@@ -57,14 +57,14 @@ pub struct RecommendationResponse {
 #[derive(serde::Serialize)]
 pub struct CombinationResponse_pre {
     pub ai_responses: Option<String>,
-    pub strategies: Option<Strategy>, // Strategy 타입은 코드에 맞게 수정 필요
+    pub strategies: Option<Strategy>,
 }
 
 
 #[derive(Debug, Serialize, Clone)]
 pub struct StrategyRecommendation {
     pub strategy: Strategy,
-    pub used_assets: Vec<(String, f64)>,  // (asset_name, amount)
+    pub used_assets: Vec<(String, f64)>,
     pub vault_address: String,
 }
 

@@ -170,7 +170,7 @@ pub struct Strategy {
     pub(crate) impermanent_loss: Option<String>,
     pub(crate) impermanent_loss_description: Option<String>,
     pub(crate) yield_rates: YieldRates,
-    pub(crate) depositable_asset: Vec<String>,
+    pub depositable_asset: Vec<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub(crate) original_index: Option<usize>,
 }
