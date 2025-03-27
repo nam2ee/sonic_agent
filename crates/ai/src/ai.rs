@@ -17,18 +17,35 @@ pub trait AI {
 
 
 
-pub fn prompt_gen(risk_level: Risk, user_asset: Asset, filtered_stratigies: Vec<Strategy>) -> String{
+pub async fn prompt_gen(risk_level: Risk, user_asset: Asset, filtered_stratigies: Vec<Strategy>) -> String {
     let risk: String = risk_level.into();
     let stratigies_description: Vec<String> = filtered_stratigies.into_iter().map(|s| s.into()).collect();
-    let asset: String = user_asset.into();
+
+    let mut asset_description = "".to_string();
+
+
+        let price = fetch_asset_price(&user_asset.name).await;
+        if let Ok(x) = price {
+            let total_value = x * user_asset.balance;
+            asset_description = format!(
+                "name: {}, balance: {}, in USD total value: ${:.2}",
+                user_asset.name, user_asset.balance, total_value
+            );
+        } else {
+            asset_description = format!(
+                "name: {}, balance: {}",
+                user_asset.name, user_asset.balance,
+            );
+        }
+
     format!(
         "As a DeFi strategy advisor, provide a well-structured analysis with clear paragraphs \
         for a user seeking {} risk investments.\n
-        user's Asset state: {} . ***You must think about strategies using this asset. and u must pick one strategy in following stratigies***\n
+        user's Asset state: {:?} - using this - not convert allow to another assets. ***You must think about strategies **actually using this asset** - (actually usable asset for each strategies are denoted in depositable_asset field)**. and u must pick one optimal strategy in following stratigies***\n
         Available Strategies:\n\n
         {}\n\n\
         **Please structure your response as follows**(**Strictly follow the structure**):\n\
-        1. Main Recommendation (2-3 paragraphs with clear line breaks) **U must start with 'I recommend  Strategy_Name #(Strategy index number)~**'\n\
+        1. Main Recommendation (2-3 paragraphs with clear line breaks) U must strictly start with <I recommend #(Strategy index number) Strategy - (Strategy_Name) and corresponding depositable_assets are [(depositable_asset)] from them, I can pick asset which is also included in user asset state; #Asset_name: (asset_name) #Asset_balance: (asset_balance for conducting strategy- in decimal - Allocate the MAXIMUM POSSIBLE AMOUNT(80%~100%)  from the user's balance)>\n\
         2. Key Benefits (bullet points)\n\
         3. Risk Considerations\n\
         4. Strategy Comparisons (compare 2-3 strategies):\n\
@@ -41,7 +58,7 @@ pub fn prompt_gen(risk_level: Risk, user_asset: Asset, filtered_stratigies: Vec<
         3. Quantitative comparison\
         WARNING: When u struct the Comparsion Phase, you must attech #green or #red for each single setences for noticing which sentences must be displayed in Green for Red. Red texts mean which points of (Comparison target) are more worse then recommended strategy. Green texts mean Which points of(Comparison target) are better than recommended strategy.",
         risk,
-        asset,
+        asset_description,
         stratigies_description.join("\n")
     )
 }

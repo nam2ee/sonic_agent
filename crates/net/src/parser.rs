@@ -45,6 +45,25 @@ pub fn parse_asset_info(result: &str) -> Vec<(String, String)> {
 }
 
 
+
+pub fn parse_asset_single(result: &str) -> Vec<(String, String)> {
+    let mut assets = Vec::new();
+
+    if let Ok(re) = Regex::new(r"#Asset_name:\s*([\w-]+).*?#Asset_balance:\s*([\d\.]+)") {
+        if let Some(caps) = re.captures(result) {
+            if caps.len() >= 3 {
+                let asset_name = caps.get(1).map_or("", |m| m.as_str()).to_string();
+                let asset_amount = caps.get(2).map_or("", |m| m.as_str()).to_string();
+                assets.push((asset_name, asset_amount));
+                return assets
+            }
+        }
+    }
+
+    assets
+}
+
+
 // 디버그용 테스트 함수 추가
 #[cfg(test)]
 mod tests {

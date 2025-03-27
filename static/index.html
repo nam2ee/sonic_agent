@@ -577,6 +577,7 @@
         });
     }
 
+
     // Get individual recommendations from API
     async function getRecommendations() {
         if (userAssets.length === 0) {
@@ -618,7 +619,13 @@
             const responseData = await response.json();
             console.log('Received individual API response:', responseData);
 
-            displayIntegratedRecommendations(responseData);
+            // 백엔드 응답 구조 변경에 맞게 수정
+            // ai_responses와 recommendations 필드를 사용하도록 변경
+            displayIntegratedRecommendations({
+                ai_responses: responseData.ai_responses || [],
+                recommendations: responseData.recommendations || []
+            });
+
             hasIndividualRecommendations = true;
 
             // Show recommendation type tabs if both recommendation types are available
@@ -631,11 +638,16 @@
         } catch (error) {
             console.error('Error fetching individual recommendations:', error);
             document.getElementById('recommendations-container').innerHTML = `
-          <div class="alert alert-danger">            Failed to get individual recommendations. Please try again later.          </div>        `;
+          <div class="alert alert-danger">
+            Failed to get individual recommendations. Please try again later.
+          </div>
+        `;
         } finally {
             document.getElementById('loading').style.display = 'none';
         }
     }
+
+
 
     // Get combination strategy recommendation
     async function getCombinationStrategy() {
@@ -716,21 +728,22 @@
         const container = document.getElementById('recommendations-container');
         container.innerHTML = '';
 
-        if (!data || (!data.ai_responses && !data.strategies)) {
+        if (!data || (!data.ai_responses && !data.recommendations)) {
             container.innerHTML = `
-          <div class="alert alert-warning">            No recommendations available for your portfolio.          </div>        `;
+          <div class="alert alert-warning">
+            No recommendations available for your portfolio.
+          </div>
+        `;
             return;
         }
 
-        if (
-            !data.ai_responses ||
-            !data.strategies ||
-            data.ai_responses.length === 0 ||
-            data.strategies.length === 0 ||
-            data.ai_responses.length !== data.strategies.length
-        ) {
+        // 백엔드 응답 구조 변경에 맞춰 조건문 수정
+        if (!data.ai_responses || !data.recommendations || data.ai_responses.length === 0 || data.recommendations.length === 0) {
             container.innerHTML = `
-          <div class="alert alert-warning">            Incomplete recommendation data received.          </div>        `;
+          <div class="alert alert-warning">
+            Incomplete recommendation data received.
+          </div>
+        `;
             return;
         }
 
@@ -752,11 +765,12 @@
         tabContent.className = 'tab-content mt-3';
         tabContent.id = 'recommendation-tab-content';
 
-        const assetTokens = userAssets.map(asset => asset.name);
-
-        data.strategies.forEach((strategy, index) => {
+        // 백엔드 응답 구조에 맞게 데이터 처리 로직 수정
+        data.recommendations.forEach((recommendation, index) => {
             const aiResponse = data.ai_responses[index];
-            const assetName = index < assetTokens.length ? assetTokens[index] : `Asset ${index + 1}`;
+            const strategy = recommendation.strategy;
+            const usedAsset = recommendation.used_assets[0]; // 첫 번째 자산 정보 가져오기
+            const assetName = usedAsset[0]; // 자산 이름
 
             const tabNav = document.createElement('li');
             tabNav.className = 'nav-item';
@@ -784,46 +798,133 @@
                 .replace(/(<\/li>|<\/p>|<\/h[1-6]>)(?=\s*<span class="(positive|negative)">)/g, '$1</span>');
 
             aiAnalysisSection.innerHTML = `
-          <h5>Investment Analysis</h5>          <div class="markdown-content">            ${formattedContent}
-          </div>        `;
+          <h5>Investment Analysis</h5>
+          <div class="markdown-content">
+            ${formattedContent}
+          </div>
+        `;
             tabPane.appendChild(aiAnalysisSection);
+
+            // 사용된 자산 정보 표시 섹션 추가
+            const usedAssetsDiv = document.createElement('div');
+            usedAssetsDiv.className = 'used-assets mb-3';
+            usedAssetsDiv.innerHTML = `
+          <h6>Recommended Asset Allocation</h6>
+          <div class="d-flex flex-wrap gap-2 mb-3">
+            <span class="badge bg-success">${usedAsset[0]}: ${usedAsset[1]}</span>
+          </div>
+          <p class="small text-muted">Vault Address: ${recommendation.vault_address || 'N/A'}</p>
+        `;
+            tabPane.appendChild(usedAssetsDiv);
 
             const strategySection = document.createElement('div');
             strategySection.className = 'strategy-section mt-4';
 
             const strategyContent = `
-          <h5>Strategy Details</h5>          <div class="card strategy-card">            <div class="card-body">              <h5 class="strategy-title">${strategy.description}</h5>
-              <div class="mb-3">                <span class="badge ${strategy.risk_level === 'low' ? 'bg-success' : strategy.risk_level === 'medium' ? 'bg-warning' : 'bg-danger'}">
-                  ${strategy.risk_level.charAt(0).toUpperCase() + strategy.risk_level.slice(1)} Risk                </span>                <span class="ms-2">Impermanent Loss: ${strategy.impermanent_loss}</span>
-              </div>              <div class="row mb-4">                <div class="col-md-6">                  <h6>Yield Rates</h6>                  <table class="table table-sm table-bordered">                    <thead>                      <tr>                        <th>Metric</th>                        <th>Latest</th>                        <th>24h</th>                        <th>Week</th>                      </tr>                    </thead>                    <tbody>                      <tr>                        <td>Total APY</td>                        <td>${strategy.yield_rates.income['total apy'].latest}</td>
+          <h5>Strategy Details</h5>
+          <div class="card strategy-card">
+            <div class="card-body">
+              <h5 class="strategy-title">${strategy.description}</h5>
+              <div class="mb-3">
+                <span class="badge ${strategy.risk_level === 'low' ? 'bg-success' : strategy.risk_level === 'medium' ? 'bg-warning' : 'bg-danger'}">
+                  ${strategy.risk_level.charAt(0).toUpperCase() + strategy.risk_level.slice(1)} Risk
+                </span>
+                <span class="ms-2">Impermanent Loss: ${strategy.impermanent_loss}</span>
+              </div>
+              <div class="row mb-4">
+                <div class="col-md-6">
+                  <h6>Yield Rates</h6>
+                  <table class="table table-sm table-bordered">
+                    <thead>
+                      <tr>
+                        <th>Metric</th>
+                        <th>Latest</th>
+                        <th>24h</th>
+                        <th>Week</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Total APY</td>
+                        <td>${strategy.yield_rates.income['total apy'].latest}</td>
                         <td>${strategy.yield_rates.income['total apy']['24h']}</td>
                         <td>${strategy.yield_rates.income['total apy'].week}</td>
-                      </tr>                      <tr>                        <td>Total APR</td>                        <td>${strategy.yield_rates.income['total apr'].latest}</td>
+                      </tr>
+                      <tr>
+                        <td>Total APR</td>
+                        <td>${strategy.yield_rates.income['total apr'].latest}</td>
                         <td>${strategy.yield_rates.income['total apr']['24h']}</td>
                         <td>${strategy.yield_rates.income['total apr'].week}</td>
-                      </tr>                      <tr>                        <td>Farm APR</td>                        <td>${strategy.yield_rates.income['farm apr'].latest}</td>
+                      </tr>
+                      <tr>
+                        <td>Farm APR</td>
+                        <td>${strategy.yield_rates.income['farm apr'].latest}</td>
                         <td>${strategy.yield_rates.income['farm apr']['24h']}</td>
                         <td>${strategy.yield_rates.income['farm apr'].week}</td>
-                      </tr>                    </tbody>                  </table>                </div>                <div class="col-md-6">                  <h6>VS HODL Performance</h6>                  <table class="table table-sm table-bordered">                    <thead>                      <tr>                        <th>Comparison</th>                        <th>24h</th>                        <th>Week</th>                        <th>57 Days</th>                      </tr>                    </thead>                    <tbody>                      ${strategy.yield_rates.vs_hold
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="col-md-6">
+                  <h6>VS HODL Performance</h6>
+                  <table class="table table-sm table-bordered">
+                    <thead>
+                      <tr>
+                        <th>Comparison</th>
+                        <th>24h</th>
+                        <th>Week</th>
+                        <th>57 Days</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      ${strategy.yield_rates.vs_hold
                 .map(
                     holdItem => `
-                        <tr>                          <td>${holdItem.type}</td>
+                        <tr>
+                          <td>${holdItem.type}</td>
                           <td class="${holdItem.apr_24h.startsWith('+') ? 'positive' : 'negative'}">${holdItem.apr_24h}</td>
                           <td class="${holdItem.apr_week.startsWith('+') ? 'positive' : 'negative'}">${holdItem.apr_week}</td>
                           <td class="${holdItem.days_57.startsWith('+') ? 'positive' : 'negative'}">${holdItem.days_57}</td>
-                        </tr>                      `                )
+                        </tr>
+                      `
+                )
                 .join('')}
-                    </tbody>                  </table>                </div>              </div>              <h6>Price Changes (57 Days)</h6>              <table class="table table-sm table-bordered">                <thead>                  <tr>                    <th>Asset</th>                    <th>Initial Price</th>                    <th>Current Price</th>                    <th>Change</th>                  </tr>                </thead>                <tbody>                  ${strategy.yield_rates.prices
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <h6>Price Changes (57 Days)</h6>
+              <table class="table table-sm table-bordered">
+                <thead>
+                  <tr>
+                    <th>Asset</th>
+                    <th>Initial Price</th>
+                    <th>Current Price</th>
+                    <th>Change</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${strategy.yield_rates.prices
                 .map(
                     price => `
-                    <tr>                      <td>${price.token}</td>
+                    <tr>
+                      <td>${price.token}</td>
                       <td>${price.init_price}</td>
                       <td>${price.price}</td>
                       <td class="${price.change_57_days.startsWith('+') ? 'positive' : price.change_57_days === '0.00%' ? '' : 'negative'}">${price.change_57_days}</td>
-                    </tr>                  `                )
+                    </tr>
+                  `
+                )
                 .join('')}
-                </tbody>              </table>              <div class="strategy-reasoning mt-3 p-3 bg-light rounded">                <h6>Risk Analysis</h6>                <p>${strategy.risk_reason}</p>
-              </div>            </div>          </div>        `;
+                </tbody>
+              </table>
+              <div class="strategy-reasoning mt-3 p-3 bg-light rounded">
+                <h6>Risk Analysis</h6>
+                <p>${strategy.risk_reason}</p>
+              </div>
+            </div>
+          </div>
+        `;
             strategySection.innerHTML = strategyContent;
             tabPane.appendChild(strategySection);
 
@@ -836,6 +937,8 @@
         recommendationsCard.appendChild(recommendationsBody);
         container.appendChild(recommendationsCard);
     }
+
+
 
     // Display combination strategy recommendation
 
