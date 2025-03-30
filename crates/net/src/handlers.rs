@@ -124,25 +124,35 @@ pub async fn combination<AI_: AI + Send + Sync + 'static>(
     Json(payload): Json<UserInfo>,
 ) -> impl IntoResponse {
     let asset_names = extract_wallet_asset_names(&payload);
-    let risk_level = payload.risk;
+    let original_risk_level = payload.risk;
     let mut remaining_assets = payload.wallet_balance.unwrap_or_default();
     let mut recommendations = Vec::new();
     let mut ai_response_vec = Vec::new();
     let mut loop_counter = 0;
 
-    let filtered_strategies = strategy_filter_by_depositable_asset(
-        strategy_filter_by_risk(state.strategies.clone(), risk_level.clone()),
-        asset_names
-    );
 
-
-    while !remaining_assets.is_empty() && !filtered_strategies.is_empty() {
+    while !remaining_assets.is_empty()  {
         if loop_counter >= 4 || remaining_assets.iter().all(|a| a.balance < 0.000001) {
             break;
         }
+
+        let current_risk_level = original_risk_level.get_random_risk_for_phase(loop_counter);
+
+        // 현재 risk level에 맞는 전략들 필터링
+        let filtered_strategies = strategy_filter_by_depositable_asset(
+            strategy_filter_by_risk(state.strategies.clone(), current_risk_level.clone()),
+            asset_names.clone()
+        );
+
+        if filtered_strategies.is_empty() {
+            break;
+        }
+
+
         loop_counter += 1;
+
         let user_prompt = prompt_gen_combination(
-            risk_level.clone(),
+            current_risk_level.clone(),
             remaining_assets.clone(),
             filtered_strategies.clone()
         ).await;

@@ -45,7 +45,7 @@ pub async fn prompt_gen(risk_level: Risk, user_asset: Asset, filtered_stratigies
         Available Strategies:\n\n
         {}\n\n\
         **Please structure your response as follows**(**Strictly follow the structure**):\n\
-        1. Main Recommendation (2-3 paragraphs with clear line breaks) U must strictly start with <I recommend #(Strategy index number) Strategy - (Strategy_Name) and corresponding depositable_assets are [(depositable_asset)] from them, I can pick asset which is also included in user asset state; #Asset_name: (asset_name) #Asset_balance: (asset_balance for conducting strategy- in decimal - Allocate the MAXIMUM POSSIBLE AMOUNT(80%~100%)  from the user's balance)>\n\
+        1. Main Recommendation (2-3 paragraphs with clear line breaks) U must strictly start with <I recommend #(Strategy index number) Strategy - (Strategy_Name) and corresponding depositable_assets are [(depositable_asset)] from them, I can pick asset which is also included in user asset state; #Asset_name: (asset_name) #Asset_balance: (asset_balance for conducting strategy- in decimal(not percentage) - Allocate the MAXIMUM POSSIBLE AMOUNT(100%~80%)  from the user's balance)>\n\
         2. Key Benefits (bullet points)\n\
         3. Risk Considerations\n\
         4. Strategy Comparisons (compare 2-3 strategies):\n\
@@ -102,8 +102,8 @@ pub async fn prompt_gen_combination(risk_level: Risk, user_assets: Vec<Asset>, f
         **Please structure your response as follows**(**Strictly follow the structure**) !we are in production so u must ensure following Main Recommendation's rule! :\n\
         1. Main Recommendation (4-5 paragraphs with clear line breaks - strictly write ensuring - about(starting format, asset_amount rule) following WARNING)  \
         ***WARNING: PLZ Don't recommend zero Asset#_amount: 0. u must Allocate the MAXIMUM POSSIBLE AMOUNT from the user's balanc ;***
-        **WARNING: Case1. IF u chose Single asset for strategy, U must strictly start with <I recommend following combination,  #(Strategy index number) Strategy - (Strategy_Name) and corresponding depositable_assets are [(depositable_asset)] from them, I can pick asset(s) which is also included in user asset state; Asset#1_name: (asset1_name) Asset#1_balance: (asset1_balance for conducting strategy- in decimal - Allocate the MAXIMUM POSSIBLE AMOUNT(80%~100%)  from the user's balance)> \
-        Case2. Dont be afraid for recommending LP pool deposit. If u chose LP asset pair for strategy, U must strictly start with <I recommend following combination,   #(Strategy index number) Strategy - (Strategy_Name) and corresponding depositable_assets are [(depositable_asset)] from them, I can pick asset(s) which is also included in user asset state; Asset#1_name: (asset1_name) Asset#1_balance: (asset1_balance for conducting strategy in decimal - Allocate the MAXIMUM POSSIBLE AMOUNT(80%~100%) from the user's balance) and Amount#2_name: (asset2_name) Asset#2_balance: (asset2_balance for conducting strategy in decimal- Allocate the MAXIMUM POSSIBLE AMOUNT(80%~100%)  from the user's balanc)>  **'\n\
+        **WARNING: Case1. IF u chose Single asset for strategy, U must strictly start with <I recommend following combination,  #(Strategy index number) Strategy - (Strategy_Name) and corresponding depositable_assets are [(depositable_asset)] from them, I can pick asset(s) which is also included in user asset state; Asset#1_name: (asset1_name) Asset#1_balance: (asset1_balance for conducting strategy- in decimal - Allocate the MAXIMUM POSSIBLE AMOUNT(100%~80%)  from the user's balance)> \
+        Case2. Dont be afraid for recommending LP pool deposit. If u chose LP asset pair for strategy, U must strictly start with <I recommend following combination,   #(Strategy index number) Strategy - (Strategy_Name) and corresponding depositable_assets are [(depositable_asset)] from them, I can pick asset(s) which is also included in user asset state; Asset#1_name: (asset1_name) Asset#1_balance: (asset1_balance for conducting strategy in decimal - Allocate the MAXIMUM POSSIBLE AMOUNT(100%~80%) from the user's balance) and Amount#2_name: (asset2_name) Asset#2_balance: (asset2_balance for conducting strategy in decimal- Allocate the MAXIMUM POSSIBLE AMOUNT(100%~80%)  from the user's balanc)>  **'\n\
         2. Key Benefits (bullet points)\n\
         3. Risk Considerations\n\
         4. Strategy Comparisons (compare 2-3 strategies):\n\
@@ -177,8 +177,10 @@ async fn fetch_asset_price(mut asset_name: &str) -> Result<f64, Error> {
         "eggs" => "eggs-finance",
         "navi" => "navigator-exchange",
         "beets" => "beethoven-x",
-        _ => asset_name,
+        _ => asset_name
     };
+
+    let asset_name = asset_name.to_lowercase();
 
     if asset_name == "donks"{
         return Ok(0.00002109_f64)
@@ -189,12 +191,97 @@ async fn fetch_asset_price(mut asset_name: &str) -> Result<f64, Error> {
     else if asset_name =="missor"{
         return Ok(0.03461_f64)
     }
+    else if asset_name =="eco"{
+        return Ok(0.25_f64)
+    }
     else if asset_name=="sdog"{
         return Ok(0.01346_f64)
     }
     else if asset_name == "sacra_gem_1"{
         return Ok(0.4241_f64)
     }
+    else if asset_name == "usdc"{
+        return Ok(1_f64)
+    }
+    else if asset_name == "ws"{
+        return Ok(0.5_f64)
+    }
+    else if asset_name == "os"{
+        return Ok(0.5_f64)
+    }
+    else if asset_name == "wos" {
+        return Ok(0.5_f64)
+    }
+    else if asset_name == "sts" {
+        return Ok(0.5_f64)
+    }
+    else if asset_name == "beets"{
+        return Ok(0.04_f64)
+    }
+    else if asset_name == "ateth"{
+        return Ok(2100_f64)
+    }
+    else if asset_name == "sceth"{
+        return Ok(2100_f64)
+    }
+    else if asset_name == "sonic"{
+        return Ok(0.4900_f64)
+    }
+    else if asset_name == "sacra"{
+        return Ok(0.01410_f64)
+    }
+    else if asset_name == "swpx"{
+        return Ok(0.2650_f64)
+    }
+    else if asset_name == "usdc.e"{
+        return Ok(1.0000_f64)
+    }
+    else if asset_name == "scusd"{
+        return Ok(0.9983_f64)
+    }
+    else if asset_name == "equal"{
+        return Ok(1.8400_f64)
+    }
+    else if asset_name == "tails"{
+        return Ok(0.02694_f64)
+    }
+    else if asset_name == "brush"{
+        return Ok(0.01859_f64)
+    }
+    else if asset_name == "fsonic"{
+        return Ok(0.001757_f64)
+    }
+    else if asset_name == "moon"{
+        return Ok(0.002280_f64)
+    }
+    else if asset_name == "xshadow"{
+        return Ok(53.9500_f64)
+    }
+    else if asset_name == "indi"{
+        return Ok(0.01474_f64)
+    }
+    else if asset_name == "fs"{
+        return Ok(0.0001957_f64)
+    }
+    else if asset_name == "weth"{
+        return Ok(1810.5000_f64)
+    }
+    else if asset_name == "stbl"{
+        return Ok(0.07211_f64)
+    }
+    else if asset_name == "goglz"{
+        return Ok(0.1044_f64)
+    }
+    else if asset_name == "fbomb"{
+        return Ok(0.02405_f64)
+    }
+    else if asset_name == "eggs"{
+        return Ok(0.0005501_f64)
+    }
+    else if asset_name == "navi"{
+        return Ok(1.1100_f64)
+    }
+
 
     let url = format!(
         "https://api.coingecko.com/api/v3/simple/price?ids={}&vs_currencies=usd",

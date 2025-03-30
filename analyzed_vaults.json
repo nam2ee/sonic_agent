@@ -78,9 +78,7 @@
     },
     "original_index": 0,
     "depositable_asset": [
-      "wS",
-      "USDC",
-      "stS"
+      "wS"
     ]
   },
   {
@@ -162,10 +160,7 @@
     },
     "original_index": 1,
     "depositable_asset": [
-      "atETH",
-      "wS",
-      "USDC",
-      "stS"
+      "atETH"
     ]
   },
   {
@@ -247,9 +242,7 @@
     },
     "original_index": 2,
     "depositable_asset": [
-      "wS",
-      "USDC",
-      "stS"
+      "wS"
     ]
   },
   {
@@ -331,10 +324,7 @@
     },
     "original_index": 3,
     "depositable_asset": [
-      "LP(USDC,scUSD)",
-      "wS",
-      "USDC",
-      "stS"
+      "LP(USDC,scUSD)"
     ]
   },
   {
@@ -416,10 +406,7 @@
     },
     "original_index": 4,
     "depositable_asset": [
-      "OS",
-      "wS",
-      "USDC",
-      "stS"
+      "OS"
     ]
   },
   {
@@ -501,9 +488,7 @@
     },
     "original_index": 5,
     "depositable_asset": [
-      "wS",
-      "USDC",
-      "stS"
+      "wS"
     ]
   },
   {
@@ -585,10 +570,7 @@
     },
     "original_index": 6,
     "depositable_asset": [
-      "scUSD",
-      "wS",
-      "USDC",
-      "stS"
+      "scUSD"
     ]
   },
   {
@@ -670,10 +652,7 @@
     },
     "original_index": 7,
     "depositable_asset": [
-      "LP(wS,TAILS)",
-      "wS",
-      "USDC",
-      "stS"
+      "LP(wS,TAILS)"
     ]
   },
   {
@@ -755,10 +734,7 @@
     },
     "original_index": 8,
     "depositable_asset": [
-      "LP(wS,BRUSH)",
-      "wS",
-      "USDC",
-      "stS"
+      "LP(wS,BRUSH)"
     ]
   },
   {
@@ -840,10 +816,7 @@
     },
     "original_index": 9,
     "depositable_asset": [
-      "LP(wS,fSONIC)",
-      "wS",
-      "USDC",
-      "stS"
+      "LP(wS,fSONIC)"
     ]
   },
   {
@@ -925,9 +898,7 @@
     },
     "original_index": 10,
     "depositable_asset": [
-      "USDC",
-      "wS",
-      "stS"
+      "USDC"
     ]
   },
   {
@@ -1009,10 +980,7 @@
     },
     "original_index": 11,
     "depositable_asset": [
-      "LP(wS,sDOG)",
-      "wS",
-      "USDC",
-      "stS"
+      "LP(wS,sDOG)"
     ]
   },
   {
@@ -1094,10 +1062,7 @@
     },
     "original_index": 12,
     "depositable_asset": [
-      "LP(wS,MOON)",
-      "wS",
-      "USDC",
-      "stS"
+      "LP(wS,MOON)"
     ]
   },
   {
@@ -1179,10 +1144,7 @@
     },
     "original_index": 13,
     "depositable_asset": [
-      "LP(wS,DONKS)",
-      "wS",
-      "USDC",
-      "stS"
+      "LP(wS,DONKS)"
     ]
   },
   {
@@ -1264,10 +1226,7 @@
     },
     "original_index": 14,
     "depositable_asset": [
-      "LP(wS,ECO)",
-      "wS",
-      "USDC",
-      "stS"
+      "LP(wS,ECO)"
     ]
   },
   {
@@ -1349,9 +1308,7 @@
     },
     "original_index": 15,
     "depositable_asset": [
-      "USDC",
-      "stS",
-      "wS"
+      "stS"
     ]
   },
   {
@@ -1433,10 +1390,7 @@
     },
     "original_index": 16,
     "depositable_asset": [
-      "LP(wS,MOON)",
-      "wS",
-      "USDC",
-      "stS"
+      "LP(wS,MOON)"
     ]
   },
   {
@@ -1518,9 +1472,7 @@
     },
     "original_index": 17,
     "depositable_asset": [
-      "wS",
-      "USDC",
-      "stS"
+      "wS"
     ]
   },
   {
@@ -1602,10 +1554,7 @@
     },
     "original_index": 18,
     "depositable_asset": [
-      "LP(SACRA,scUSD)",
-      "wS",
-      "USDC",
-      "stS"
+      "LP(SACRA,scUSD)"
     ]
   },
   {
@@ -1687,10 +1636,7 @@
     },
     "original_index": 19,
     "depositable_asset": [
-      "LP(wS,INDI)",
-      "wS",
-      "USDC",
-      "stS"
+      "LP(wS,INDI)"
     ]
   },
   {
@@ -1772,9 +1718,7 @@
     },
     "original_index": 20,
     "depositable_asset": [
-      "wS",
-      "USDC",
-      "stS"
+      "USDC"
     ]
   },
   {
@@ -1856,10 +1800,7 @@
     },
     "original_index": 21,
     "depositable_asset": [
-      "LP(ws,FS)",
-      "wS",
-      "USDC",
-      "stS"
+      "LP(ws,FS)"
     ]
   },
   {
@@ -1941,10 +1882,7 @@
     },
     "original_index": 22,
     "depositable_asset": [
-      "wETH",
-      "wS",
-      "USDC",
-      "stS"
+      "wETH"
     ]
   },
   {
@@ -2008,9 +1946,7 @@
     },
     "original_index": 23,
     "depositable_asset": [
-      "wS",
-      "USDC",
-      "stS"
+      "wS"
     ]
   },
   {
@@ -2074,10 +2010,7 @@
     },
     "original_index": 24,
     "depositable_asset": [
-      "wOS",
-      "wS",
-      "USDC",
-      "stS"
+      "wOS"
     ]
   },
   {
@@ -2159,10 +2092,7 @@
     },
     "original_index": 25,
     "depositable_asset": [
-      "LP(wS,EQUAL)",
-      "wS",
-      "USDC",
-      "stS"
+      "LP(wS,EQUAL)"
     ]
   },
   {
@@ -2244,10 +2174,7 @@
     },
     "original_index": 26,
     "depositable_asset": [
-      "LP(wS,sDOG)",
-      "wS",
-      "USDC",
-      "stS"
+      "LP(wS,sDOG)"
     ]
   },
   {
@@ -2329,10 +2256,7 @@
     },
     "original_index": 27,
     "depositable_asset": [
-      "scETH",
-      "wS",
-      "USDC",
-      "stS"
+      "scETH"
     ]
   },
   {
@@ -2414,10 +2338,7 @@
     },
     "original_index": 28,
     "depositable_asset": [
-      "LP(USDC,STBL)",
-      "wS",
-      "USDC",
-      "stS"
+      "LP(USDC,STBL)"
     ]
   },
   {
@@ -2499,10 +2420,7 @@
     },
     "original_index": 29,
     "depositable_asset": [
-      "LP(wS,USDC)",
-      "wS",
-      "USDC",
-      "stS"
+      "LP(wS,USDC)"
     ]
   },
   {
@@ -2584,9 +2502,7 @@
     },
     "original_index": 30,
     "depositable_asset": [
-      "wS",
-      "USDC",
-      "stS"
+      "USDC"
     ]
   },
   {
@@ -2668,10 +2584,7 @@
     },
     "original_index": 31,
     "depositable_asset": [
-      "LP(USDC,WETH)",
-      "wS",
-      "USDC",
-      "stS"
+      "LP(USDC,WETH)"
     ]
   },
   {
@@ -2753,10 +2666,7 @@
     },
     "original_index": 32,
     "depositable_asset": [
-      "LP(wS,TYSG)",
-      "wS",
-      "USDC",
-      "stS"
+      "LP(wS,TYSG)"
     ]
   },
   {
@@ -2838,10 +2748,7 @@
     },
     "original_index": 33,
     "depositable_asset": [
-      "LP(wS,ECO)",
-      "wS",
-      "USDC",
-      "stS"
+      "LP(wS,ECO)"
     ]
   },
   {
@@ -2923,10 +2830,7 @@
     },
     "original_index": 34,
     "depositable_asset": [
-      "LP(USDC,stS)",
-      "wS",
-      "USDC",
-      "stS"
+      "LP(USDC,stS)"
     ]
   },
   {
@@ -3008,10 +2912,7 @@
     },
     "original_index": 35,
     "depositable_asset": [
-      "LP(USDC,scUSD)",
-      "wS",
-      "USDC",
-      "stS"
+      "LP(USDC,scUSD)"
     ]
   },
   {
@@ -3093,10 +2994,7 @@
     },
     "original_index": 36,
     "depositable_asset": [
-      "LP(wS,GOGLZ)",
-      "wS",
-      "USDC",
-      "stS"
+      "LP(wS,GOGLZ)"
     ]
   },
   {
@@ -3178,10 +3076,7 @@
     },
     "original_index": 37,
     "depositable_asset": [
-      "LP(WETH,Missor)",
-      "wS",
-      "USDC",
-      "stS"
+      "LP(WETH,Missor)"
     ]
   },
   {
@@ -3263,10 +3158,7 @@
     },
     "original_index": 38,
     "depositable_asset": [
-      "LP(wS,GOGLZ)",
-      "wS",
-      "USDC",
-      "stS"
+      "LP(wS,GOGLZ)"
     ]
   },
   {
@@ -3348,9 +3240,7 @@
     },
     "original_index": 39,
     "depositable_asset": [
-      "wS",
-      "USDC",
-      "stS"
+      "wS"
     ]
   },
   {
@@ -3432,10 +3322,7 @@
     },
     "original_index": 40,
     "depositable_asset": [
-      "scETH",
-      "wS",
-      "USDC",
-      "stS"
+      "scETH"
     ]
   },
   {
@@ -3517,10 +3404,7 @@
     },
     "original_index": 41,
     "depositable_asset": [
-      "LP(ECO,EQUAL)",
-      "wS",
-      "USDC",
-      "stS"
+      "LP(ECO,EQUAL)"
     ]
   },
   {
@@ -3602,10 +3486,7 @@
     },
     "original_index": 42,
     "depositable_asset": [
-      "SACRA_GEM_1",
-      "wS",
-      "USDC",
-      "stS"
+      "SACRA_GEM_1"
     ]
   },
   {
@@ -3669,8 +3550,6 @@
     },
     "original_index": 43,
     "depositable_asset": [
-      "wS",
-      "USDC",
       "stS"
     ]
   },
@@ -3753,10 +3632,7 @@
     },
     "original_index": 44,
     "depositable_asset": [
-      "LP(scUSD,stS)",
-      "wS",
-      "USDC",
-      "stS"
+      "LP(scUSD,stS)"
     ]
   },
   {
@@ -3838,10 +3714,7 @@
     },
     "original_index": 45,
     "depositable_asset": [
-      "LP(wS,stS)",
-      "wS",
-      "USDC",
-      "stS"
+      "LP(wS,stS)"
     ]
   },
   {
@@ -3923,8 +3796,6 @@
     },
     "original_index": 46,
     "depositable_asset": [
-      "wS",
-      "USDC",
       "stS"
     ]
   },
@@ -3989,9 +3860,7 @@
     },
     "original_index": 47,
     "depositable_asset": [
-      "wS",
-      "USDC",
-      "stS"
+      "USDC"
     ]
   },
   {
@@ -4073,10 +3942,7 @@
     },
     "original_index": 48,
     "depositable_asset": [
-      "LP(wS,USDC)",
-      "wS",
-      "USDC",
-      "stS"
+      "LP(wS,USDC)"
     ]
   },
   {
@@ -4158,10 +4024,7 @@
     },
     "original_index": 49,
     "depositable_asset": [
-      "LP(wS,NAVI)",
-      "wS",
-      "USDC",
-      "stS"
+      "LP(wS,NAVI)"
     ]
   },
   {
@@ -4243,10 +4106,7 @@
     },
     "original_index": 50,
     "depositable_asset": [
-      "LP(USDC,scUSD)",
-      "wS",
-      "USDC",
-      "stS"
+      "LP(USDC,scUSD)"
     ]
   },
   {
@@ -4328,10 +4188,7 @@
     },
     "original_index": 51,
     "depositable_asset": [
-      "LP(wS,FS)",
-      "wS",
-      "USDC",
-      "stS"
+      "LP(wS,FS)"
     ]
   },
   {
@@ -4413,10 +4270,7 @@
     },
     "original_index": 52,
     "depositable_asset": [
-      "LP(SACRA,scUSD)",
-      "wS",
-      "USDC",
-      "stS"
+      "LP(SACRA,scUSD)"
     ]
   },
   {
@@ -4498,10 +4352,7 @@
     },
     "original_index": 53,
     "depositable_asset": [
-      "LP(wS,stS)",
-      "wS",
-      "USDC",
-      "stS"
+      "LP(wS,stS)"
     ]
   },
   {
@@ -4583,10 +4434,7 @@
     },
     "original_index": 54,
     "depositable_asset": [
-      "wS",
-      "SACRA",
-      "USDC",
-      "stS"
+      "SACRA"
     ]
   },
   {
@@ -4668,9 +4516,7 @@
     },
     "original_index": 55,
     "depositable_asset": [
-      "wS",
-      "USDC",
-      "stS"
+      "wS"
     ]
   },
   {
@@ -4752,10 +4598,7 @@
     },
     "original_index": 56,
     "depositable_asset": [
-      "LP(fBOMB,EGGS)",
-      "wS",
-      "USDC",
-      "stS"
+      "LP(fBOMB,EGGS)"
     ]
   },
   {
@@ -4837,9 +4680,7 @@
     },
     "original_index": 57,
     "depositable_asset": [
-      "wS",
-      "USDC",
-      "stS"
+      "USDC"
     ]
   },
   {
@@ -4921,10 +4762,7 @@
     },
     "original_index": 58,
     "depositable_asset": [
-      "LP(wS,WETH)",
-      "wS",
-      "USDC",
-      "stS"
+      "LP(wS,WETH)"
     ]
   },
   {
@@ -5006,10 +4844,7 @@
     },
     "original_index": 59,
     "depositable_asset": [
-      "LP(wS,USDC)",
-      "wS",
-      "USDC",
-      "stS"
+      "LP(wS,USDC)"
     ]
   }
 ]

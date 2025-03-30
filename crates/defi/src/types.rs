@@ -1,4 +1,5 @@
 use serde::{Deserialize, Serialize};
+use rand::Rng;
 
 #[derive(Debug,Serialize, Deserialize, Clone, PartialEq)]
 #[serde(rename_all = "lowercase")]
@@ -27,6 +28,57 @@ impl From<Risk> for String{
             }
         }
 
+    }
+}
+
+impl Risk {
+    // 각 루프에서 risk level을 확률에 따라 결정하는 함수 추가
+    pub fn get_random_risk_for_phase(&self, phase: usize) -> Risk {
+        let mut rng = rand::rng();
+        let random_value: f64 = rng.random(); // 0.0 ~ 1.0 사이의 랜덤 값
+
+        match self {
+            Risk::High => {
+                // High: [0.45, 0.35, 0.2] 확률로 [High, Medium, Low]
+                if random_value < 0.45 {
+                    Risk::High
+                } else if random_value < 0.8 { // 0.45 + 0.35
+                    Risk::Medium
+                } else {
+                    Risk::Low
+                }
+            },
+            Risk::Medium => {
+                // Medium: [0.3, 0.4, 0.3] 확률로 [High, Medium, Low]
+                if random_value < 0.3 {
+                    Risk::High
+                } else if random_value < 0.7 { // 0.3 + 0.4
+                    Risk::Medium
+                } else {
+                    Risk::Low
+                }
+            },
+            Risk::Low => {
+                // Low: [0.2, 0.35, 0.45] 확률로 [High, Medium, Low]
+                if random_value < 0.2 {
+                    Risk::High
+                } else if random_value < 0.55 { // 0.2 + 0.35
+                    Risk::Medium
+                } else {
+                    Risk::Low
+                }
+            },
+            Risk::Others => {
+                // Others는 Medium과 동일하게 처리
+                if random_value < 0.3 {
+                    Risk::High
+                } else if random_value < 0.7 {
+                    Risk::Medium
+                } else {
+                    Risk::Low
+                }
+            }
+        }
     }
 }
 
